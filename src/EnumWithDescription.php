@@ -43,5 +43,4 @@ trait EnumWithDescription
     {
         return array_flip(self::asDescriptionsArray());
     }
-
 }

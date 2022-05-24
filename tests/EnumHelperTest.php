@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 use Datomatic\EnumHelper\Exceptions\UndefinedCase;
 
 // Invokable
@@ -56,7 +58,6 @@ it('throws an error when a nonexistent case is being used for backed enums', fun
     StatusString::INVALID();
 })->throws(UndefinedCase::class, 'Undefined constant StatusString::INVALID');
 
-
 // Arrays methods
 it('can return an array of case values from a pure enum')
     ->expect(Status::values())
@@ -74,7 +75,6 @@ it('can return an array of case values from a backed int enum')
     ->expect(StatusInt::values())
     ->toBe([0, 1, 2, 3]);
 
-
 it('can return an array of case names from a pure enum')
     ->expect(Status::names())
     ->toBe(['PENDING', 'ACCEPTED', 'DISCARDED', 'NO_RESPONSE']);
@@ -91,7 +91,6 @@ it('can return an array of case names from a backed int enum')
     ->expect(StatusInt::names())
     ->toBe(['PENDING', 'ACCEPTED', 'DISCARDED', 'NO_RESPONSE']);
 
-
 it('can return an array names of asArray from asArray method in a pure enum')
     ->expect(Status::asArray())
     ->toBe(['PENDING', 'ACCEPTED', 'DISCARDED', 'NO_RESPONSE']);
@@ -99,7 +98,6 @@ it('can return an array names of asArray from asArray method in a pure enum')
 it('can return an array names of asArray from asArrayInverse method in a pure enum')
     ->expect(Status::asArrayInverse())
     ->toBe(['PENDING', 'ACCEPTED', 'DISCARDED', 'NO_RESPONSE']);
-
 
 it('can return an associative array value => name of asArray from a backed int enum')
     ->expect(StatusInt::asArray())
@@ -136,7 +134,6 @@ it('can return an associative array name => value of asArray from a backed strin
         'DISCARDED' => 'D',
         'NO_RESPONSE' => 'N',
     ]);
-
 
 // from and fromName methods
 it('does work with from and fromName function', function ($enum, $expectedEnum) {
@@ -195,7 +192,6 @@ it('can select a case by name with tryFromName() for backed enums')
 it('can select a case by name with tryFromName() for pure enums')
     ->expect(StatusPascalCase::tryFromName('Pending'))
     ->toBe(StatusPascalCase::Pending);
-
 
 // is, isNot, in, notIn
 it('can compare enum using is method with enum, name and values', function ($enum, $value, $result) {
@@ -288,9 +284,9 @@ it('can compare enum using notIn method with enum, name and values', function ($
 it('can have a string identifier to translate', function ($enum, $result) {
     expect($enum->toString())->toBe($result);
 })->with([
-    [Status::PENDING,'Status.PENDING'],
-    [StatusInt::PENDING,'StatusInt.PENDING'],
-    [StatusString::PENDING,'StatusString.PENDING'],
-    [StatusPascalCase::Pending,'StatusPascalCase.Pending'],
+    [Status::PENDING, 'Status.PENDING'],
+    [StatusInt::PENDING, 'StatusInt.PENDING'],
+    [StatusString::PENDING, 'StatusString.PENDING'],
+    [StatusPascalCase::Pending, 'StatusPascalCase.Pending'],
 ]);
 test('empty class')->expect(EmptyClass::cases())->toBe([]);

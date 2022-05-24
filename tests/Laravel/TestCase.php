@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Datomatic\EnumHelper\Tests\Laravel;
 
 use Orchestra\Testbench\TestCase as TestbenchTestCase;

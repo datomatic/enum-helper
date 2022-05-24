@@ -10,11 +10,8 @@ use ValueError;
 
 trait EnumHelper
 {
-
     /**
      * Return the enum's value when it's $invoked().
-     *
-     * @return string|int
      */
     public function __invoke(): string|int
     {
@@ -24,9 +21,7 @@ trait EnumHelper
     /**
      * Return the enum's value or name when it's called ::STATICALLY(), ::statically() or ::Statically().
      *
-     * @param string $name
      * @param $args
-     * @return string|int
      * @throws UndefinedCase
      */
     public static function __callStatic(string $name, $args): string|int
@@ -46,25 +41,21 @@ trait EnumHelper
     }
 
     /**
-     * return snake case of a string
-     *
-     * @param string $value
-     * @return string
+     * return snake case of a string.
      */
     protected static function snake(string $value): string
     {
-        if (!ctype_lower($value)) {
+        if (! ctype_lower($value)) {
             $value = preg_replace('/\s+/u', '', ucwords($value));
 
             $value = mb_strtolower(preg_replace('/(.)(?=[A-Z])/u', '$1' . '_', $value), 'UTF-8');
         }
+
         return $value;
     }
 
     /**
-     * Get an array of case names
-     *
-     * @return array
+     * Get an array of case names.
      */
     public static function names(): array
     {
@@ -72,9 +63,7 @@ trait EnumHelper
     }
 
     /**
-     * Get an array of case values
-     *
-     * @return array
+     * Get an array of case values.
      */
     public static function values(): array
     {
@@ -86,9 +75,7 @@ trait EnumHelper
     }
 
     /**
-     * Get an associative array of [case value => case name]
-     *
-     * @return array
+     * Get an associative array of [case value => case name].
      */
     public static function asArray(): array
     {
@@ -100,9 +87,7 @@ trait EnumHelper
     }
 
     /**
-     * Get an associative array of [case name => case value]
-     *
-     * @return array
+     * Get an associative array of [case name => case value].
      */
     public static function asArrayInverse(): array
     {
@@ -127,9 +112,8 @@ trait EnumHelper
 
     /**
      * Gets the Enum by name, if it exists, for "Pure" enums.
-     * This will not override the `tryFrom()` method on BackedEnums
+     * This will not override the `tryFrom()` method on BackedEnums.
      *
-     * @param string $case
      * @return EnumHelper|null
      */
     public static function tryFrom(string $case): ?static
@@ -154,18 +138,16 @@ trait EnumHelper
     {
         $cases = array_filter(
             self::cases(),
-            fn($c) => $c->name === $case
+            fn ($c) => $c->name === $case
         );
 
         return array_values($cases)[0] ?? null;
     }
 
-
     /**
      * Check if enum is equal to another enum or value (backed enum) or name (pure enum).
      *
      * @param EnumHelper|string|int $value
-     * @return bool
      */
     public function is(self|string|int $value): bool
     {
@@ -177,22 +159,19 @@ trait EnumHelper
     }
 
     /**
-     * is method inverse
+     * is method inverse.
      *
      * @param EnumHelper|string|int $value
-     * @return bool
      */
     public function isNot(self|string|int $value): bool
     {
-        return !$this->is($value);
+        return ! $this->is($value);
     }
 
-
     /**
-     * Check if enum is into an array of enum or array of values (backed enum) or array of names (pure enum)
+     * Check if enum is into an array of enum or array of values (backed enum) or array of names (pure enum).
      *
      * @param array<EnumHelper|string|int> $values
-     * @return bool
      */
     public function in(array $values): bool
     {
@@ -208,21 +187,17 @@ trait EnumHelper
     }
 
     /**
-     * in method inverse
+     * in method inverse.
      *
      * @param array<EnumHelper|string|int> $values
-     * @return bool
      */
     public function notIn(array $values): bool
     {
-        return !$this->in($values);
+        return ! $this->in($values);
     }
 
-
     /**
-     * Return the enum name identifier (namespace + class name + case name)
-     *
-     * @return string
+     * Return the enum name identifier (namespace + class name + case name).
      */
     public function toString(): string
     {
@@ -230,17 +205,14 @@ trait EnumHelper
     }
 
     /**
-     * Only for Laravel: return the translated version of enum value
-     *
-     * @param string|null $lang
-     * @return string
+     * Only for Laravel: return the translated version of enum value.
      */
     public function translate(string $lang = null): string
     {
         if (function_exists('__')) {
             return __('enums.' . $this->toString(), [], $lang);
         }
+
         return '';
     }
-
 }

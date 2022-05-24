@@ -13,7 +13,7 @@ trait EnumWithDescription
     abstract public function description(): string;
 
     /**
-     * Return as associative array with value/name => description
+     * Return as associative array with value/name => description.
      *
      * @param array<self> $cases
      * @return array<string, string>
@@ -26,16 +26,15 @@ trait EnumWithDescription
 
         $result = [];
 
-        foreach($cases as $enum){
+        foreach ($cases as $enum) {
             $result[$enum instanceof BackedEnum ? $enum->value : $enum->name] = $enum->description();
         }
 
         return $result;
-
     }
 
     /**
-     * asDescriptionArray method inverse
+     * asDescriptionArray method inverse.
      *
      * @param array<self> $cases
      * @return array<string, string>
@@ -43,11 +42,10 @@ trait EnumWithDescription
     public static function asDescriptionsArrayInverse(array $cases = []): array
     {
         return array_flip(self::asDescriptionsArray());
-
     }
 
     /**
-     * Only for Laravel: Return as associative array with value/name => translation
+     * Only for Laravel: Return as associative array with value/name => translation.
      *
      * @param array<self> $cases
      * @return array<string, string>
@@ -60,11 +58,10 @@ trait EnumWithDescription
 
         $result = [];
 
-        foreach($cases as $enum){
+        foreach ($cases as $enum) {
             $result[$enum instanceof BackedEnum ? $enum->value : $enum->name] = $enum->translate();
         }
 
         return $result;
-
     }
 }

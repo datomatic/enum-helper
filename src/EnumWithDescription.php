@@ -44,24 +44,4 @@ trait EnumWithDescription
         return array_flip(self::asDescriptionsArray());
     }
 
-    /**
-     * Only for Laravel: Return as associative array with value/name => translation.
-     *
-     * @param array<self> $cases
-     * @return array<string, string>
-     */
-    public static function asTranslationsArray(array $cases = []): array
-    {
-        if (empty($cases)) {
-            $cases = static::cases();
-        }
-
-        $result = [];
-
-        foreach ($cases as $enum) {
-            $result[$enum instanceof BackedEnum ? $enum->value : $enum->name] = $enum->translate();
-        }
-
-        return $result;
-    }
 }

@@ -150,7 +150,7 @@ it('does throw exception with wrong from value on BackedEnum int', function () {
 })->throws(ValueError::class, '10 is not a valid backing value for enum "StatusInt"');
 
 it('does throw exception with wrong from value on BackedEnum string', function () {
-    StatusString::from(10);
+    StatusString::from('10');
 })->throws(ValueError::class, '"10" is not a valid backing value for enum "StatusString"');
 
 it('does throw exception with wrong fromName value on BackedEnum int', function () {
@@ -176,7 +176,7 @@ it('doesn\'t throw exception with wrong from value on BackedEnum int', function 
 });
 
 it('doesn\'t throw exception with wrong from value on BackedEnum string', function () {
-    expect(StatusString::tryFrom(10))->toBe(null)
+    expect(StatusString::tryFrom('10'))->toBe(null)
         ->not->toThrow(ValueError::class);
 });
 

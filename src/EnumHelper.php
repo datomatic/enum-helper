@@ -124,7 +124,7 @@ trait EnumHelper
     /**
      * Gets the Enum by name.
      *
-     * @throws ValueError
+     * @return EnumHelper
      */
     public static function fromName(string $case): static
     {
@@ -133,6 +133,8 @@ trait EnumHelper
 
     /**
      * Gets the Enum by name, if it exists.
+     *
+     * @return EnumHelper|null
      */
     public static function tryFromName(string $case): ?static
     {

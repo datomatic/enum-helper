@@ -9,7 +9,6 @@ use Datomatic\EnumHelper\Tests\Support\Enums\StatusInt;
 use Datomatic\EnumHelper\Tests\Support\Enums\StatusPascalCase;
 use Datomatic\EnumHelper\Tests\Support\Enums\StatusString;
 
-
 it('can be used as a static method to get value', function ($enumClass, $enumMethod, $result) {
     expect($enumClass::$enumMethod())->toBe($result);
 })->with([

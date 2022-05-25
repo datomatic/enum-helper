@@ -51,10 +51,10 @@ it('can return an associative array of values with cases param', function ($enum
     'PascalCase Pure enum' => [StatusPascalCase::class, [StatusPascalCase::Accepted, StatusPascalCase::Discarded], ['Accepted', 'Discarded']],
     'String Backed enum' => [StatusString::class, [StatusString::NO_RESPONSE, StatusString::DISCARDED], [
         'NO_RESPONSE' => 'N',
-        'DISCARDED' => 'D'
+        'DISCARDED' => 'D',
     ]],
     'Int Backed enum' => [StatusInt::class, [StatusInt::NO_RESPONSE, StatusInt::DISCARDED], [
         'NO_RESPONSE' => 3,
-        'DISCARDED' => 2
+        'DISCARDED' => 2,
     ]],
 ]);

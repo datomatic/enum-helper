@@ -91,16 +91,16 @@ it('can return an array of case names from a backed int enum')
     ->expect(StatusInt::names())
     ->toBe(['PENDING', 'ACCEPTED', 'DISCARDED', 'NO_RESPONSE']);
 
-it('can return an array names of asArray from asArray method in a pure enum')
-    ->expect(Status::asArray())
+it('can return an array names of namesArray from namesArray method in a pure enum')
+    ->expect(Status::namesArray())
     ->toBe(['PENDING', 'ACCEPTED', 'DISCARDED', 'NO_RESPONSE']);
 
-it('can return an array names of asArray from asArrayInverse method in a pure enum')
-    ->expect(Status::asArrayInverse())
+it('can return an array names of namesArray from valuesArray method in a pure enum')
+    ->expect(Status::valuesArray())
     ->toBe(['PENDING', 'ACCEPTED', 'DISCARDED', 'NO_RESPONSE']);
 
-it('can return an associative array value => name of asArray from a backed int enum')
-    ->expect(StatusInt::asArray())
+it('can return an associative array value => name of namesArray from a backed int enum')
+    ->expect(StatusInt::namesArray())
     ->toBe([
         0 => 'PENDING',
         1 => 'ACCEPTED',
@@ -108,8 +108,8 @@ it('can return an associative array value => name of asArray from a backed int e
         3 => 'NO_RESPONSE',
     ]);
 
-it('can return an associative array value => name of asArray from a backed string enum')
-    ->expect(StatusString::asArray())
+it('can return an associative array value => name of namesArray from a backed string enum')
+    ->expect(StatusString::namesArray())
     ->toBe([
         'P' => 'PENDING',
         'A' => 'ACCEPTED',
@@ -117,8 +117,8 @@ it('can return an associative array value => name of asArray from a backed strin
         'N' => 'NO_RESPONSE',
     ]);
 
-it('can return an associative array name => value of asArray from a backed int enum')
-    ->expect(StatusInt::asArrayInverse())
+it('can return an associative array name => value of namesArray from a backed int enum')
+    ->expect(StatusInt::valuesArray())
     ->toBe([
         'PENDING' => 0,
         'ACCEPTED' => 1,
@@ -126,8 +126,8 @@ it('can return an associative array name => value of asArray from a backed int e
         'NO_RESPONSE' => 3,
     ]);
 
-it('can return an associative array name => value of asArray from a backed string enum')
-    ->expect(StatusString::asArrayInverse())
+it('can return an associative array name => value of namesArray from a backed string enum')
+    ->expect(StatusString::valuesArray())
     ->toBe([
         'PENDING' => 'P',
         'ACCEPTED' => 'A',

@@ -54,7 +54,7 @@ enum StatusString: string
     {
         return match ($this) {
             self::PENDING => 'Await decision',
-            self::ACCEPTED => 'Reconized valid',
+            self::ACCEPTED => 'Recognized valid',
             self::DISCARDED => 'No longer useful',
             self::NO_RESPONSE => 'No response',
         };
@@ -86,7 +86,7 @@ enum Status
     {
         return match ($this) {
             self::PENDING => 'Await decision',
-            self::ACCEPTED => 'Reconized valid',
+            self::ACCEPTED => 'Recognized valid',
             self::DISCARDED => 'No longer useful',
             self::NO_RESPONSE => 'No response',
         };

@@ -13,12 +13,27 @@ trait EnumWithDescription
     abstract public function description(): string;
 
     /**
-     * Return as associative array with value/name => description.
+     * Return array of all description (all cases or cases passed by param).
+     *
+     * @param array<self> $cases
+     * @return array
+     */
+    public static function descriptions(array $cases = []): array
+    {
+        if (empty($cases)) {
+            $cases = static::cases();
+        }
+
+        return array_map(fn(self $enum) => $enum->description(), $cases );
+    }
+
+    /**
+     * Return as associative array with value/name => description  (all cases or cases passed by param).
      *
      * @param array<self> $cases
      * @return array<string, string>
      */
-    public static function asDescriptionsArray(array $cases = []): array
+    public static function descriptionsArray(array $cases = []): array
     {
         if (empty($cases)) {
             $cases = static::cases();
@@ -39,8 +54,8 @@ trait EnumWithDescription
      * @param array<self> $cases
      * @return array<string, string>
      */
-    public static function asDescriptionsArrayInverse(array $cases = []): array
+    public static function descriptionsArrayInverse(array $cases = []): array
     {
-        return array_flip(self::asDescriptionsArray());
+        return array_flip(self::descriptionsArray($cases));
     }
 }

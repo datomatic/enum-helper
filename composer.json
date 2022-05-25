@@ -28,7 +28,8 @@
         "pestphp/pest": "^1.21",
         "orchestra/testbench": "^6.23|^7.0",
         "phpstan/phpstan": "^1.7",
-        "friendsofphp/php-cs-fixer": "^3.8"
+        "friendsofphp/php-cs-fixer": "^3.8",
+        "pestphp/pest-plugin-laravel": "^1.2"
     },
     "minimum-stability": "dev",
     "prefer-stable": true,

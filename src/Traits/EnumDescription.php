@@ -2,13 +2,12 @@
 
 declare(strict_types=1);
 
-namespace Datomatic\EnumHelper;
+namespace Datomatic\EnumHelper\Traits;
 
 use BackedEnum;
 
-trait EnumWithDescription
+trait EnumDescription
 {
-    use EnumHelper;
 
     abstract public function description(): string;
 
@@ -19,9 +18,7 @@ trait EnumWithDescription
      */
     public static function descriptions(array $cases = []): array
     {
-        if (empty($cases)) {
-            $cases = static::cases();
-        }
+        $cases = self::getCases($cases);
 
         return array_map(fn (self $enum) => $enum->description(), $cases);
     }
@@ -34,9 +31,7 @@ trait EnumWithDescription
      */
     public static function descriptionsArray(array $cases = []): array
     {
-        if (empty($cases)) {
-            $cases = static::cases();
-        }
+        $cases = self::getCases($cases);
 
         $result = [];
 

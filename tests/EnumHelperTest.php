@@ -11,36 +11,34 @@ use Datomatic\EnumHelper\Tests\Support\Enums\StatusString;
 
 // Invokable
 
-it('can be used as a static method UPPERCASE, camelCase, PascalCase with pure enums to get value', function () {
-    expect(Status::pending())->toBe('PENDING');
-    expect(Status::PENDING())->toBe('PENDING');
-    expect(Status::Pending())->toBe('PENDING');
-    expect(Status::noResponse())->toBe('NO_RESPONSE');
-    expect(Status::NO_RESPONSE())->toBe('NO_RESPONSE');
-    expect(Status::NoResponse())->toBe('NO_RESPONSE');
-    expect(StatusPascalCase::pending())->toBe('Pending');
-    expect(StatusPascalCase::PENDING())->toBe('Pending');
-    expect(StatusPascalCase::Pending())->toBe('Pending');
-    expect(StatusPascalCase::noResponse())->toBe('NoResponse');
-    expect(StatusPascalCase::NO_RESPONSE())->toBe('NoResponse');
-    expect(StatusPascalCase::NoResponse())->toBe('NoResponse');
-});
-
-it('can be used as a static method UPPERCASE, camelCase, PascalCase with backed enums to get value', function () {
-    expect(StatusInt::pending())->toBe(0);
-    expect(StatusInt::PENDING())->toBe(0);
-    expect(StatusInt::Pending())->toBe(0);
-    expect(StatusInt::noResponse())->toBe(3);
-    expect(StatusInt::NO_RESPONSE())->toBe(3);
-    expect(StatusInt::NoResponse())->toBe(3);
-
-    expect(StatusString::pending())->toBe('P');
-    expect(StatusString::PENDING())->toBe('P');
-    expect(StatusString::Pending())->toBe('P');
-    expect(StatusString::noResponse())->toBe('N');
-    expect(StatusString::NO_RESPONSE())->toBe('N');
-    expect(StatusString::NoResponse())->toBe('N');
-});
+it('can be used as a static method to get value', function ($enumClass, $enumMethod, $result) {
+    expect($enumClass::$enumMethod())->toBe($result);
+})->with([
+    'Pure Enum Camel Case' => [Status::class, 'pending', 'PENDING'],
+    'Pure Enum Upper Case' => [Status::class, 'PENDING', 'PENDING'],
+    'Pure Enum Pascal Case' => [Status::class, 'Pending', 'PENDING'],
+    'Pure Enum Camel Case multiword' => [Status::class, 'noResponse', 'NO_RESPONSE'],
+    'Pure Enum Upper Case multiword' => [Status::class, 'NO_RESPONSE', 'NO_RESPONSE'],
+    'Pure Enum Pascal Case multiword' => [Status::class, 'NoResponse', 'NO_RESPONSE'],
+    'Pure Pascal Enum Camel Case' => [StatusPascalCase::class, 'pending', 'Pending'],
+    'Pure Pascal Enum Upper Case' => [StatusPascalCase::class, 'PENDING', 'Pending'],
+    'Pure Pascal Enum Pascal Case' => [StatusPascalCase::class, 'Pending', 'Pending'],
+    'Pure Pascal Enum Camel Case multiword' => [StatusPascalCase::class, 'noResponse', 'NoResponse'],
+    'Pure Pascal Enum Upper Case multiword' => [StatusPascalCase::class, 'NO_RESPONSE', 'NoResponse'],
+    'Pure Pascal Enum Pascal Case multiword' => [StatusPascalCase::class, 'NoResponse', 'NoResponse'],
+    'String Backed Enum Camel Case' => [StatusString::class, 'pending', 'P'],
+    'String Backed Enum Upper Case' => [StatusString::class, 'PENDING', 'P'],
+    'String Backed Enum Pascal Case' => [StatusString::class, 'Pending', 'P'],
+    'String Backed Enum Camel Case multiword' => [StatusString::class, 'noResponse', 'N'],
+    'String Backed Enum Upper Case multiword' => [StatusString::class, 'NO_RESPONSE', 'N'],
+    'String Backed Enum Pascal Case multiword' => [StatusString::class, 'NoResponse', 'N'],
+    'Int Backed Enum Camel Case' => [StatusInt::class, 'pending', 0],
+    'Int Backed Enum Upper Case' => [StatusInt::class, 'PENDING', 0],
+    'Int Backed Enum Pascal Case' => [StatusInt::class, 'Pending', 0],
+    'Int Backed Enum Camel Case multiword' => [StatusInt::class, 'noResponse', 3],
+    'Int Backed Enum Upper Case multiword' => [StatusInt::class, 'NO_RESPONSE', 3],
+    'Int Backed Enum Pascal Case multiword' => [StatusInt::class, 'NoResponse', 3],
+]);
 
 it('can be invoked as an instance as a pure enum', function () {
     $status = Status::PENDING;
@@ -64,81 +62,111 @@ it('throws an error when a nonexistent case is being used for backed enums', fun
 })->throws(UndefinedCase::class, 'Undefined constant Datomatic\EnumHelper\Tests\Support\Enums\StatusString::INVALID');
 
 // Arrays methods
-it('can return an array of case values from a pure enum')
-    ->expect(Status::values())
-    ->toBe(['PENDING', 'ACCEPTED', 'DISCARDED', 'NO_RESPONSE']);
 
-it('can return an array of case values from a pure enum with Pascal case')
-    ->expect(StatusPascalCase::values())
-    ->toBe(['Pending', 'Accepted', 'Discarded', 'NoResponse']);
+it('can return an array of case names', function ($enumClass, $result) {
+    expect($enumClass::names())->toBe($result);
+})->with([
+    'Pure enum' => [Status::class, ['PENDING', 'ACCEPTED', 'DISCARDED', 'NO_RESPONSE']],
+    'PascalCase Pure enum' => [StatusPascalCase::class, ['Pending', 'Accepted', 'Discarded', 'NoResponse']],
+    'String Backed enum' => [StatusString::class, ['PENDING', 'ACCEPTED', 'DISCARDED', 'NO_RESPONSE']],
+    'Int Backed enum' => [StatusInt::class, ['PENDING', 'ACCEPTED', 'DISCARDED', 'NO_RESPONSE']],
+]);
 
-it('can return an array of case values from a backed string enum')
-    ->expect(StatusString::values())
-    ->toBe(['P', 'A', 'D', 'N']);
+it('can return an array of case names with cases param', function ($enumClass, $cases, $result) {
+    expect($enumClass::names($cases))->toBe($result);
+})->with([
+    'Pure enum' => [Status::class, [Status::NO_RESPONSE, Status::DISCARDED], ['NO_RESPONSE', 'DISCARDED']],
+    'PascalCase Pure enum' => [StatusPascalCase::class, [StatusPascalCase::Accepted, StatusPascalCase::Discarded], ['Accepted', 'Discarded']],
+    'String Backed enum' => [StatusString::class, [StatusString::NO_RESPONSE, StatusString::DISCARDED], ['NO_RESPONSE', 'DISCARDED']],
+    'Int Backed enum' => [StatusInt::class, [StatusInt::NO_RESPONSE, StatusInt::DISCARDED], ['NO_RESPONSE', 'DISCARDED']],
+]);
 
-it('can return an array of case values from a backed int enum')
-    ->expect(StatusInt::values())
-    ->toBe([0, 1, 2, 3]);
-
-it('can return an array of case names from a pure enum')
-    ->expect(Status::names())
-    ->toBe(['PENDING', 'ACCEPTED', 'DISCARDED', 'NO_RESPONSE']);
-
-it('can return an array of case names from a pure enum with Pascal case')
-    ->expect(StatusPascalCase::names())
-    ->toBe(['Pending', 'Accepted', 'Discarded', 'NoResponse']);
-
-it('can return an array of case names from a backed string enum')
-    ->expect(StatusString::names())
-    ->toBe(['PENDING', 'ACCEPTED', 'DISCARDED', 'NO_RESPONSE']);
-
-it('can return an array of case names from a backed int enum')
-    ->expect(StatusInt::names())
-    ->toBe(['PENDING', 'ACCEPTED', 'DISCARDED', 'NO_RESPONSE']);
-
-it('can return an array names of namesArray from namesArray method in a pure enum')
-    ->expect(Status::namesArray())
-    ->toBe(['PENDING', 'ACCEPTED', 'DISCARDED', 'NO_RESPONSE']);
-
-it('can return an array names of namesArray from valuesArray method in a pure enum')
-    ->expect(Status::valuesArray())
-    ->toBe(['PENDING', 'ACCEPTED', 'DISCARDED', 'NO_RESPONSE']);
-
-it('can return an associative array value => name of namesArray from a backed int enum')
-    ->expect(StatusInt::namesArray())
-    ->toBe([
-        0 => 'PENDING',
-        1 => 'ACCEPTED',
-        2 => 'DISCARDED',
-        3 => 'NO_RESPONSE',
-    ]);
-
-it('can return an associative array value => name of namesArray from a backed string enum')
-    ->expect(StatusString::namesArray())
-    ->toBe([
+it('can return an associative array of names', function ($enumClass, $result) {
+    expect($enumClass::namesArray())->toBe($result);
+})->with([
+    'Pure enum' => [Status::class, ['PENDING', 'ACCEPTED', 'DISCARDED', 'NO_RESPONSE']],
+    'PascalCase Pure enum' => [StatusPascalCase::class, ['Pending', 'Accepted', 'Discarded', 'NoResponse']],
+    'String Backed enum' => [StatusString::class, [
         'P' => 'PENDING',
         'A' => 'ACCEPTED',
         'D' => 'DISCARDED',
         'N' => 'NO_RESPONSE',
-    ]);
+    ]],
+    'Int Backed enum' => [StatusInt::class, [
+        0 => 'PENDING',
+        1 => 'ACCEPTED',
+        2 => 'DISCARDED',
+        3 => 'NO_RESPONSE',
+    ]],
+]);
 
-it('can return an associative array name => value of namesArray from a backed int enum')
-    ->expect(StatusInt::valuesArray())
-    ->toBe([
-        'PENDING' => 0,
-        'ACCEPTED' => 1,
-        'DISCARDED' => 2,
-        'NO_RESPONSE' => 3,
-    ]);
+it('can return an associative array of names with cases param', function ($enumClass, $cases, $result) {
+    expect($enumClass::namesArray($cases))->toBe($result);
+})->with([
+    'Pure enum' => [Status::class, [Status::NO_RESPONSE, Status::DISCARDED], ['NO_RESPONSE', 'DISCARDED']],
+    'PascalCase Pure enum' => [StatusPascalCase::class, [StatusPascalCase::Accepted, StatusPascalCase::Discarded], ['Accepted', 'Discarded']],
+    'String Backed enum' => [StatusString::class, [StatusString::NO_RESPONSE, StatusString::DISCARDED], [
+        'N' => 'NO_RESPONSE',
+        'D' => 'DISCARDED'
+    ]],
+    'Int Backed enum' => [StatusInt::class, [StatusInt::NO_RESPONSE, StatusInt::DISCARDED], [
+        3 => 'NO_RESPONSE',
+        2 => 'DISCARDED'
+    ]],
+]);
 
-it('can return an associative array name => value of namesArray from a backed string enum')
-    ->expect(StatusString::valuesArray())
-    ->toBe([
+
+it('can return an array of case values', function ($enumClass, $result) {
+    expect($enumClass::values())->toBe($result);
+})->with([
+    'Pure enum' => [Status::class, ['PENDING', 'ACCEPTED', 'DISCARDED', 'NO_RESPONSE']],
+    'PascalCase Pure enum' => [StatusPascalCase::class, ['Pending', 'Accepted', 'Discarded', 'NoResponse']],
+    'String Backed enum' => [StatusString::class, ['P', 'A', 'D', 'N']],
+    'Int Backed enum' => [StatusInt::class, [0, 1, 2, 3]],
+]);
+
+it('can return an array of case values with cases param', function ($enumClass, $cases, $result) {
+    expect($enumClass::values($cases))->toBe($result);
+})->with([
+    'Pure enum' => [Status::class, [Status::NO_RESPONSE, Status::DISCARDED], ['NO_RESPONSE', 'DISCARDED']],
+    'PascalCase Pure enum' => [StatusPascalCase::class, [StatusPascalCase::Accepted, StatusPascalCase::Discarded], ['Accepted', 'Discarded']],
+    'String Backed enum' => [StatusString::class, [StatusString::NO_RESPONSE, StatusString::DISCARDED], ['N', 'D']],
+    'Int Backed enum' => [StatusInt::class, [StatusInt::NO_RESPONSE, StatusInt::DISCARDED], [3, 2]],
+]);
+
+it('can return an associative array of values', function ($enumClass, $result) {
+    expect($enumClass::valuesArray())->toBe($result);
+})->with([
+    'Pure enum' => [Status::class, ['PENDING', 'ACCEPTED', 'DISCARDED', 'NO_RESPONSE']],
+    'PascalCase Pure enum' => [StatusPascalCase::class, ['Pending', 'Accepted', 'Discarded', 'NoResponse']],
+    'String Backed enum' => [StatusString::class, [
         'PENDING' => 'P',
         'ACCEPTED' => 'A',
         'DISCARDED' => 'D',
         'NO_RESPONSE' => 'N',
-    ]);
+    ]],
+    'Int Backed enum' => [StatusInt::class, [
+        'PENDING' => 0,
+        'ACCEPTED' => 1,
+        'DISCARDED' => 2,
+        'NO_RESPONSE' => 3,
+    ]],
+]);
+
+it('can return an associative array of values with cases param', function ($enumClass, $cases, $result) {
+    expect($enumClass::valuesArray($cases))->toBe($result);
+})->with([
+    'Pure enum' => [Status::class, [Status::NO_RESPONSE, Status::DISCARDED], ['NO_RESPONSE', 'DISCARDED']],
+    'PascalCase Pure enum' => [StatusPascalCase::class, [StatusPascalCase::Accepted, StatusPascalCase::Discarded], ['Accepted', 'Discarded']],
+    'String Backed enum' => [StatusString::class, [StatusString::NO_RESPONSE, StatusString::DISCARDED], [
+        'NO_RESPONSE' => 'N',
+        'DISCARDED' => 'D'
+    ]],
+    'Int Backed enum' => [StatusInt::class, [StatusInt::NO_RESPONSE, StatusInt::DISCARDED], [
+        'NO_RESPONSE' => 3,
+        'DISCARDED' => 2
+    ]],
+]);
 
 // from and fromName methods
 it('does work with from and fromName function', function ($enum, $expectedEnum) {
@@ -292,7 +320,11 @@ it('can have a string identifier to translate', function ($enum, $result) {
     'Pure Enum' => [Status::PENDING, 'Datomatic\EnumHelper\Tests\Support\Enums\Status.PENDING'],
     'Int Backed Enum' => [StatusInt::PENDING, 'Datomatic\EnumHelper\Tests\Support\Enums\StatusInt.PENDING'],
     'String Backed Enum' => [StatusString::PENDING, 'Datomatic\EnumHelper\Tests\Support\Enums\StatusString.PENDING'],
-    'Pascal Case' => [StatusPascalCase::Pending, 'Datomatic\EnumHelper\Tests\Support\Enums\StatusPascalCase.Pending'],
+    'Pascal Case Enum' => [StatusPascalCase::Pending, 'Datomatic\EnumHelper\Tests\Support\Enums\StatusPascalCase.Pending'],
 ]);
+
+it('return empty string on translate if is not Laravel')
+    ->expect(Status::PENDING->translate())
+    ->toBe('');
 
 test('empty class')->expect(EmptyClass::cases())->toBe([]);

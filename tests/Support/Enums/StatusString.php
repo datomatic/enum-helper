@@ -4,7 +4,8 @@ declare(strict_types=1);
 
 namespace Datomatic\EnumHelper\Tests\Support\Enums;
 
-use Datomatic\EnumHelper\EnumWithDescription;
+use Datomatic\EnumHelper\EnumHelper;
+use Datomatic\EnumHelper\Traits\EnumDescription;
 
 /**
  * @method static string pending()
@@ -17,7 +18,8 @@ use Datomatic\EnumHelper\EnumWithDescription;
  */
 enum StatusString: string
 {
-    use EnumWithDescription;
+    use EnumHelper;
+    use EnumDescription;
 
     case PENDING = 'P';
 

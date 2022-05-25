@@ -2,7 +2,6 @@
 
 declare(strict_types=1);
 
-
 it('can return an array of descriptions', function ($className, $cases, $values) {
     expect($className::descriptions($cases))->toBe($values);
 })->with([
@@ -25,7 +24,7 @@ it('can return an array of descriptions', function ($className, $cases, $values)
     [StatusString::class, [StatusString::ACCEPTED, StatusString::NO_RESPONSE], [
         'Recognized valid',
         'No response',
-    ]]
+    ]],
 ]);
 
 it('can return an associative array [value => description]', function ($className, $cases, $values) {
@@ -78,5 +77,3 @@ it('can return an associative array [description => value]', function ($classNam
         'No response' => 'N',
     ]],
 ]);
-
-

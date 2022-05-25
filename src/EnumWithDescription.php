@@ -16,7 +16,6 @@ trait EnumWithDescription
      * Return array of all description (all cases or cases passed by param).
      *
      * @param array<self> $cases
-     * @return array
      */
     public static function descriptions(array $cases = []): array
     {
@@ -24,7 +23,7 @@ trait EnumWithDescription
             $cases = static::cases();
         }
 
-        return array_map(fn(self $enum) => $enum->description(), $cases );
+        return array_map(fn (self $enum) => $enum->description(), $cases);
     }
 
     /**

@@ -14,6 +14,7 @@ trait EnumFrom
      * This will not override the `from()` method on BackedEnums
      *
      * @throws ValueError
+     * @return self
      */
     public static function from(string $case): static
     {
@@ -24,6 +25,7 @@ trait EnumFrom
      * Gets the Enum by name, if it exists, for "Pure" enums.
      * This will not override the `tryFrom()` method on BackedEnums.
      *
+     * @param string $case
      * @return self|null
      */
     public static function tryFrom(string $case): ?static
@@ -34,6 +36,7 @@ trait EnumFrom
     /**
      * Gets the Enum by name.
      *
+     * @param string $case
      * @return self
      */
     public static function fromName(string $case): static
@@ -44,6 +47,7 @@ trait EnumFrom
     /**
      * Gets the Enum by name, if it exists.
      *
+     * @param string $case
      * @return self|null
      */
     public static function tryFromName(string $case): ?static

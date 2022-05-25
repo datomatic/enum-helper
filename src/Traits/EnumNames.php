@@ -16,7 +16,7 @@ trait EnumNames
      */
     public static function names(array $cases = []): array
     {
-        $cases = self::getCases($cases);
+        $cases ??= static::cases();
 
         return array_column($cases, 'name');
     }
@@ -29,7 +29,7 @@ trait EnumNames
      */
     public static function namesArray(array $cases = []): array
     {
-        $cases = self::getCases($cases);
+        $cases ??= static::cases();
 
         return isset($cases[0]) && $cases[0] instanceof BackedEnum
             ? array_column($cases, 'name', 'value')

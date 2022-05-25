@@ -8,6 +8,7 @@ use BackedEnum;
 
 trait EnumLocalization
 {
+
     /**
      * Return the enum name identifier (namespace + class name + case name).
      */
@@ -39,7 +40,7 @@ trait EnumLocalization
      */
     public static function translations(array $cases = [], ?string $lang = null): array
     {
-        $cases = self::getCases($cases);
+        $cases ??= static::cases();
 
         return array_map(fn (self $enum) => $enum->translate($lang), $cases);
     }
@@ -52,7 +53,7 @@ trait EnumLocalization
      */
     public static function translationsArray(array $cases = [], ?string $lang = null): array
     {
-        $cases = self::getCases($cases);
+        $cases ??= static::cases();
 
         $result = [];
 

@@ -16,7 +16,7 @@ trait EnumValues
      */
     public static function values(array $cases = []): array
     {
-        $cases = self::getCases($cases);
+        $cases ??= static::cases();
 
         return isset($cases[0]) && $cases[0] instanceof BackedEnum
             ? array_column($cases, 'value')
@@ -30,7 +30,7 @@ trait EnumValues
      */
     public static function valuesArray(array $cases = []): array
     {
-        $cases = self::getCases($cases);
+        $cases ??= static::cases();
 
         return isset($cases[0]) && $cases[0] instanceof BackedEnum
             ? array_column($cases, 'value', 'name')

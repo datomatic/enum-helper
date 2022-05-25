@@ -20,16 +20,4 @@ trait EnumHelper
     use EnumEquality;
     use EnumLocalization;
 
-    /**
-     * @param array $cases
-     * @return array
-     */
-    protected static function getCases(array $cases): array
-    {
-        if (empty($cases)) {
-            $cases = static::cases();
-        }
-        return $cases;
-    }
-
 }

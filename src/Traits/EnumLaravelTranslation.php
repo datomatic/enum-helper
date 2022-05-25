@@ -6,7 +6,7 @@ namespace Datomatic\EnumHelper\Traits;
 
 trait EnumLaravelTranslation
 {
-    use EnumTranslation;
+    use EnumBaseTranslation;
 
     /**
      * Only for Laravel: return the translated version of enum value.

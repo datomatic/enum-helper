@@ -1,6 +1,6 @@
 {
     "name": "datomatic/enum-helper",
-    "description": "Simple opinionated php 8.1 enum helper",
+    "description": "Simple opinionated framework agnostic PHP 8.1 enum helper",
     "type": "library",
     "license": "MIT",
     "authors": [

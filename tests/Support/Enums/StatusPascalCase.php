@@ -5,7 +5,6 @@ declare(strict_types=1);
 namespace Datomatic\EnumHelper\Tests\Support\Enums;
 
 use Datomatic\EnumHelper\EnumHelper;
-use Datomatic\EnumHelper\Traits\EnumTranslation;
 
 /**
  * @method static string pending()
@@ -18,7 +17,6 @@ use Datomatic\EnumHelper\Traits\EnumTranslation;
 enum StatusPascalCase
 {
     use EnumHelper;
-    use EnumTranslation;
 
     case Pending;
 

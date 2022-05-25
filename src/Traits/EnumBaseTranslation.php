@@ -6,15 +6,12 @@ namespace Datomatic\EnumHelper\Traits;
 
 use BackedEnum;
 
-trait EnumTranslation
+trait EnumBaseTranslation
 {
     /**
-     * Only for Laravel: return the translated version of enum value.
+     * Return the translated version of enum value.
      */
-    public function translate(string $lang = null): string
-    {
-        return '';
-    }
+    abstract public function translate(string $lang = null): string;
 
     /**
      * Return array of all translations (all cases or cases passed by param).

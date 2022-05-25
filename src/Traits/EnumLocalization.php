@@ -8,7 +8,6 @@ use BackedEnum;
 
 trait EnumLocalization
 {
-
     /**
      * Return the enum name identifier (namespace + class name + case name).
      */

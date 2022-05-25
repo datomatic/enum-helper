@@ -17,7 +17,7 @@ trait EnumDescription
      */
     public static function descriptions(?array $cases = null): array
     {
-        $cases ??= static::cases();;
+        $cases ??= static::cases();
 
         return array_map(fn (self $enum) => $enum->description(), $cases);
     }
@@ -30,7 +30,7 @@ trait EnumDescription
      */
     public static function descriptionsArray(?array $cases = null): array
     {
-        $cases ??= static::cases();;
+        $cases ??= static::cases();
 
         $result = [];
 

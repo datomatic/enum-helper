@@ -5,7 +5,7 @@ namespace Datomatic\EnumHelper\Traits;
 use BackedEnum;
 use Datomatic\EnumHelper\Exceptions\UndefinedCase;
 
-trait InvokableEnum
+trait EnumInvokable
 {
 
     /**

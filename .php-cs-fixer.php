@@ -52,8 +52,12 @@ $rules = [
             'extra',
             'throw',
             'use',
-            'use_trait',
-        ]
+        ],
+    ],
+    'class_attributes_separation' => [
+        'elements' => [
+            'trait_import' => 'none',
+        ],
     ],
     'no_blank_lines_after_class_opening' => true,
     'no_blank_lines_after_phpdoc' => true,

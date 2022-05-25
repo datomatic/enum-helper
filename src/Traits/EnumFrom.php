@@ -1,13 +1,13 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Datomatic\EnumHelper\Traits;
 
 use ValueError;
 
 trait EnumFrom
 {
-
-
     /**
      * Gets the Enum by name, if it exists, for "Pure" enums.
      *

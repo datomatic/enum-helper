@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Datomatic\EnumHelper\Traits;
 
 use BackedEnum;
@@ -8,8 +10,6 @@ trait EnumEquality
 {
     /**
      * Check if enum is equal to another enum or value (backed enum) or name (pure enum).
-     *
-     * @param self|string|int $value
      */
     public function is(self|string|int $value): bool
     {
@@ -22,8 +22,6 @@ trait EnumEquality
 
     /**
      * is method inverse.
-     *
-     * @param self|string|int $value
      */
     public function isNot(self|string|int $value): bool
     {

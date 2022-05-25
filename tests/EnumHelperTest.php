@@ -107,14 +107,13 @@ it('can return an associative array of names with cases param', function ($enumC
     'PascalCase Pure enum' => [StatusPascalCase::class, [StatusPascalCase::Accepted, StatusPascalCase::Discarded], ['Accepted', 'Discarded']],
     'String Backed enum' => [StatusString::class, [StatusString::NO_RESPONSE, StatusString::DISCARDED], [
         'N' => 'NO_RESPONSE',
-        'D' => 'DISCARDED'
+        'D' => 'DISCARDED',
     ]],
     'Int Backed enum' => [StatusInt::class, [StatusInt::NO_RESPONSE, StatusInt::DISCARDED], [
         3 => 'NO_RESPONSE',
-        2 => 'DISCARDED'
+        2 => 'DISCARDED',
     ]],
 ]);
-
 
 it('can return an array of case values', function ($enumClass, $result) {
     expect($enumClass::values())->toBe($result);
@@ -160,11 +159,11 @@ it('can return an associative array of values with cases param', function ($enum
     'PascalCase Pure enum' => [StatusPascalCase::class, [StatusPascalCase::Accepted, StatusPascalCase::Discarded], ['Accepted', 'Discarded']],
     'String Backed enum' => [StatusString::class, [StatusString::NO_RESPONSE, StatusString::DISCARDED], [
         'NO_RESPONSE' => 'N',
-        'DISCARDED' => 'D'
+        'DISCARDED' => 'D',
     ]],
     'Int Backed enum' => [StatusInt::class, [StatusInt::NO_RESPONSE, StatusInt::DISCARDED], [
         'NO_RESPONSE' => 3,
-        'DISCARDED' => 2
+        'DISCARDED' => 2,
     ]],
 ]);
 

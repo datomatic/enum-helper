@@ -36,6 +36,10 @@ it('can select a case by name with from() for pure enums', function () {
     expect(Status::from('PENDING'))->toBe(Status::PENDING);
 });
 
+it('can returns enum with tryFrom() for pure enums')
+    ->expect(Status::tryFrom('PENDING'))
+    ->toBe(Status::PENDING);
+
 it('can returns null when selecting a non-existent case by name with tryFrom() for pure enums')
     ->expect(Status::tryFrom('PENDINGA'))
     ->toBe(null)
@@ -47,7 +51,7 @@ it('doesn\'t throw exception with wrong from value on BackedEnum int', function 
 });
 
 it('doesn\'t throw exception with wrong from value on BackedEnum string', function () {
-    expect(StatusString::tryFrom('10'))->toBe(null)
+    expect(StatusString::tryFrom('F'))->toBe(null)
         ->not->toThrow(ValueError::class);
 });
 

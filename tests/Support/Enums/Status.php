@@ -6,7 +6,7 @@ namespace Datomatic\EnumHelper\Tests\Support\Enums;
 
 use Datomatic\EnumHelper\EnumHelper;
 use Datomatic\EnumHelper\Traits\EnumDescription;
-use Datomatic\EnumHelper\Traits\EnumTranslation;
+use Datomatic\EnumHelper\Traits\EnumLaravelTranslation;
 
 /**
  * @method static string pending()
@@ -21,7 +21,7 @@ enum Status
 {
     use EnumHelper;
     use EnumDescription;
-    use EnumTranslation;
+    use EnumLaravelTranslation;
 
     case PENDING;
 

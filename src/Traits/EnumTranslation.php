@@ -14,13 +14,6 @@ trait EnumTranslation
      */
     public function translate(string $lang = null): string
     {
-        try {
-            if (function_exists('__')) {
-                return __('enums.' . static::class . '.' . $this->name, [], $lang);
-            }
-        } catch (\Exception $e) {
-        }
-
         return '';
     }
 

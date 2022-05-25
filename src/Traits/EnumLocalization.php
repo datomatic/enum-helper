@@ -34,12 +34,12 @@ trait EnumLocalization
     /**
      * Return array of all translations (all cases or cases passed by param).
      *
-     * @param array<self> $cases
+     * @param null|array<self> $cases
      * @return array<string>
      */
-    public static function translations(array $cases = [], ?string $lang = null): array
+    public static function translations(?array $cases = null, ?string $lang = null): array
     {
-        $cases ??= static::cases();
+        $cases ??= static::cases();;
 
         return array_map(fn (self $enum) => $enum->translate($lang), $cases);
     }
@@ -47,12 +47,12 @@ trait EnumLocalization
     /**
      * Only for Laravel: Return as associative array with value/name => translation.
      *
-     * @param array<self> $cases
+     * @param null|array<self> $cases
      * @return array<string, string>
      */
-    public static function translationsArray(array $cases = [], ?string $lang = null): array
+    public static function translationsArray(?array $cases = null, ?string $lang = null): array
     {
-        $cases ??= static::cases();
+        $cases ??= static::cases();;
 
         $result = [];
 

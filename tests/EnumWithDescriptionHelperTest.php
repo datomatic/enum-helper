@@ -8,7 +8,7 @@ use Datomatic\EnumHelper\Tests\Support\Enums\StatusString;
 it('can return an array of descriptions', function ($className, $cases, $values) {
     expect($className::descriptions($cases))->toBe($values);
 })->with([
-    [Status::class, [], [
+    [Status::class, null, [
         'Await decision',
         'Recognized valid',
         'No longer useful',
@@ -18,12 +18,7 @@ it('can return an array of descriptions', function ($className, $cases, $values)
         'Await decision',
         'No longer useful',
     ]],
-    [StatusString::class, [], [
-        'Await decision',
-        'Recognized valid',
-        'No longer useful',
-        'No response',
-    ]],
+    [StatusString::class, [], []],
     [StatusString::class, [StatusString::ACCEPTED, StatusString::NO_RESPONSE], [
         'Recognized valid',
         'No response',
@@ -33,7 +28,7 @@ it('can return an array of descriptions', function ($className, $cases, $values)
 it('can return an associative array [value => description]', function ($className, $cases, $values) {
     expect($className::descriptionsArray($cases))->toBe($values);
 })->with([
-    'Pure Enum' => [Status::class, [], [
+    'Pure Enum' => [Status::class, null, [
         'PENDING' => 'Await decision',
         'ACCEPTED' => 'Recognized valid',
         'DISCARDED' => 'No longer useful',
@@ -43,7 +38,7 @@ it('can return an associative array [value => description]', function ($classNam
         'PENDING' => 'Await decision',
         'DISCARDED' => 'No longer useful',
     ]],
-    'Backed Enum' => [StatusString::class, [], [
+    'Backed Enum' => [StatusString::class, null, [
         'P' => 'Await decision',
         'A' => 'Recognized valid',
         'D' => 'No longer useful',
@@ -58,7 +53,7 @@ it('can return an associative array [value => description]', function ($classNam
 it('can return an associative array [description => value]', function ($className, $cases, $values) {
     expect($className::descriptionsArrayInverse($cases))->toBe($values);
 })->with([
-    'Pure Enum' => [Status::class, [], [
+    'Pure Enum' => [Status::class, null, [
         'Await decision' => 'PENDING',
         'Recognized valid' => 'ACCEPTED',
         'No longer useful' => 'DISCARDED',
@@ -67,12 +62,13 @@ it('can return an associative array [description => value]', function ($classNam
     'Pure Enum subset' => [Status::class, [Status::NO_RESPONSE], [
         'No response' => 'NO_RESPONSE',
     ]],
-    'Backed Enum' => [StatusString::class, [], [
+    'Backed Enum empty' => [StatusString::class, null, [
         'Await decision' => 'P',
         'Recognized valid' => 'A',
         'No longer useful' => 'D',
         'No response' => 'N',
     ]],
+    'Backed Enum' => [StatusString::class, [], []],
     'Backed Enum subset' => [StatusString::class, [StatusString::PENDING, StatusString::ACCEPTED, StatusString::DISCARDED, StatusString::NO_RESPONSE], [
         'Await decision' => 'P',
         'Recognized valid' => 'A',

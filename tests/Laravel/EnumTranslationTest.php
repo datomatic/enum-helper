@@ -39,7 +39,7 @@ it('can return an array of translations', function ($enumClass, $result) {
 it('can return an array of translations with cases and lang param', function ($enumClass, $cases, $lang, $result) {
     expect($enumClass::translations($cases, $lang))->toBe($result);
 })->with([
-    'All Enum cases into it ' => [Status::class, [], 'it', [
+    'All Enum cases into it ' => [Status::class, null, 'it', [
         'In attesa',
         'Accettato',
         'Rifiutato',
@@ -71,7 +71,7 @@ it('can return an associative array of translations [value/name => translations]
 it('can return an associative array of translations [value/name => translations] with params', function ($enumClass, $cases, $lang, $result) {
     expect($enumClass::translationsArray($cases, $lang))->toBe($result);
 })->with([
-    'All Enum cases into en ' => [Status::class, [], 'en', [
+    'All Enum cases into en ' => [Status::class, null, 'en', [
         'PENDING' => 'Await decision',
         'ACCEPTED' => 'Recognized valid',
         'DISCARDED' => 'No longer useful',
@@ -81,7 +81,7 @@ it('can return an associative array of translations [value/name => translations]
         'DISCARDED' => 'Rifiutato',
         'NO_RESPONSE' => 'Nessuna Risposta',
     ]],
-    'All string backed Enum cases into it ' => [StatusString::class, [], 'it', [
+    'All string backed Enum cases into it ' => [StatusString::class, null, 'it', [
         'P' => 'In attesa',
         'A' => 'Accettato',
         'D' => 'Rifiutato',

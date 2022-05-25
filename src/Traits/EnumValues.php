@@ -11,12 +11,12 @@ trait EnumValues
     /**
      * Get an array of case values.
      *
-     * @param array<self> $cases
+     * @param null|array<self> $cases
      * @return array<string|int>
      */
-    public static function values(array $cases = []): array
+    public static function values(?array $cases = null): array
     {
-        $cases ??= static::cases();
+        $cases ??= static::cases();;
 
         return isset($cases[0]) && $cases[0] instanceof BackedEnum
             ? array_column($cases, 'value')
@@ -28,9 +28,9 @@ trait EnumValues
      *
      * @return array<string,string|int>
      */
-    public static function valuesArray(array $cases = []): array
+    public static function valuesArray(?array $cases = null): array
     {
-        $cases ??= static::cases();
+        $cases ??= static::cases();;
 
         return isset($cases[0]) && $cases[0] instanceof BackedEnum
             ? array_column($cases, 'value', 'name')

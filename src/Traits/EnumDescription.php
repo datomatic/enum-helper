@@ -13,11 +13,11 @@ trait EnumDescription
     /**
      * Return array of all description (all cases or cases passed by param).
      *
-     * @param array<self> $cases
+     * @param null|array<self> $cases
      */
-    public static function descriptions(array $cases = []): array
+    public static function descriptions(?array $cases = null): array
     {
-        $cases ??= static::cases();
+        $cases ??= static::cases();;
 
         return array_map(fn (self $enum) => $enum->description(), $cases);
     }
@@ -25,12 +25,12 @@ trait EnumDescription
     /**
      * Return as associative array with value/name => description  (all cases or cases passed by param).
      *
-     * @param array<self> $cases
+     * @param null|array<self> $cases
      * @return array<string, string>
      */
-    public static function descriptionsArray(array $cases = []): array
+    public static function descriptionsArray(?array $cases = null): array
     {
-        $cases ??= static::cases();
+        $cases ??= static::cases();;
 
         $result = [];
 
@@ -44,10 +44,10 @@ trait EnumDescription
     /**
      * asDescriptionArray method inverse.
      *
-     * @param array<self> $cases
+     * @param null|array<self> $cases
      * @return array<string, string>
      */
-    public static function descriptionsArrayInverse(array $cases = []): array
+    public static function descriptionsArrayInverse(?array $cases = null): array
     {
         return array_flip(self::descriptionsArray($cases));
     }

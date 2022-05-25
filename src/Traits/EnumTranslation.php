@@ -8,7 +8,6 @@ use BackedEnum;
 
 trait EnumTranslation
 {
-
     /**
      * Only for Laravel: return the translated version of enum value.
      */

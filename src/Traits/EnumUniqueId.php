@@ -4,8 +4,6 @@ declare(strict_types=1);
 
 namespace Datomatic\EnumHelper\Traits;
 
-use BackedEnum;
-
 trait EnumUniqueId
 {
     /**

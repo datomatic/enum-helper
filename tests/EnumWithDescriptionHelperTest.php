@@ -2,6 +2,9 @@
 
 declare(strict_types=1);
 
+use Datomatic\EnumHelper\Tests\Support\Enums\Status;
+use Datomatic\EnumHelper\Tests\Support\Enums\StatusString;
+
 it('can return an array of descriptions', function ($className, $cases, $values) {
     expect($className::descriptions($cases))->toBe($values);
 })->with([
@@ -30,23 +33,23 @@ it('can return an array of descriptions', function ($className, $cases, $values)
 it('can return an associative array [value => description]', function ($className, $cases, $values) {
     expect($className::descriptionsArray($cases))->toBe($values);
 })->with([
-    [Status::class, [], [
+    'Pure Enum' => [Status::class, [], [
         'PENDING' => 'Await decision',
         'ACCEPTED' => 'Recognized valid',
         'DISCARDED' => 'No longer useful',
         'NO_RESPONSE' => 'No response',
     ]],
-    [Status::class, [Status::PENDING, Status::DISCARDED], [
+    'Pure Enum subset' => [Status::class, [Status::PENDING, Status::DISCARDED], [
         'PENDING' => 'Await decision',
         'DISCARDED' => 'No longer useful',
     ]],
-    [StatusString::class, [], [
+    'Backed Enum' => [StatusString::class, [], [
         'P' => 'Await decision',
         'A' => 'Recognized valid',
         'D' => 'No longer useful',
         'N' => 'No response',
     ]],
-    [StatusString::class, [StatusString::DISCARDED, StatusString::ACCEPTED], [
+    'Backed Enum subset' => [StatusString::class, [StatusString::DISCARDED, StatusString::ACCEPTED], [
         'D' => 'No longer useful',
         'A' => 'Recognized valid',
     ]],
@@ -55,22 +58,22 @@ it('can return an associative array [value => description]', function ($classNam
 it('can return an associative array [description => value]', function ($className, $cases, $values) {
     expect($className::descriptionsArrayInverse($cases))->toBe($values);
 })->with([
-    [Status::class, [], [
+    'Pure Enum' => [Status::class, [], [
         'Await decision' => 'PENDING',
         'Recognized valid' => 'ACCEPTED',
         'No longer useful' => 'DISCARDED',
         'No response' => 'NO_RESPONSE',
     ]],
-    [Status::class, [Status::NO_RESPONSE], [
+    'Pure Enum subset' => [Status::class, [Status::NO_RESPONSE], [
         'No response' => 'NO_RESPONSE',
     ]],
-    [StatusString::class, [], [
+    'Backed Enum' => [StatusString::class, [], [
         'Await decision' => 'P',
         'Recognized valid' => 'A',
         'No longer useful' => 'D',
         'No response' => 'N',
     ]],
-    [StatusString::class, [StatusString::PENDING, StatusString::ACCEPTED, StatusString::DISCARDED, StatusString::NO_RESPONSE], [
+    'Backed Enum subset' => [StatusString::class, [StatusString::PENDING, StatusString::ACCEPTED, StatusString::DISCARDED, StatusString::NO_RESPONSE], [
         'Await decision' => 'P',
         'Recognized valid' => 'A',
         'No longer useful' => 'D',

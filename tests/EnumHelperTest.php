@@ -3,6 +3,11 @@
 declare(strict_types=1);
 
 use Datomatic\EnumHelper\Exceptions\UndefinedCase;
+use Datomatic\EnumHelper\Tests\Support\Enums\EmptyClass;
+use Datomatic\EnumHelper\Tests\Support\Enums\Status;
+use Datomatic\EnumHelper\Tests\Support\Enums\StatusInt;
+use Datomatic\EnumHelper\Tests\Support\Enums\StatusPascalCase;
+use Datomatic\EnumHelper\Tests\Support\Enums\StatusString;
 
 // Invokable
 
@@ -52,11 +57,11 @@ it('can be invoked as an instance as a backed enum', function () {
 
 it('throws an error when a nonexistent case is being used for pure enums', function () {
     Status::INVALID();
-})->throws(UndefinedCase::class, 'Undefined constant Status::INVALID');
+})->throws(UndefinedCase::class, 'Undefined constant Datomatic\EnumHelper\Tests\Support\Enums\Status::INVALID');
 
 it('throws an error when a nonexistent case is being used for backed enums', function () {
     StatusString::INVALID();
-})->throws(UndefinedCase::class, 'Undefined constant StatusString::INVALID');
+})->throws(UndefinedCase::class, 'Undefined constant Datomatic\EnumHelper\Tests\Support\Enums\StatusString::INVALID');
 
 // Arrays methods
 it('can return an array of case values from a pure enum')
@@ -139,27 +144,27 @@ it('can return an associative array name => value of namesArray from a backed st
 it('does work with from and fromName function', function ($enum, $expectedEnum) {
     expect($enum)->toBe($expectedEnum);
 })->with([
-    [StatusInt::from(0), StatusInt::PENDING],
-    [StatusString::from('P'), StatusString::PENDING],
-    [StatusInt::fromName('PENDING'), StatusInt::PENDING],
-    [StatusString::fromName('PENDING'), StatusString::PENDING],
+    'Int Backed Enum' => [StatusInt::from(0), StatusInt::PENDING],
+    'String Backed Enum' => [StatusString::from('P'), StatusString::PENDING],
+    'Int Backed Enum from name' => [StatusInt::fromName('PENDING'), StatusInt::PENDING],
+    'String Backed Enum from name' => [StatusString::fromName('PENDING'), StatusString::PENDING],
 ]);
 
 it('does throw exception with wrong from value on BackedEnum int', function () {
     StatusInt::from(10);
-})->throws(ValueError::class, '10 is not a valid backing value for enum "StatusInt"');
+})->throws(ValueError::class, '10 is not a valid backing value for enum "Datomatic\EnumHelper\Tests\Support\Enums\StatusInt"');
 
 it('does throw exception with wrong from value on BackedEnum string', function () {
     StatusString::from('10');
-})->throws(ValueError::class, '"10" is not a valid backing value for enum "StatusString"');
+})->throws(ValueError::class, '"10" is not a valid backing value for enum "Datomatic\EnumHelper\Tests\Support\Enums\StatusString"');
 
 it('does throw exception with wrong fromName value on BackedEnum int', function () {
     StatusInt::fromName('PENDINGA');
-})->throws(ValueError::class, '"PENDINGA" is not a valid name for enum "StatusInt"');
+})->throws(ValueError::class, '"PENDINGA" is not a valid name for enum "Datomatic\EnumHelper\Tests\Support\Enums\StatusInt"');
 
 it('does throw exception with wrong fromName value on BackedEnum string', function () {
     StatusString::fromName('PENDINGA');
-})->throws(ValueError::class, '"PENDINGA" is not a valid name for enum "StatusString"');
+})->throws(ValueError::class, '"PENDINGA" is not a valid name for enum "Datomatic\EnumHelper\Tests\Support\Enums\StatusString"');
 
 it('can select a case by name with from() for pure enums', function () {
     expect(Status::from('PENDING'))->toBe(Status::PENDING);
@@ -284,9 +289,10 @@ it('can compare enum using notIn method with enum, name and values', function ($
 it('can have a string identifier to translate', function ($enum, $result) {
     expect($enum->toString())->toBe($result);
 })->with([
-    [Status::PENDING, 'Status.PENDING'],
-    [StatusInt::PENDING, 'StatusInt.PENDING'],
-    [StatusString::PENDING, 'StatusString.PENDING'],
-    [StatusPascalCase::Pending, 'StatusPascalCase.Pending'],
+    'Pure Enum' => [Status::PENDING, 'Datomatic\EnumHelper\Tests\Support\Enums\Status.PENDING'],
+    'Int Backed Enum' => [StatusInt::PENDING, 'Datomatic\EnumHelper\Tests\Support\Enums\StatusInt.PENDING'],
+    'String Backed Enum' => [StatusString::PENDING, 'Datomatic\EnumHelper\Tests\Support\Enums\StatusString.PENDING'],
+    'Pascal Case' => [StatusPascalCase::Pending, 'Datomatic\EnumHelper\Tests\Support\Enums\StatusPascalCase.Pending'],
 ]);
+
 test('empty class')->expect(EmptyClass::cases())->toBe([]);

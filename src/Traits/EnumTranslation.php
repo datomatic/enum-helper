@@ -6,15 +6,8 @@ namespace Datomatic\EnumHelper\Traits;
 
 use BackedEnum;
 
-trait EnumLocalization
+trait EnumTranslation
 {
-    /**
-     * Return the enum name identifier (namespace + class name + case name).
-     */
-    public function toString(): string
-    {
-        return static::class . '.' . $this->name;
-    }
 
     /**
      * Only for Laravel: return the translated version of enum value.
@@ -23,7 +16,7 @@ trait EnumLocalization
     {
         try {
             if (function_exists('__')) {
-                return __('enums.' . $this->toString(), [], $lang);
+                return __('enums.' . static::class . '.' . $this->name, [], $lang);
             }
         } catch (\Exception $e) {
         }

@@ -6,6 +6,7 @@ namespace Datomatic\EnumHelper\Tests\Support\Enums;
 
 use Datomatic\EnumHelper\EnumHelper;
 use Datomatic\EnumHelper\Traits\EnumDescription;
+use Datomatic\EnumHelper\Traits\EnumTranslation;
 
 /**
  * @method static string pending()
@@ -20,6 +21,7 @@ enum StatusString: string
 {
     use EnumHelper;
     use EnumDescription;
+    use EnumTranslation;
 
     case PENDING = 'P';
 

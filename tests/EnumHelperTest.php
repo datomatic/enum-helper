@@ -139,10 +139,10 @@ it('can return an associative array name => value of asArray from a backed strin
 it('does work with from and fromName function', function ($enum, $expectedEnum) {
     expect($enum)->toBe($expectedEnum);
 })->with([
-    [StatusInt::from(0), StatusInt::PENDING],
-    [StatusString::from('P'), StatusString::PENDING],
-    [StatusInt::fromName('PENDING'), StatusInt::PENDING],
-    [StatusString::fromName('PENDING'), StatusString::PENDING],
+    'Int Backed Enum' => [StatusInt::from(0), StatusInt::PENDING],
+    'String Backed Enum' => [StatusString::from('P'), StatusString::PENDING],
+    'Int Backed Enum from name' => [StatusInt::fromName('PENDING'), StatusInt::PENDING],
+    'String Backed Enum from name' => [StatusString::fromName('PENDING'), StatusString::PENDING],
 ]);
 
 it('does throw exception with wrong from value on BackedEnum int', function () {
@@ -284,9 +284,9 @@ it('can compare enum using notIn method with enum, name and values', function ($
 it('can have a string identifier to translate', function ($enum, $result) {
     expect($enum->toString())->toBe($result);
 })->with([
-    [Status::PENDING, 'Status.PENDING'],
-    [StatusInt::PENDING, 'StatusInt.PENDING'],
-    [StatusString::PENDING, 'StatusString.PENDING'],
-    [StatusPascalCase::Pending, 'StatusPascalCase.Pending'],
+    'Pure Enum' => [Status::PENDING, 'Status.PENDING'],
+    'Int Backed Enum' => [StatusInt::PENDING, 'StatusInt.PENDING'],
+    'String Backed Enum' => [StatusString::PENDING, 'StatusString.PENDING'],
+    'Pascal Case' => [StatusPascalCase::Pending, 'StatusPascalCase.Pending'],
 ]);
 test('empty class')->expect(EmptyClass::cases())->toBe([]);

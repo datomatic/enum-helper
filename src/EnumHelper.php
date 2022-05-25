@@ -77,7 +77,7 @@ trait EnumHelper
     /**
      * Get an associative array of [case value => case name].
      */
-    public static function asArray(): array
+    public static function namesArray(): array
     {
         $cases = self::cases();
 
@@ -89,7 +89,7 @@ trait EnumHelper
     /**
      * Get an associative array of [case name => case value].
      */
-    public static function asArrayInverse(): array
+    public static function valuesArray(): array
     {
         $cases = self::cases();
 
@@ -224,7 +224,7 @@ trait EnumHelper
      * @param array<self> $cases
      * @return array<string, string>
      */
-    public static function asTranslationsArray(array $cases = []): array
+    public static function translationsArray(array $cases = []): array
     {
         if (empty($cases)) {
             $cases = static::cases();

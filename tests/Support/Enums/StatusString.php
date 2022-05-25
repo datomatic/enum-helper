@@ -15,17 +15,17 @@ use Datomatic\EnumHelper\EnumWithDescription;
  * @method static string NoResponse()
  * @method static string INVALID()
  */
-enum Status
+enum StatusString: string
 {
     use EnumWithDescription;
 
-    case PENDING;
+    case PENDING = 'P';
 
-    case ACCEPTED;
+    case ACCEPTED = 'A';
 
-    case DISCARDED;
+    case DISCARDED = 'D';
 
-    case NO_RESPONSE;
+    case NO_RESPONSE = 'N';
 
     public function description(): string
     {

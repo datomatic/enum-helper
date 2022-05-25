@@ -36,5 +36,17 @@
         "allow-plugins": {
             "pestphp/pest-plugin": true
         }
+    },
+    "scripts": {
+        "lint": "vendor/bin/php-cs-fixer fix -v",
+        "test:lint": "vendor/bin/php-cs-fixer fix -v --dry-run",
+        "test:types": "vendor/bin/phpstan analyse --ansi",
+        "test:unit": "vendor/bin/pest --colors=always",
+        "test": [
+            "@test:lint",
+            "@test:types",
+            "@test:unit"
+        ],
+        "coverage": "@test:unit --coverage"
     }
 }

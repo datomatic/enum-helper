@@ -8,7 +8,6 @@ use BackedEnum;
 
 trait EnumDescription
 {
-
     abstract public function description(): string;
 
     /**

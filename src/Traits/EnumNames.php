@@ -1,13 +1,13 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Datomatic\EnumHelper\Traits;
 
 use BackedEnum;
 
 trait EnumNames
 {
-
-
     /**
      * Get an array of case names.
      *
@@ -20,7 +20,6 @@ trait EnumNames
 
         return array_column($cases, 'name');
     }
-
 
     /**
      * Get an associative array of [case value => case name].

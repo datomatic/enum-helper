@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Datomatic\EnumHelper\Traits;
 
 use BackedEnum;
@@ -7,7 +9,6 @@ use Datomatic\EnumHelper\Exceptions\UndefinedCase;
 
 trait EnumInvokable
 {
-
     /**
      * Return the enum's value when it's $invoked().
      */
@@ -36,7 +37,6 @@ trait EnumInvokable
 
         throw new UndefinedCase(self::class, $name);
     }
-
 
     /**
      * return snake case of a string.

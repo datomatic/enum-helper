@@ -19,11 +19,11 @@ Functionalities summary:
 - [Values list](#values)  
     `Enum::values() // ['PENDING', 'ACCEPTED', 'DISCARDED', 'NO_RESPONSE']`  
     `BackedEnum::values() // ['P', 'A', 'D', 'N']`
-- UniqueId  
+- [UniqueId](#uniqueid)  
     `$enum->uniqueId() // Namespace\Status.PENDING`
-- Descriptions  
+- [Descriptions](#descriptions)  
     `Enum::descriptions() // ['Await decision','Recognized valid','No longer useful','No response']`
-- Translations  
+- [Translations](#translations)  
   `$enum->translate() // 'In attesa'`  
   `$enum->translations() // ['In attesa','Accettato','Rifiutato','Nessuna Risposta',]`
 

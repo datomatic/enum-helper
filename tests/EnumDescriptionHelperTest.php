@@ -49,30 +49,3 @@ it('can return an associative array [value => description]', function ($classNam
         'A' => 'Recognized valid',
     ]],
 ]);
-
-it('can return an associative array [description => value]', function ($className, $cases, $values) {
-    expect($className::descriptionsArrayInverse($cases))->toBe($values);
-})->with([
-    'Pure Enum' => [Status::class, null, [
-        'Await decision' => 'PENDING',
-        'Recognized valid' => 'ACCEPTED',
-        'No longer useful' => 'DISCARDED',
-        'No response' => 'NO_RESPONSE',
-    ]],
-    'Pure Enum subset' => [Status::class, [Status::NO_RESPONSE], [
-        'No response' => 'NO_RESPONSE',
-    ]],
-    'Backed Enum empty' => [StatusString::class, null, [
-        'Await decision' => 'P',
-        'Recognized valid' => 'A',
-        'No longer useful' => 'D',
-        'No response' => 'N',
-    ]],
-    'Backed Enum' => [StatusString::class, [], []],
-    'Backed Enum subset' => [StatusString::class, [StatusString::PENDING, StatusString::ACCEPTED, StatusString::DISCARDED, StatusString::NO_RESPONSE], [
-        'Await decision' => 'P',
-        'Recognized valid' => 'A',
-        'No longer useful' => 'D',
-        'No response' => 'N',
-    ]],
-]);

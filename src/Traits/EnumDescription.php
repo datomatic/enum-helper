@@ -40,15 +40,4 @@ trait EnumDescription
 
         return $result;
     }
-
-    /**
-     * asDescriptionArray method inverse.
-     *
-     * @param null|array<self> $cases
-     * @return array<string, string>
-     */
-    public static function descriptionsArrayInverse(?array $cases = null): array
-    {
-        return array_flip(self::descriptionsArray($cases));
-    }
 }

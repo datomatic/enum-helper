@@ -33,6 +33,6 @@ trait EnumNames
 
         return isset($cases[0]) && $cases[0] instanceof BackedEnum
             ? array_column($cases, 'name', 'value')
-            : array_column($cases, 'name');
+            : self::names($cases);
     }
 }

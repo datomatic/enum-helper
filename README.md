@@ -6,15 +6,34 @@ This package is framework agnostic, but has a translation functionality based on
 
 Each functionality has a Trait class, but you can use EnumHelper trait that include all Trait except for Descriptions and Translations. 
 
-Functionalities:
-- Invokable Cases
-- From and From Name constructors
-- Instances Equality (is, in)
+Functionalities summary:
+- Invokable Cases 
+
+    `Enum::pending() // enum case value`
+- From and From Name constructors 
+
+    `Enum::from('PENDING'); BackedEnum::from('P'); `
+- Instances Equality (is, isNot, in, notIn)
+
+    `$enum->is('PENDING'); $backedEnum->is('P'); $enum->is(Enum::PENDING);`
+    `$enum->in(['PENDING','ACCEPTED']); $backedEnum->in(['P','A']); $enum->in([Enum::PENDING]);`
 - Names list
+
+    `Enum::names() // ['PENDING', 'ACCEPTED', 'DISCARDED', 'NO_RESPONSE']`
 - Values list
+
+    `Enum::values() // ['PENDING', 'ACCEPTED', 'DISCARDED', 'NO_RESPONSE']`
+    `BackedEnum::values() // ['P', 'A', 'D', 'N']`
 - UniqueId
+
+    `$enum->uniqueId() // Namespace\Status.PENDING`
 - Descriptions
+
+    `Enum::descriptions() // ['Await decision','Recognized valid','No longer useful','No response']`
 - Translations
+
+  `$enum->translate() // 'In attesa'`
+  `$enum->translations() // ['In attesa','Accettato','Rifiutato','Nessuna Risposta',]`
 
 ## Installation
 

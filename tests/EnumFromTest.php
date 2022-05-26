@@ -25,12 +25,12 @@ it('does throw exception with wrong from value on BackedEnum string', function (
 })->throws(ValueError::class, '"10" is not a valid backing value for enum "Datomatic\EnumHelper\Tests\Support\Enums\StatusString"');
 
 it('does throw exception with wrong fromName value on BackedEnum int', function () {
-    StatusInt::fromName('PENDINGA');
-})->throws(ValueError::class, '"PENDINGA" is not a valid name for enum "Datomatic\EnumHelper\Tests\Support\Enums\StatusInt"');
+    StatusInt::fromName('MISSING');
+})->throws(ValueError::class, '"MISSING" is not a valid name for enum "Datomatic\EnumHelper\Tests\Support\Enums\StatusInt"');
 
 it('does throw exception with wrong fromName value on BackedEnum string', function () {
-    StatusString::fromName('PENDINGA');
-})->throws(ValueError::class, '"PENDINGA" is not a valid name for enum "Datomatic\EnumHelper\Tests\Support\Enums\StatusString"');
+    StatusString::fromName('MISSING');
+})->throws(ValueError::class, '"MISSING" is not a valid name for enum "Datomatic\EnumHelper\Tests\Support\Enums\StatusString"');
 
 it('can select a case by name with from() for pure enums', function () {
     expect(Status::from('PENDING'))->toBe(Status::PENDING);
@@ -41,7 +41,7 @@ it('can returns enum with tryFrom() for pure enums')
     ->toBe(Status::PENDING);
 
 it('can returns null when selecting a non-existent case by name with tryFrom() for pure enums')
-    ->expect(Status::tryFrom('PENDINGA'))
+    ->expect(Status::tryFrom('MISSING'))
     ->toBe(null)
     ->not->toThrow(ValueError::class);
 
@@ -56,7 +56,7 @@ it('doesn\'t throw exception with wrong from value on BackedEnum string', functi
 });
 
 it('doesn\'t throw exception with wrong from name on BackedEnum string', function () {
-    expect(StatusString::tryFromName('PENDINGA'))->toBe(null)
+    expect(StatusString::tryFromName('MISSING'))->toBe(null)
         ->not->toThrow(ValueError::class);
 });
 

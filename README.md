@@ -152,29 +152,29 @@ This helper adds `from()` and `tryFrom()` to pure enums, and adds `fromName()` a
 ```php
 Status::from('PENDING') // Status::PENDING
 StatusPascalCase::from('Pending') // StatusPascalCase::Pending
-Status::from('PENDINGA') // ValueError Exception
+Status::from('MISSING') // ValueError Exception
 ```
 
 #### `tryFrom()`
 ```php
 Status::tryFrom('PENDING') // Status::PENDING
-Status::tryFrom('PENDINGA') // null
+Status::tryFrom('MISSING') // null
 ```
 
 #### `fromName()`
 ```php
 Status::fromName('PENDING') // Status::PENDING
-Status::fromName('PENDINGA') // ValueError Exception
+Status::fromName('MISSING') // ValueError Exception
 StatusString::fromName('PENDING') // StatusString::PENDING
-StatusString::fromName('PENDINGA') // ValueError Exception
+StatusString::fromName('MISSING') // ValueError Exception
 ```
 
 #### `tryfromName()`
 ```php
 Status::tryfromName('PENDING') // Status::PENDING
-Status::tryfromName('PENDINGA') // null
+Status::tryfromName('MISSING') // null
 StatusString::tryfromName('PENDING') // StatusString::PENDING
-StatusString::tryfromName('PENDINGA') // null
+StatusString::tryfromName('MISSING') // null
 ```
 
 ### Equality

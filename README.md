@@ -129,7 +129,7 @@ StatusString::pending() // 'P'
 
 ```
 
-#### IDE completion
+#### IDE code completion
 To have a code completion you can get autosuggestions while typing the enum case and then add () or you can add phpDoc @method tag to the enum class to define all invokable cases like this:
 ```php
 /**
@@ -147,8 +147,55 @@ enum Status
 ### Equality
 
 ### Names
+This helper offer **names** and **namesArray** methods.
+
+#### names
+This method returns a list of case names in the enum.  
+```php
+Status::names() // ['PENDING', 'ACCEPTED', 'DISCARDED', 'NO_RESPONSE']
+StatusPascalCase::names() // ['Pending', 'Accepted', 'Discarded', 'NoResponse']
+StatusString::names() // ['PENDING', 'ACCEPTED', 'DISCARDED', 'NO_RESPONSE']
+```
+You can also pass an array of enums to filter the results... useful when you need a subset:
+```php
+Status::names([Status::NO_RESPONSE, Status::DISCARDED]) // ['NO_RESPONSE', 'DISCARDED']
+StatusPascalCase::names([StatusPascalCase::Accepted, StatusPascalCase::Discarded]) // ['Accepted', 'Discarded']
+```
+
+#### namesArray
+
+This method returns a associative array of [value => name] on backed enum, names array otherwise.  
+```php
+Status::namesArray() // ['PENDING', 'ACCEPTED', 'DISCARDED', 'NO_RESPONSE']
+StatusString::namesArray() // [ 'P'=>'PENDING', 'A'=>'ACCEPTED', 'D'=>'DISCARDED'...
+StatusInt::namesArray() // [ 0=>'PENDING', 1=>'ACCEPTED', 2=>'DISCARDED'...
+```
+You can also pass an array of enums to have a subset
+```php
+StatusInt::namesArray([StatusInt::NO_RESPONSE, StatusInt::DISCARDED]) // [ 3=>'NO_RESPONSE', 2=>'DISCARDED']
+```
 
 ### Values 
+This helper offer **values** and **valuesArray** methods.
+
+#### values
+This method returns a list of case values for backed enums or a list of case names for pure enums.
+```php
+StatusString::values() // ['P', 'A', 'D', 'N']
+StatusInt::values() // [0, 1, 2, 3]
+//subset
+StatusString::values([StatusString::NO_RESPONSE, StatusString::DISCARDED]) // ['N', 'D']
+StatusInt::values([StatusInt::NO_RESPONSE, StatusInt::DISCARDED]) // [3, 2]
+```
+#### valuesArray
+This method returns a associative array of [case name => case value] on backed enum, names array otherwise
+```php
+StatusString::valuesArray() // ['PENDING' => 'P','ACCEPTED' => 'A','DISCARDED' => 'D','NO_RESPONSE' => 'N']
+StatusInt::valuesArray() // ['PENDING' => 0,'ACCEPTED' => 1,'DISCARDED' => 2,'NO_RESPONSE' => 3]
+//subset
+StatusString::valuesArray([StatusString::NO_RESPONSE, StatusString::DISCARDED]) // ['NO_RESPONSE' => 'N', 'DISCARDED' => 'D']
+StatusInt::valuesArray([StatusInt::NO_RESPONSE, StatusInt::DISCARDED]) // ['NO_RESPONSE' => 3, 'DISCARDED' => 2]
+```
 
 ### UniqueId
 

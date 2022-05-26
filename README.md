@@ -104,13 +104,14 @@ That way permits you to use enum invoke into an array keys definition:
 ```
 or in database interactions ` $db_field_definition->default(Status::PENDING())`
 or invoke instances to get the primitive value
-```phpregexp
+```php
 public function updateStatus(int $status): void;
+
 $task->updateStatus(StatusInt::pending());
 ```
 
 #### Examples Use static calls to get the primitive value
-```phpregexp
+```php
 // pure enum
 Status::noResponse() // 'NO_RESPONSE'
 Status::NO_RESPONSE() // 'NO_RESPONSE'

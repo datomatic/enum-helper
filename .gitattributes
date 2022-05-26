@@ -4,6 +4,7 @@
 
 /docker-compose.yml export-ignore
 /tests export-ignore
+/branding export-ignore
 
 /phpstan.neon export-ignore
 /.php_cs.php export-ignore

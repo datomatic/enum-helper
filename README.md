@@ -38,7 +38,7 @@ composer require datomatic/enum-helper
 
 You can use the traits do you need, but for convenience you can use only EnumHelper trait that includes (EnumInvokable, EnumFroms, EnumNames, EnumValues, EnumEquality, EnumUniqueId).
 
-The helper support both pure (Status,StatusPascalCase) and backed enum (StatusInt,StatusString).
+The helper support both pure (Status,StatusPascalCase) and `BackedEnum` (StatusInt,StatusString).
 
 In all examples we'll use the classes described below:
 
@@ -88,7 +88,7 @@ enum StatusPascalCase
 The package work with cases writed in UPPER_CASE, snake_case and PascalCase.
 
 ### Invokable Cases 
-This helper lets you get the value of a backed enum, or the name of a pure enum, by "invoking" it both statically (`Status::PENDING()`), and as an instance (`$status()`).  
+This helper lets you get the value of a `BackedEnum`, or the name of a pure enum, by "invoking" it both statically (`Status::PENDING()`), and as an instance (`$status()`).  
 A good approach is to call methods in camelCase mode but you can invoke the enum ::STATICALLY(), ::statically() or ::Statically().
 ```php
 StatusInt::PENDING // Status enum instance
@@ -143,13 +143,46 @@ enum Status
 ```
 
 ### From FromName
+This helper adds `from()` and `tryFrom()` to pure enums, and adds `fromName()` and `tryFromName()` to all enums.
+#### Important Notes:
+- `BackedEnum` instances already implement their own `from()` and `tryFrom()` methods, which will not be overridden by this trait.
+- Pure enums only have named cases and not values, so the `from()` and `tryFrom()` methods are functionally equivalent to `fromName()` and `tryFromName()`
+
+#### `from()`
+```php
+Status::from('PENDING') // Status::PENDING
+StatusPascalCase::from('Pending') // StatusPascalCase::Pending
+Status::from('PENDINGA') // ValueError Exception
+```
+
+#### `tryFrom()`
+```php
+Status::tryFrom('PENDING') // Status::PENDING
+Status::tryFrom('PENDINGA') // null
+```
+
+#### `fromName()`
+```php
+Status::fromName('PENDING') // Status::PENDING
+Status::fromName('PENDINGA') // ValueError Exception
+StatusString::fromName('PENDING') // StatusString::PENDING
+StatusString::fromName('PENDINGA') // ValueError Exception
+```
+
+#### `tryfromName()`
+```php
+Status::tryfromName('PENDING') // Status::PENDING
+Status::tryfromName('PENDINGA') // null
+StatusString::tryfromName('PENDING') // StatusString::PENDING
+StatusString::tryfromName('PENDINGA') // null
+```
 
 ### Equality
 
 ### Names
-This helper offer **names** and **namesArray** methods.
+This helper offer `names` and `namesArray` methods.
 
-#### names
+#### `names()`
 This method returns a list of case names in the enum.  
 ```php
 Status::names() // ['PENDING', 'ACCEPTED', 'DISCARDED', 'NO_RESPONSE']
@@ -162,9 +195,9 @@ Status::names([Status::NO_RESPONSE, Status::DISCARDED]) // ['NO_RESPONSE', 'DISC
 StatusPascalCase::names([StatusPascalCase::Accepted, StatusPascalCase::Discarded]) // ['Accepted', 'Discarded']
 ```
 
-#### namesArray
+#### `namesArray()`
 
-This method returns a associative array of [value => name] on backed enum, names array otherwise.  
+This method returns a associative array of [value => name] on `BackedEnum`, names array otherwise.  
 ```php
 Status::namesArray() // ['PENDING', 'ACCEPTED', 'DISCARDED', 'NO_RESPONSE']
 StatusString::namesArray() // [ 'P'=>'PENDING', 'A'=>'ACCEPTED', 'D'=>'DISCARDED'...
@@ -176,10 +209,10 @@ StatusInt::namesArray([StatusInt::NO_RESPONSE, StatusInt::DISCARDED]) // [ 3=>'N
 ```
 
 ### Values 
-This helper offer **values** and **valuesArray** methods.
+This helper offer `values` and `valuesArray` methods.
 
-#### values
-This method returns a list of case values for backed enums or a list of case names for pure enums.
+#### `values()`
+This method returns a list of case values for `BackedEnum` or a list of case names for pure enums.
 ```php
 StatusString::values() // ['P', 'A', 'D', 'N']
 StatusInt::values() // [0, 1, 2, 3]
@@ -187,8 +220,8 @@ StatusInt::values() // [0, 1, 2, 3]
 StatusString::values([StatusString::NO_RESPONSE, StatusString::DISCARDED]) // ['N', 'D']
 StatusInt::values([StatusInt::NO_RESPONSE, StatusInt::DISCARDED]) // [3, 2]
 ```
-#### valuesArray
-This method returns a associative array of [case name => case value] on backed enum, names array otherwise
+#### `valuesArray()`
+This method returns a associative array of [case name => case value] on `BackedEnum`, names array otherwise
 ```php
 StatusString::valuesArray() // ['PENDING' => 'P','ACCEPTED' => 'A','DISCARDED' => 'D','NO_RESPONSE' => 'N']
 StatusInt::valuesArray() // ['PENDING' => 0,'ACCEPTED' => 1,'DISCARDED' => 2,'NO_RESPONSE' => 3]

@@ -85,12 +85,11 @@ enum StatusPascalCase
     case NoResponse;
 }
 ```
-
-Personally I prefer to declare cases UPPER_CASE, but the package work also with snake_case and PascalCase.
+The package work with cases writed in UPPER_CASE, snake_case and PascalCase.
 
 ### Invokable Cases 
 This helper lets you get the value of a backed enum, or the name of a pure enum, by "invoking" it both statically (`Status::PENDING()`), and as an instance (`$status()`).  
-Personally I prefer to call methods in camelCase mode but respect also others approach so you can invoke the enum ::STATICALLY(), ::statically() or ::Statically().
+A good approach is to call methods in camelCase mode but you can invoke the enum ::STATICALLY(), ::statically() or ::Statically().
 ```php
 StatusInt::PENDING // Status enum instance
 StatusInt::pending() // 0

@@ -24,7 +24,7 @@ composer require datomatic/enum-helper
 ## Usage
 
 You can use the traits you need, but for convenience you can use only `EnumHelper` trait that includes (`EnumInvokable`, `EnumFroms`, `EnumNames`, `EnumValues`, `EnumEquality`, `EnumUniqueId`).  
-`EnumDescription` and `EnumTranslations` are separated from `EnumHelper` because cover edge cases. 
+`EnumDescription` and `EnumBaseTranslations` are separated from `EnumHelper` because cover edge cases. 
 
 
 The helper support both pure enum (on ex. `Status`, `StatusPascalCase`) and `BackedEnum` (on ex. `StatusInt`, `StatusString`).
@@ -285,7 +285,7 @@ This helper permits to get an unique identifier from enum or an enum instance fr
 
 #### uniqueId()
 This method returns the enum unique identifier based on Namespace\ClassName.CASE_NAME.
-You can use this identifier to make a custom translation without `EnumTranslation` trait like `translate($enum->uniqueId())`
+You can use this identifier to make a custom translation without translation trait like `translate($enum->uniqueId())`
 or you can save multiple type of enums in a database on a polymorphic column.
 ```php
 Status::PENDING->uniqueId(); // Namespace\Status.PENDING
@@ -295,11 +295,11 @@ $enum->uniqueId(); // Namespace\StatusString.NO_RESPONSE
 #### fromUniqueId()
 This method returns an enum instance from unique identifier.
 ```php
-Status::fromUniqueId('Datomatic\EnumHelper\Tests\Support\Enums\Status.PENDING'); // Status::PENDING
-StatusInt::fromUniqueId('Datomatic\EnumHelper\Tests\Support\Enums\StatusInt.PENDING'); // StatusInt::PENDING
+Status::fromUniqueId('Namespace\Status.PENDING'); // Status::PENDING
+StatusInt::fromUniqueId('Namespace\StatusInt.PENDING'); // StatusInt::PENDING
 StatusInt::fromUniqueId('NOT.valid.uniqueId'); // throw InvalidUniqueId Exception
 StatusInt::fromUniqueId('Wrong\Namespace\StatusInt.PENDING'); // throw InvalidUniqueId Exception
-StatusInt::fromUniqueId('Datomatic\EnumHelper\Tests\Support\Enums\StatusInt.MISSING'); // throw InvalidUniqueId Exception
+StatusInt::fromUniqueId('Namespace\StatusInt.MISSING'); // throw InvalidUniqueId Exception
 ```
 
 #### Global getEnumFromUniqueId() helper
@@ -319,7 +319,7 @@ public function getEnumFromUniqueId(string $uniqueId): object
 
     list($enumClass, $case) = explode('.', $uniqueId);
 
-    $cases = array_filter(self::cases(), fn($c) => $c->name === $case);
+    $cases = array_filter($enumClass::cases(), fn($c) => $c->name === $case);
 
     if (empty($cases)) {
         throw InvalidUniqueId::caseNotPresent($case);
@@ -333,10 +333,10 @@ public function getEnumFromUniqueId(string $uniqueId): object
 
 ### Descriptions 
 This helper permits to have a description on each case of an enum.  
-This is useful when you need descriptions to characterize the cases better or have the code base in English, but the application language is different. If you have a multilanguage application consider use `EnumTranslation` instead this trait. 
+This is useful when you need descriptions to characterize the cases better or have the code base in English, but the application language is different. If you have a multilanguage application consider use [translations](#translations) instead. 
 
-The helper is not included on base `EnumHelper` trait, so if you need it yopu must use `EnumDescription`.
-You can use it on both pure enums and `BackedEnum`, to define the descriptions you must implement the abstract `description()` method.
+The helper is not included on base `EnumHelper` trait and not depend on it, so if you need it you must use `EnumDescription` and implement the abstract `description()` method to define the descriptions.
+You can use it on both pure enums and `BackedEnum`.
 ```php
 use Datomatic\EnumHelper\EnumHelper;
 use Datomatic\EnumHelper\Traits\EnumDescription;
@@ -366,19 +366,136 @@ enum StatusString: string
 This method returns a list of case descriptions of enum.
 ```php
 StatusString::descriptions(); // ['Await decision','Recognized valid','No longer useful','No response']
-//subset
+// Subset
 StatusString::descriptions([StatusString::ACCEPTED, StatusString::NO_RESPONSE]); // ['Recognized valid','No response']
 ```
 
 #### descriptionsArray()
 This method returns a associative array of [value => description] on `BackedEnum`, [name => description] on pure enum.
 ```php
-StatusString::descriptionsArray(); // ['P' => 'Await decision', 'A' => 'Recognized valid'...
-Status::descriptionsArray(); // ['PENDING' => 'Await decision', 'ACCEPTED' => 'Recognized valid'...
-//subset
+StatusString::descriptionsArray(); // ['P' => 'Await decision', 'A' => 'Recognized valid',...
+Status::descriptionsArray(); // ['PENDING' => 'Await decision', 'ACCEPTED' => 'Recognized valid',...
+// Subset
 StatusString::descriptionsArray([StatusString::DISCARDED, StatusString::ACCEPTED]); // ['D' => 'No longer useful', 'A' => 'Recognized valid']
 Status::descriptionsArray([[Status::PENDING, Status::DISCARDED]); // ['PENDING' => 'Await decision', 'DISCARDED' => 'No longer useful']
 ```
 
 
 ### Translations 
+This helper permits to use enums on a multilanguage context.  
+
+The helper is not included on base `EnumHelper` trait and not depend on it, so if you need it you must use `EnumBaseTranslation` and implement the abstract `translate()` method to define the translation.  
+If you are using Laravel you can use [`EnumLaravelTranslation` trait](#laravel) istead.  
+
+You can use it on both pure enums and `BackedEnum`.
+```php
+use Datomatic\EnumHelper\Traits\EnumBaseTranslation;
+
+trait EnumTranslation
+{
+    use EnumBaseTranslation;
+
+    public function translate(string $lang = null): string
+    {
+        // this is only an example of implementation... trans method not exist
+        // if $lang is null you have to use the current locale otherwise, you must force the language passed
+        return trans('status.'$this->name, $lang);
+        // or if you use EnumHelper or EnumUniqueId trait
+        return trans($this->uniqueId(), $lang);
+    }
+}
+```
+```php
+use Datomatic\EnumHelper\EnumHelper;
+
+enum Status
+{
+    use EnumHelper;
+    use EnumTranslation;
+    
+    case PENDING;
+    ...    
+```
+
+After the implementation of translate method you can use it
+```php
+$enum = Status::PENDING;
+$enum->translate(); // 🇮🇹 'In attesa'
+// forcing language
+$enum->translate('en'); // 🇬🇧 'Await decision'
+```
+
+#### Laravel
+If you use Laravel you can use the `EnumLaravelTranslation` trait istead `EnumBaseTranslation`.
+This trait extend `EnumBaseTranslation` and implement the `translate()` method with Laravel Localization features.  
+```php
+use Datomatic\EnumHelper\EnumHelper;
+use Datomatic\EnumHelper\Traits\EnumLaravelTranslation;
+
+enum StatusString
+{
+    use EnumHelper;
+    use EnumLaravelTranslation;
+    
+    case PENDING = 'P';
+    ...
+```
+
+There is 2 way to manage translation strings.
+
+##### Using Short Keys
+Language strings may be stored in `enums.php` files within the `lang` directory. Within this directory, there may be subdirectories for each language supported by the application.
+```
+/lang
+    /en
+        enums.php
+    /it
+        enums.php
+```
+All language files return an array of keyed strings. The array has 2 level: first level has as key the complete class name of enum, the second has as key the name of the enum case.
+```php
+// /lang/it/enums.php
+
+return [
+    Status::class => [
+        'PENDING' => 'In attesa',
+        'ACCEPTED' => 'Accettato',
+        'DISCARDED' => 'Rifiutato',
+        'NO_RESPONSE' => 'Nessuna Risposta',
+    ],
+    StatusString::class => [
+        'PENDING' => 'In attesa',
+    ...
+```
+##### Using Translation Strings As Keys
+Language strings are stored as JSON files in the lang directory (ex. `lang/it.json`).
+```json
+// /lang/it.json
+
+{
+    "enums.Namespace\\StatusString.PENDING": "In attesa",
+    "enums.Namespace\\StatusString.ACCEPTED": "In attesa",
+    ...
+    "enums.Namespace\\Status.PENDING": "In attesa",
+    ...
+```
+
+#### `translations()`
+This method returns a list of case translation of enum.
+```php
+Status::translations(); // 🇮🇹 ['In attesa','Accettato','Rifiutato','Nessuna Risposta']
+// forcing language
+Status::translations('en'); // 🇬🇧 ['Await decision','Recognized valid','No longer useful','No response']
+// Subset
+Status::translations(null, [Status::NO_RESPONSE, Status::DISCARDED]); // 🇮🇹 ['In attesa','Accettato','Rifiutato','Nessuna Risposta']
+```
+
+#### `translationsArray()`
+This method returns a associative array of [value => translation] on `BackedEnum`, [name => translation] on pure enum.
+```php
+Status::translationsArray(); // 🇬🇧 ['PENDING' => 'Await decision','ACCEPTED' => 'Recognized valid',...
+// forcing language
+StatusString::translationsArray('it'); // 🇮🇹 ['P' => 'In attesa','A' => 'Accettato',...
+// Subset
+Status::translationsArray('it', [Status::DISCARDED, Status::NO_RESPONSE]); // 🇮🇹 ['DISCARDED' => 'Rifiutato','NO_RESPONSE' => 'Nessuna Risposta',...
+```

@@ -1,30 +1,19 @@
 ![Enum Helper-Dark](branding/dark.png#gh-dark-mode-only)![Enum Helper-Light](branding/light.png#gh-light-mode-only)
 # Enum Helper
 A simple and opinionated collections of PHP 8.1 enum helpers inspired by [archtechx/enums](https://github.com/archtechx/enums) and [BenSampo/laravel-enum](https://github.com/BenSampo/laravel-enum).  
-This package is framework agnostic, but has a translation functionality based on Laravel framework, but it can be extended with other frameworks.
+This package is framework agnostic, but has a translation functionality that must be extended to work. Actually there is an implementation based on Laravel framework.
 
 Each functionality has a trait, but you can use EnumHelper trait that includes all traits except for Descriptions and Translations. 
 
 Functionalities summary:
-- [INVOKABLE CASES](#invokable-cases)  
-    `Enum::pending() // enum PENDING instance`
-- [FROM and FROM NAME constructors](#from-fromName)  
-    `Enum::from('PENDING'); BackedEnum::from('P'); `
-- [INSTANCES EQUALITY (is, isNot, in, notIn)](#equality)  
-    `$enum->is('PENDING'); $backedEnum->is('P'); $enum->is(Enum::PENDING);`  
-    `$enum->in(['PENDING','ACCEPTED']); $backedEnum->in(['P','A']); $enum->in([Enum::PENDING]);`
-- [NAMES list](#names)  
-    `Enum::names() // ['PENDING', 'ACCEPTED', 'DISCARDED']`
-- [VALUES list](#values)  
-    `Enum::values() // ['PENDING', 'ACCEPTED', 'DISCARDED']`  
-    `BackedEnum::values() // ['P', 'A', 'D']`
-- [UNIQUE ID](#uniqueid)  
-    `$enum->uniqueId() // 'Namespace\Class.PENDING'`
-- [DESCRIPTIONS](#descriptions)  
-    `Enum::descriptions() // ['Await decision','Recognized valid','No longer useful']`
-- [TRANSLATIONS](#translations)  #
-  `$enum->translate() // 'In attesa'`  
-  `$enum->translations() // ['In attesa','Accettato','Rifiutato']`
+- **Invokable cases**: get the value of enum "invoking" it statically
+- **Construct enum by name or value**: `from()`, `tryFrom()`, `fromName()`, `tryFromName()` for all enums
+- **Enums Equality**:  `is()`, `isNot()`, `in()`, `notIn()` methods
+- **Names**: methods to have a list of case names (`names()`, `namesArray()`)
+- **Values**: methods to have a list of case values (`values()`, `valuesArray()`)
+- **Unique ID**: get an instance unique identifier (`uniqueId()`)
+- **Descriptions**: add description method and relative utilities to an enum (`description()`,`descriptions()`,`descriptionsArray()`))
+- **Translations**: use enums on a multilanguage project ((`translate()`,`translations()`,`translationsArray()`)))
 
 ## Installation
 
@@ -36,9 +25,9 @@ composer require datomatic/enum-helper
 
 ## Usage
 
-You can use the traits do you need, but for convenience you can use only EnumHelper trait that includes (EnumInvokable, EnumFroms, EnumNames, EnumValues, EnumEquality, EnumUniqueId).
+You can use the traits you need, but for convenience you can use only `EnumHelper` trait that includes (`EnumInvokable`, `EnumFroms`, `EnumNames`, `EnumValues`, `EnumEquality`, `EnumUniqueId`).
 
-The helper support both pure (Status,StatusPascalCase) and `BackedEnum` (StatusInt,StatusString).
+The helper support both pure enum (on ex. `Status`, `StatusPascalCase`) and `BackedEnum` (on ex. `StatusInt`, `StatusString`).
 
 In all examples we'll use the classes described below:
 
@@ -85,7 +74,17 @@ enum StatusPascalCase
     case NoResponse;
 }
 ```
-The package work with cases writed in UPPER_CASE, snake_case and PascalCase.
+The package works with cases written in UPPER_CASE, snake_case and PascalCase.
+
+### Jump To
+- [Invokable Cases ](#invokable-cases)
+- [`from()` and `fromName()`](#from-fromName)
+- [Enums Equality (`is()`, `isNot()`, `in()`, `notIn()`)](#equality)
+- [Names](#names)
+- [Values](#values)
+- [Unique ID](#uniqueid)
+- [Descriptions](#descriptions)
+- [Translations](#translations)
 
 ### Invokable Cases 
 This helper lets you get the value of a `BackedEnum`, or the name of a pure enum, by "invoking" it both statically (`Status::PENDING()`), and as an instance (`$status()`).  
@@ -109,7 +108,7 @@ public function updateStatus(int $status): void;
 $task->updateStatus(StatusInt::pending());
 ```
 
-#### Examples Use static calls to get the primitive value
+#### Examples use static calls to get the primitive value
 ```php
 // pure enum
 Status::noResponse() // 'NO_RESPONSE'
@@ -169,15 +168,60 @@ StatusString::fromName('PENDING') // StatusString::PENDING
 StatusString::fromName('MISSING') // ValueError Exception
 ```
 
-#### `tryfromName()`
+#### `tryFromName()`
 ```php
-Status::tryfromName('PENDING') // Status::PENDING
-Status::tryfromName('MISSING') // null
-StatusString::tryfromName('PENDING') // StatusString::PENDING
-StatusString::tryfromName('MISSING') // null
+Status::tryFromName('PENDING') // Status::PENDING
+Status::tryFromName('MISSING') // null
+StatusString::tryFromName('PENDING') // StatusString::PENDING
+StatusString::tryFromName('MISSING') // null
 ```
 
 ### Equality
+This helper permits to compare an enum instance (`is()`,`isNot()`) and search if it is present inside an array (`in()`,`notIn()`).
+
+#### `is()` and `isNot()`
+
+`is()` method permit to check the equality of an instance against an enum instance, a case name or a case value.  
+For convenience, there is also an `isNot()` method which is the exact reverse of the `is()` method.
+```php
+$enum = Status::PENDING;
+$enum->is(Status::PENDING) // true
+Status::PENDING->is(Status::ACCEPTED) // false
+Status::PENDING->is('PENDING') // true
+Status::PENDING->is('ACCEPTED') // false
+Status::PENDING->isNot('ACCEPTED') // true
+
+
+$backedEnum = StatusInt::PENDING;
+$backedEnum->is(StatusInt::PENDING) // true
+StatusInt::PENDING->is(StatusInt::ACCEPTED) // false
+StatusInt::PENDING->is(0) // true
+StatusInt::PENDING->is('PENDING') // true
+StatusString::PENDING->is('P') // true
+StatusString::PENDING->isNot('P') // false
+```
+
+#### `in()` and `notIn()`
+`in()` method permit to see if an instance matches on an array of instances, names or values.
+For convenience, there is also an `notIn()` method which is the exact reverse of the `i()` method.
+```php
+$enum = Status::PENDING;
+$enum->in([Status::PENDING,Status::ACCEPTED]) // true
+Status::PENDING->in([Status::DISCARDED, Status::ACCEPTED]) // false
+Status::PENDING->in(['PENDING', 'ACCEPTED']) // true
+Status::PENDING->in(['ACCEPTED', 'DISCARDED']) // false
+Status::PENDING->notIn(['ACCEPTED']) // true
+
+$backedEnum = StatusInt::PENDING;
+$backedEnum->in([StatusInt::PENDING, StatusInt::ACCEPTED]) // true
+StatusInt::PENDING->in([StatusInt::ACCEPTED])// false
+StatusInt::PENDING->in([0, 1, 2]) // true
+StatusInt::PENDING->in([2, 3]) // false
+StatusInt::PENDING->in(['PENDING', 'ACCEPTED']) // true
+StatusInt::PENDING->in(['DISCARDED', 'ACCEPTED']) // false
+StatusString::PENDING->in(['P', 'D']) // true
+StatusString::PENDING->notIn(['A','D']) // true
+```
 
 ### Names
 This helper offer `names` and `namesArray` methods.
@@ -188,9 +232,7 @@ This method returns a list of case names in the enum.
 Status::names() // ['PENDING', 'ACCEPTED', 'DISCARDED', 'NO_RESPONSE']
 StatusPascalCase::names() // ['Pending', 'Accepted', 'Discarded', 'NoResponse']
 StatusString::names() // ['PENDING', 'ACCEPTED', 'DISCARDED', 'NO_RESPONSE']
-```
-You can also pass an array of enums to filter the results... useful when you need a subset:
-```php
+// Subset
 Status::names([Status::NO_RESPONSE, Status::DISCARDED]) // ['NO_RESPONSE', 'DISCARDED']
 StatusPascalCase::names([StatusPascalCase::Accepted, StatusPascalCase::Discarded]) // ['Accepted', 'Discarded']
 ```
@@ -202,9 +244,7 @@ This method returns a associative array of [value => name] on `BackedEnum`, name
 Status::namesArray() // ['PENDING', 'ACCEPTED', 'DISCARDED', 'NO_RESPONSE']
 StatusString::namesArray() // [ 'P'=>'PENDING', 'A'=>'ACCEPTED', 'D'=>'DISCARDED'...
 StatusInt::namesArray() // [ 0=>'PENDING', 1=>'ACCEPTED', 2=>'DISCARDED'...
-```
-You can also pass an array of enums to have a subset
-```php
+// Subset
 StatusInt::namesArray([StatusInt::NO_RESPONSE, StatusInt::DISCARDED]) // [ 3=>'NO_RESPONSE', 2=>'DISCARDED']
 ```
 
@@ -216,7 +256,7 @@ This method returns a list of case values for `BackedEnum` or a list of case nam
 ```php
 StatusString::values() // ['P', 'A', 'D', 'N']
 StatusInt::values() // [0, 1, 2, 3]
-//subset
+// Subset
 StatusString::values([StatusString::NO_RESPONSE, StatusString::DISCARDED]) // ['N', 'D']
 StatusInt::values([StatusInt::NO_RESPONSE, StatusInt::DISCARDED]) // [3, 2]
 ```
@@ -225,7 +265,7 @@ This method returns a associative array of [case name => case value] on `BackedE
 ```php
 StatusString::valuesArray() // ['PENDING' => 'P','ACCEPTED' => 'A','DISCARDED' => 'D','NO_RESPONSE' => 'N']
 StatusInt::valuesArray() // ['PENDING' => 0,'ACCEPTED' => 1,'DISCARDED' => 2,'NO_RESPONSE' => 3]
-//subset
+// Subset
 StatusString::valuesArray([StatusString::NO_RESPONSE, StatusString::DISCARDED]) // ['NO_RESPONSE' => 'N', 'DISCARDED' => 'D']
 StatusInt::valuesArray([StatusInt::NO_RESPONSE, StatusInt::DISCARDED]) // ['NO_RESPONSE' => 3, 'DISCARDED' => 2]
 ```

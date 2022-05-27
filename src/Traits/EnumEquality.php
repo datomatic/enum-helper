@@ -17,11 +17,11 @@ trait EnumEquality
             return $this === $value;
         }
 
-        if($this instanceof BackedEnum && $this->value === $value){
+        if ($this instanceof BackedEnum && $this->value === $value) {
             return true;
         }
 
-        if($this->name === $value){
+        if ($this->name === $value) {
             return true;
         }
 
@@ -51,7 +51,7 @@ trait EnumEquality
             return in_array($this, $values, true);
         }
 
-        if($this instanceof BackedEnum && in_array($this->value, $values, true)){
+        if ($this instanceof BackedEnum && in_array($this->value, $values, true)) {
             return true;
         }
 

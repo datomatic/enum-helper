@@ -6,7 +6,7 @@ This package is framework agnostic, but has a translation functionality that mus
 ## Functionalities summary
 - **Invokable cases**: get the value of enum "invoking" it statically
 - **Construct enum by name or value**: `from()`, `tryFrom()`, `fromName()`, `tryFromName()` for all enums
-- **Enums Equality**:  `is()`, `in()` methods
+- **Enums Equality**:  `is()`, `isNot()`, `in()`, `notIn()` methods
 - **Names**: methods to have a list of case names (`names()`, `namesArray()`)
 - **Values**: methods to have a list of case values (`values()`, `valuesArray()`)
 - **Unique ID**: get an unique identifier from instance or instance from identifier (`uniqueId()`, `fromUniqueId()`)
@@ -86,6 +86,8 @@ The package works with cases written in UPPER_CASE, snake_case and PascalCase.
 - [Descriptions](#descriptions)
 - [Translations](#translations)
 
+
+
 ### Invokable Cases 
 This helper lets you get the value of a `BackedEnum`, or the name of a pure enum, by "invoking" it both statically (`Status::pending()`), and as an instance (`$status()`).  
 A good approach is to call methods in camelCase mode but you can invoke the enum in all cases ::STATICALLY(), ::statically() or ::Statically().
@@ -140,6 +142,8 @@ To have a code completion you can get autosuggestions while typing the enum case
 enum Status
 ...
 ```
+
+
 
 ### From FromName
 This helper adds `from()` and `tryFrom()` to pure enums, and adds `fromName()` and `tryFromName()` to all enums.
@@ -223,6 +227,8 @@ StatusString::PENDING->in(['P', 'D']) // true
 StatusString::PENDING->notIn(['A','D']) // true
 ```
 
+
+
 ### Names
 This helper offer `names` and `namesArray` methods.
 
@@ -248,6 +254,8 @@ StatusInt::namesArray() // [ 0=>'PENDING', 1=>'ACCEPTED', 2=>'DISCARDED'...
 StatusInt::namesArray([StatusInt::NO_RESPONSE, StatusInt::DISCARDED]) // [ 3=>'NO_RESPONSE', 2=>'DISCARDED']
 ```
 
+
+
 ### Values 
 This helper offer `values` and `valuesArray` methods.
 
@@ -269,6 +277,8 @@ StatusInt::valuesArray() // ['PENDING' => 0,'ACCEPTED' => 1,'DISCARDED' => 2,'NO
 StatusString::valuesArray([StatusString::NO_RESPONSE, StatusString::DISCARDED]) // ['NO_RESPONSE' => 'N', 'DISCARDED' => 'D']
 StatusInt::valuesArray([StatusInt::NO_RESPONSE, StatusInt::DISCARDED]) // ['NO_RESPONSE' => 3, 'DISCARDED' => 2]
 ```
+
+
 
 ### UniqueId
 This helper permits to get an unique identifier from enum or an enum instance from identifier.
@@ -319,6 +329,51 @@ public function getEnumFromUniqueId(string $uniqueId): object
 }
 ```
 
+
+
 ### Descriptions 
+This helper permits to have a description on each case of an enum.  
+This is useful when you need descriptions to characterize the cases better or have the code base in English, but the application language is different. If you have a multilanguage application consider use `EnumTranslation` instead this trait. 
+
+The helper is not included on base `EnumHelper` trait, so if you need it yopu must use `EnumDescription`.
+You can use it on both pure enums and `BackedEnum`, to define the descriptions you must implement the abstract `description()` method.
+```php
+use Datomatic\EnumHelper\EnumHelper;
+use Datomatic\EnumHelper\Traits\EnumDescription;
+
+enum StatusString: string
+{
+    use EnumHelper;
+    use EnumDescription;
+    
+    case PENDING = 'P';
+    case ACCEPTED = 'A';
+    case DISCARDED = 'D';
+    case NO_RESPONSE = 'N';
+
+    public function description(): string
+    {
+        return match ($this) {
+            self::PENDING => 'Await decision',
+            self::ACCEPTED => 'Recognized valid',
+            self::DISCARDED => 'No longer useful',
+            self::NO_RESPONSE => 'No response',
+        };
+    }
+```
+
+#### descriptions()
+This method returns a list of case descriptions of enum.
+```php
+StatusString::descriptions() // ['Await decision','Recognized valid','No longer useful','No response']
+//subset
+StatusString::descriptions([StatusString::ACCEPTED, StatusString::NO_RESPONSE]) // ['Recognized valid','No response']
+```
+
+#### descriptionsArray()
+This method returns a associative array of [value => description] on `BackedEnum`, [name => description] on pure enum.
+```php
+```
+
 
 ### Translations 

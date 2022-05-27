@@ -17,7 +17,15 @@ trait EnumEquality
             return $this === $value;
         }
 
-        return $this instanceof BackedEnum ? $this->value === $value : $this->name === $value;
+        if($this instanceof BackedEnum && $this->value === $value){
+            return true;
+        }
+
+        if($this->name === $value){
+            return true;
+        }
+
+        return false;
     }
 
     /**
@@ -43,7 +51,11 @@ trait EnumEquality
             return in_array($this, $values, true);
         }
 
-        return in_array($this instanceof BackedEnum ? $this->value : $this->name, $values, true);
+        if($this instanceof BackedEnum && in_array($this->value, $values, true)){
+            return true;
+        }
+
+        return in_array($this->name, $values, true);
     }
 
     /**

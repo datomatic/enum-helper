@@ -18,12 +18,14 @@ it('can compare enum using is method with enum, name and values', function ($enu
     [StatusInt::PENDING, StatusInt::ACCEPTED, false],
     [StatusInt::PENDING, 0, true],
     [StatusInt::PENDING, 1, false],
-    [StatusInt::PENDING, 'PENDING', false],
+    [StatusInt::PENDING, 'PENDING', true],
+    [StatusInt::PENDING, 'ACCEPTED', false],
     [StatusString::PENDING, 'P', true],
     [StatusString::PENDING, 'A', false],
     [StatusString::PENDING, StatusString::PENDING, true],
     [StatusString::PENDING, StatusString::ACCEPTED, false],
-    [StatusString::PENDING, 'PENDING', false],
+    [StatusString::PENDING, 'PENDING', true],
+    [StatusString::PENDING, 'ACCEPTED', false],
 ]);
 
 it('can compare enum using isNot method with enum, name and values', function ($enum, $value, $result) {
@@ -38,12 +40,14 @@ it('can compare enum using isNot method with enum, name and values', function ($
     [StatusInt::PENDING, StatusInt::PENDING, false],
     [StatusInt::PENDING, 0, false],
     [StatusInt::PENDING, 1, true],
-    [StatusInt::PENDING, 'PENDING', true],
+    [StatusInt::PENDING, 'PENDING', false],
+    [StatusInt::PENDING, 'ACCEPTED', true],
     [StatusString::PENDING, 'P', false],
     [StatusString::PENDING, 'A', true],
     [StatusString::PENDING, StatusString::PENDING, false],
     [StatusString::PENDING, StatusString::ACCEPTED, true],
-    [StatusString::PENDING, 'PENDING', true],
+    [StatusString::PENDING, 'PENDING', false],
+    [StatusString::PENDING, 'ACCEPTED', true],
 ]);
 
 it('can compare enum using in method with enum, name and values', function ($enum, array $values, $result) {
@@ -60,13 +64,15 @@ it('can compare enum using in method with enum, name and values', function ($enu
     [StatusInt::PENDING, [0, 1, 2], true],
     [StatusInt::PENDING, [2, 3], false],
     [StatusInt::PENDING, [], false],
-    [StatusInt::PENDING, ['PENDING'], false],
+    [StatusInt::PENDING, ['PENDING', 'ACCEPTED'], true],
+    [StatusInt::PENDING, ['DISCARDED', 'ACCEPTED'], false],
     [StatusString::PENDING, ['P', 'D'], true],
     [StatusString::PENDING, ['A'], false],
     [StatusString::PENDING, [], false],
     [StatusString::PENDING, [StatusString::PENDING, StatusString::ACCEPTED], true],
     [StatusString::PENDING, [StatusString::ACCEPTED, StatusString::DISCARDED], false],
-    [StatusString::PENDING, ['PENDING'], false],
+    [StatusString::PENDING, ['PENDING', 'ACCEPTED'], true],
+    [StatusString::PENDING, ['DISCARDED', 'ACCEPTED'], false],
 ]);
 
 it('can compare enum using notIn method with enum, name and values', function ($enum, array $values, $result) {
@@ -83,11 +89,13 @@ it('can compare enum using notIn method with enum, name and values', function ($
     [StatusInt::PENDING, [0, 1, 2], false],
     [StatusInt::PENDING, [2, 3], true],
     [StatusInt::PENDING, [], true],
-    [StatusInt::PENDING, ['PENDING'], true],
+    [StatusInt::PENDING, ['PENDING', 'ACCEPTED'], false],
+    [StatusInt::PENDING, ['DISCARDED', 'ACCEPTED'], true],
     [StatusString::PENDING, ['P', 'D'], false],
     [StatusString::PENDING, ['A'], true],
     [StatusString::PENDING, [], true],
     [StatusString::PENDING, [StatusString::PENDING, StatusString::ACCEPTED], false],
     [StatusString::PENDING, [StatusString::ACCEPTED, StatusString::DISCARDED], true],
-    [StatusString::PENDING, ['PENDING'], true],
+    [StatusString::PENDING, ['PENDING', 'ACCEPTED'], false],
+    [StatusString::PENDING, ['DISCARDED', 'ACCEPTED'], true],
 ]);

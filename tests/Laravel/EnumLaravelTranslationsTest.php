@@ -36,16 +36,16 @@ it('can return an array of translations', function ($enumClass, $result) {
     ]],
 ]);
 
-it('can return an array of translations with cases and lang param', function ($enumClass, $cases, $lang, $result) {
-    expect($enumClass::translations($cases, $lang))->toBe($result);
+it('can return an array of translations with cases and lang param', function ($enumClass, $lang, $cases, $result) {
+    expect($enumClass::translations($lang, $cases))->toBe($result);
 })->with([
-    'All Enum cases into it ' => [Status::class, null, 'it', [
+    'All Enum cases into it ' => [Status::class, 'it', null, [
         'In attesa',
         'Accettato',
         'Rifiutato',
         'Nessuna Risposta',
     ]],
-    'Some Enum cases into en ' => [StatusString::class, [StatusString::NO_RESPONSE, StatusString::DISCARDED], 'en', [
+    'Some Enum cases into en ' => [StatusString::class, 'en', [StatusString::NO_RESPONSE, StatusString::DISCARDED], [
         'No response',
         'No longer useful',
     ]],
@@ -68,26 +68,26 @@ it('can return an associative array of translations [value/name => translations]
     ]],
 ]);
 
-it('can return an associative array of translations [value/name => translations] with params', function ($enumClass, $cases, $lang, $result) {
-    expect($enumClass::translationsArray($cases, $lang))->toBe($result);
+it('can return an associative array of translations [value/name => translations] with params', function ($enumClass, $lang, $cases, $result) {
+    expect($enumClass::translationsArray($lang, $cases))->toBe($result);
 })->with([
-    'All Enum cases into en ' => [Status::class, null, 'en', [
+    'All Enum cases into en ' => [Status::class, 'en', null, [
         'PENDING' => 'Await decision',
         'ACCEPTED' => 'Recognized valid',
         'DISCARDED' => 'No longer useful',
         'NO_RESPONSE' => 'No response',
     ]],
-    'Some cases into it ' => [Status::class, [Status::DISCARDED, Status::NO_RESPONSE], 'it', [
+    'Some cases into it ' => [Status::class, 'it', [Status::DISCARDED, Status::NO_RESPONSE], [
         'DISCARDED' => 'Rifiutato',
         'NO_RESPONSE' => 'Nessuna Risposta',
     ]],
-    'All string backed Enum cases into it ' => [StatusString::class, null, 'it', [
+    'All string backed Enum cases into it ' => [StatusString::class, 'it', null, [
         'P' => 'In attesa',
         'A' => 'Accettato',
         'D' => 'Rifiutato',
         'N' => 'Nessuna Risposta',
     ]],
-    'Some string backed Enum cases into it ' => [StatusString::class, [StatusString::NO_RESPONSE, StatusString::NO_RESPONSE], 'it', [
+    'Some string backed Enum cases into it ' => [StatusString::class, 'it', [StatusString::NO_RESPONSE, StatusString::NO_RESPONSE], [
         'N' => 'Nessuna Risposta',
     ]],
 ]);

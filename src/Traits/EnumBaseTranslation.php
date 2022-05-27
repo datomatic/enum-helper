@@ -16,7 +16,6 @@ trait EnumBaseTranslation
     /**
      * Return array of all translations (all cases or cases passed by param).
      *
-     * @param string|null $lang
      * @param null|array<self> $cases
      * @return array<string>
      */
@@ -30,7 +29,6 @@ trait EnumBaseTranslation
     /**
      * Only for Laravel: Return as associative array with value/name => translation.
      *
-     * @param string|null $lang
      * @param null|array<self> $cases
      * @return array<string, string>
      */

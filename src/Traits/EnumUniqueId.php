@@ -40,9 +40,11 @@ trait EnumUniqueId
         }
 
         $cases = array_filter(self::cases(), fn($c) => $c->name === $case);
+
         if (empty($cases)) {
             throw InvalidUniqueId::caseNotPresent($case);
         }
+
         return array_values($cases)[0];
     }
 }

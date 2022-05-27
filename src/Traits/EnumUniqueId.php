@@ -10,8 +10,6 @@ trait EnumUniqueId
 {
     /**
      * Return the enum unique identifier (namespace + class name + case name).
-     *
-     * @return string
      */
     public function uniqueId(): string
     {
@@ -21,13 +19,12 @@ trait EnumUniqueId
     /**
      * Return an enum instance from a unique identifier.
      *
-     * @return self
      * @throws InvalidUniqueId
      */
     public static function fromUniqueId(string $uniqueId): self
     {
         if (
-            !strpos($uniqueId, '.')
+            ! strpos($uniqueId, '.')
             || substr_count($uniqueId, '.') !== 1
         ) {
             throw InvalidUniqueId::uniqueIdFormatIsInvalid($uniqueId);
@@ -39,10 +36,11 @@ trait EnumUniqueId
             throw InvalidUniqueId::wrongClassName($uniqueId);
         }
 
-        $cases = array_filter(self::cases(), fn($c) => $c->name === $case);
+        $cases = array_filter(self::cases(), fn ($c) => $c->name === $case);
         if (empty($cases)) {
             throw InvalidUniqueId::caseNotPresent($case);
         }
+
         return array_values($cases)[0];
     }
 }

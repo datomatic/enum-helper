@@ -6,12 +6,12 @@ This package is framework agnostic, but has a translation functionality that mus
 ## Functionalities summary
 - **Invokable cases**: get the value of enum "invoking" it statically
 - **Construct enum by name or value**: `from()`, `tryFrom()`, `fromName()`, `tryFromName()` for all enums
-- **Enums Equality**:  `is()`, `isNot()`, `in()`, `notIn()` methods
+- **Enums Equality**:  `is()`, `in()` methods
 - **Names**: methods to have a list of case names (`names()`, `namesArray()`)
 - **Values**: methods to have a list of case values (`values()`, `valuesArray()`)
 - **Unique ID**: get an unique identifier from instance or instance from identifier (`uniqueId()`, `fromUniqueId()`)
 - **Descriptions**: add description method and relative utilities to an enum (`description()`,`descriptions()`,`descriptionsArray()`)
-- **Translations**: use enums on a multilanguage project ((`translate()`,`translations()`,`translationsArray()`)
+- **Translations**: use enums on a multilanguage project (`translate()`,`translations()`,`translationsArray()`)
 
 ## Installation
 

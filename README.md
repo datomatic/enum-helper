@@ -6,9 +6,9 @@ This package is framework agnostic, but has a translation functionality that mus
 Each functionality has a trait, but you can use EnumHelper trait that includes all traits except for Descriptions and Translations. 
 
 Functionalities summary:
-- [INVOKABLE CASES](#invokable-cases)  
+- Invokable cases. 
     `Enum::pending() // enum PENDING instance`
-- [FROM and FROM NAME constructors](#from-fromName)  
+- from and fromName constructors  
     `Enum::from('PENDING'); BackedEnum::from('P');`
 - [INSTANCES EQUALITY (is, isNot, in, notIn)](#equality)  
     `$enum->is('PENDING'); $backedEnum->is('P'); $enum->is(Enum::PENDING);`  
@@ -22,7 +22,7 @@ Functionalities summary:
     `$enum->uniqueId() // 'Namespace\Class.PENDING'`
 - [DESCRIPTIONS](#descriptions)  
     `Enum::descriptions() // ['Await decision','Recognized valid','No longer useful']`
-- [TRANSLATIONS](#translations)  #
+- [TRANSLATIONS](#translations)
   `$enum->translate() // 'In attesa'`  
   `$enum->translations() // ['In attesa','Accettato','Rifiutato']`
 
@@ -86,6 +86,10 @@ enum StatusPascalCase
 }
 ```
 The package work with cases writed in UPPER_CASE, snake_case and PascalCase.
+
+### Jump To
+- [Invokable Cases ](#invokable-cases)
+- [from and fromName constructors](#from-fromName)
 
 ### Invokable Cases 
 This helper lets you get the value of a `BackedEnum`, or the name of a pure enum, by "invoking" it both statically (`Status::PENDING()`), and as an instance (`$status()`).  

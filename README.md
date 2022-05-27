@@ -404,8 +404,11 @@ trait EnumTranslation
     public function translate(string $lang = null): string
     {
         // this is only an example of implementation... trans method not exist
-        // if $lang is null you have to use the current locale otherwise, you must force the language passed
+        // if $lang is null you have to use the current locale otherwise
+        // you must force the language passed
+        
         return trans('status.'$this->name, $lang);
+        
         // or if you use EnumHelper or EnumUniqueId trait
         return trans($this->uniqueId(), $lang);
     }

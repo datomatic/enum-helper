@@ -7,7 +7,7 @@ Each functionality has a trait, but you can use EnumHelper trait that includes a
 
 Functionalities summary:
 - [INVOKABLE CASES](#invokable-cases)  
-    `Enum::pending() // enum case value`
+    `Enum::pending() // enum PENDING instance`
 - [FROM and FROM NAME constructors](#from-fromName)  
     `Enum::from('PENDING'); BackedEnum::from('P'); `
 - [INSTANCES EQUALITY (is, isNot, in, notIn)](#equality)  

@@ -4,9 +4,9 @@ declare(strict_types=1);
 
 namespace Datomatic\EnumHelper\Exceptions;
 
-use Error;
+use Exception;
 
-class UndefinedCase extends Error
+class UndefinedCase extends Exception
 {
     public function __construct(string $enum, string $case)
     {

@@ -49,10 +49,7 @@ trait EnumFrom
      */
     public static function tryFromName(string $case): ?static
     {
-        $cases = array_filter(
-            self::cases(),
-            fn ($c) => $c->name === $case
-        );
+        $cases = array_filter(self::cases(), fn ($c) => $c->name === $case);
 
         return array_values($cases)[0] ?? null;
     }

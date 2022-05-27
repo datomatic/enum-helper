@@ -22,25 +22,25 @@ it('can get an instance from correct identifier', function ($enumClass, $uniqueI
 })->with([
     [Status::class, 'Datomatic\EnumHelper\Tests\Support\Enums\Status.PENDING', Status::PENDING],
     [StatusInt::class, 'Datomatic\EnumHelper\Tests\Support\Enums\StatusInt.PENDING', StatusInt::PENDING],
-    [StatusString::class, 'Datomatic\EnumHelper\Tests\Support\Enums\StatusString.PENDING', StatusString::PENDING]
+    [StatusString::class, 'Datomatic\EnumHelper\Tests\Support\Enums\StatusString.PENDING', StatusString::PENDING],
 ]);
 
 it('throw an exception with wrong uniqueId format', function ($enumClass, $uniqueId) {
-    expect(fn() => $enumClass::fromUniqueId($uniqueId))->toThrow(InvalidUniqueId::class, "UniqueId '$uniqueId' has an invalid format");
+    expect(fn () => $enumClass::fromUniqueId($uniqueId))->toThrow(InvalidUniqueId::class, "UniqueId '$uniqueId' has an invalid format");
 })->with([
     [Status::class, 'Enums\Station'],
     [StatusInt::class, 'StatusInt.PENDING.PENDING'],
 ]);
 
 it('throw an exception with wrong namespace or class name', function ($enumClass, $uniqueId) {
-    expect(fn() => $enumClass::fromUniqueId($uniqueId))->toThrow(InvalidUniqueId::class, "UniqueId '$uniqueId' has a wrong Namespace or Class name");
+    expect(fn () => $enumClass::fromUniqueId($uniqueId))->toThrow(InvalidUniqueId::class, "UniqueId '$uniqueId' has a wrong Namespace or Class name");
 })->with([
     [Status::class, 'Enums\Status.PENDING'],
     [StatusInt::class, 'Wrong\Namespace\StatusInt.PENDING'],
 ]);
 
 it('throw an exception with wrong case name', function ($enumClass, $uniqueId) {
-    expect(fn() => $enumClass::fromUniqueId($uniqueId))->toThrow(InvalidUniqueId::class, "There is not 'MISSING' case on the enum");
+    expect(fn () => $enumClass::fromUniqueId($uniqueId))->toThrow(InvalidUniqueId::class, "There is not 'MISSING' case on the enum");
 })->with([
     [Status::class, 'Datomatic\EnumHelper\Tests\Support\Enums\Status.MISSING'],
     [StatusInt::class, 'Datomatic\EnumHelper\Tests\Support\Enums\StatusInt.MISSING'],

@@ -3,17 +3,15 @@
 A simple and opinionated collections of PHP 8.1 enum helpers inspired by [archtechx/enums](https://github.com/archtechx/enums) and [BenSampo/laravel-enum](https://github.com/BenSampo/laravel-enum).  
 This package is framework agnostic, but has a translation functionality that must be extended to work. Actually there is an implementation based on Laravel framework.
 
-Each functionality has a trait, but you can use EnumHelper trait that includes all traits except for Descriptions and Translations. 
-
-Functionalities summary:
+## Functionalities summary
 - **Invokable cases**: get the value of enum "invoking" it statically
 - **Construct enum by name or value**: `from()`, `tryFrom()`, `fromName()`, `tryFromName()` for all enums
 - **Enums Equality**:  `is()`, `isNot()`, `in()`, `notIn()` methods
 - **Names**: methods to have a list of case names (`names()`, `namesArray()`)
 - **Values**: methods to have a list of case values (`values()`, `valuesArray()`)
-- **Unique ID**: get an instance unique identifier (`uniqueId()`)
-- **Descriptions**: add description method and relative utilities to an enum (`description()`,`descriptions()`,`descriptionsArray()`))
-- **Translations**: use enums on a multilanguage project ((`translate()`,`translations()`,`translationsArray()`)))
+- **Unique ID**: get an unique identifier from instance or instance from identifier (`uniqueId()`, `fromUniqueId()`)
+- **Descriptions**: add description method and relative utilities to an enum (`description()`,`descriptions()`,`descriptionsArray()`)
+- **Translations**: use enums on a multilanguage project ((`translate()`,`translations()`,`translationsArray()`)
 
 ## Installation
 
@@ -25,7 +23,9 @@ composer require datomatic/enum-helper
 
 ## Usage
 
-You can use the traits you need, but for convenience you can use only `EnumHelper` trait that includes (`EnumInvokable`, `EnumFroms`, `EnumNames`, `EnumValues`, `EnumEquality`, `EnumUniqueId`).
+You can use the traits you need, but for convenience you can use only `EnumHelper` trait that includes (`EnumInvokable`, `EnumFroms`, `EnumNames`, `EnumValues`, `EnumEquality`, `EnumUniqueId`).  
+`EnumDescription` and `EnumTranslations` are separated from `EnumHelper` because cover edge cases. 
+
 
 The helper support both pure enum (on ex. `Status`, `StatusPascalCase`) and `BackedEnum` (on ex. `StatusInt`, `StatusString`).
 
@@ -77,9 +77,9 @@ enum StatusPascalCase
 The package works with cases written in UPPER_CASE, snake_case and PascalCase.
 
 ### Jump To
-- [Invokable Cases ](#invokable-cases)
-- [`from()` and `fromName()`](#from-fromName)
-- [Enums Equality (`is()`, `isNot()`, `in()`, `notIn()`)](#equality)
+- [Invokable Cases](#invokable-cases)
+- [Froms](#from-fromName)
+- [Enums Equality](#equality)
 - [Names](#names)
 - [Values](#values)
 - [Unique ID](#uniqueid)
@@ -87,8 +87,8 @@ The package works with cases written in UPPER_CASE, snake_case and PascalCase.
 - [Translations](#translations)
 
 ### Invokable Cases 
-This helper lets you get the value of a `BackedEnum`, or the name of a pure enum, by "invoking" it both statically (`Status::PENDING()`), and as an instance (`$status()`).  
-A good approach is to call methods in camelCase mode but you can invoke the enum ::STATICALLY(), ::statically() or ::Statically().
+This helper lets you get the value of a `BackedEnum`, or the name of a pure enum, by "invoking" it both statically (`Status::pending()`), and as an instance (`$status()`).  
+A good approach is to call methods in camelCase mode but you can invoke the enum in all cases ::STATICALLY(), ::statically() or ::Statically().
 ```php
 StatusInt::PENDING // Status enum instance
 StatusInt::pending() // 0
@@ -129,7 +129,7 @@ StatusString::pending() // 'P'
 ```
 
 #### IDE code completion
-To have a code completion you can get autosuggestions while typing the enum case and then add () or you can add phpDoc @method tag to the enum class to define all invokable cases like this:
+To have a code completion you can get autosuggestions while typing the enum case and then add () or you can add phpDoc @method tags to the enum class to define all invokable cases like this:
 ```php
 /**
  * @method static string pending()
@@ -271,6 +271,53 @@ StatusInt::valuesArray([StatusInt::NO_RESPONSE, StatusInt::DISCARDED]) // ['NO_R
 ```
 
 ### UniqueId
+This helper permits to get an unique identifier from enum or an enum instance from identifier.
+
+#### uniqueId()
+This method returns the enum unique identifier based on Namespace\ClassName.CASE_NAME.
+You can use this identifier to make a custom translation without `EnumTranslation` trait like `translate($enum->uniqueId())`
+or you can save multiple type of enums in a database on a polymorphic column.
+```php
+Status::PENDING->uniqueId() // Namespace\Status.PENDING
+$enum = StatusString::NO_RESPONSE;
+$enum->uniqueId() // Namespace\StatusString.NO_RESPONSE
+```
+#### fromUniqueId()
+This method returns an enum instance from unique identifier.
+```php
+Status::fromUniqueId('Datomatic\EnumHelper\Tests\Support\Enums\Status.PENDING') // Status::PENDING
+StatusInt::fromUniqueId('Datomatic\EnumHelper\Tests\Support\Enums\StatusInt.PENDING') // StatusInt::PENDING
+StatusInt::fromUniqueId('NOT.valid.uniqueId') // throw InvalidUniqueId Exception
+StatusInt::fromUniqueId('Wrong\Namespace\StatusInt.PENDING') // throw InvalidUniqueId Exception
+StatusInt::fromUniqueId('Datomatic\EnumHelper\Tests\Support\Enums\StatusInt.MISSING') // throw InvalidUniqueId Exception
+```
+
+#### Global getEnumFromUniqueId() helper
+The method `fromUniqueId()` has little possibility of use because it's related to only an enum class.
+A better approach is to create a global helper to instantiate any enum from uniqueId like this:
+```php
+use Datomatic\EnumHelper\Exceptions\InvalidUniqueId;
+
+public function getEnumFromUniqueId(string $uniqueId): object
+{
+    if (
+        !strpos($uniqueId, '.')
+        || substr_count($uniqueId, '.') !== 1
+    ) {
+        throw InvalidUniqueId::uniqueIdFormatIsInvalid($uniqueId);
+    }
+
+    list($enumClass, $case) = explode('.', $uniqueId);
+
+    $cases = array_filter(self::cases(), fn($c) => $c->name === $case);
+
+    if (empty($cases)) {
+        throw InvalidUniqueId::caseNotPresent($case);
+    }
+    
+    return array_values($cases)[0];
+}
+```
 
 ### Descriptions 
 

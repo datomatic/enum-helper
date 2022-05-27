@@ -4,7 +4,7 @@
 [![GitHub Tests Action Status](https://img.shields.io/github/workflow/status/datomatic/enum-helper/run-tests?label=tests&style=for-the-badge)](https://github.com/datomatic/enum-helper/actions/workflows/run-tests.yml)
 [![GitHub Code Style Action Status](https://img.shields.io/github/workflow/status/datomatic/enum-helper/Check%20&%20fix%20styling?label=code%20style&style=for-the-badge)](https://github.com/datomatic/enum-helper/actions/workflows/php-cs-fixer.yml)
 [![Total Downloads](https://img.shields.io/packagist/dt/datomatic/enum-helper.svg?style=for-the-badge)](https://packagist.org/packages/datomatic/enum-helper)
-[![Pest test number](https://img.shields.io/static/v1?label=PEST%20tests&message=186%20passed&color=success&style=for-the-badge)](https://github.com/datomatic/enum-helper/tree/main/tests)
+[![Pest test number](https://img.shields.io/static/v1?label=PEST%20tests&message=186&color=success&style=for-the-badge)](https://github.com/datomatic/enum-helper/tree/main/tests)
 
 A simple and opinionated collections of PHP 8.1 enum helpers inspired by [archtechx/enums](https://github.com/archtechx/enums) and [BenSampo/laravel-enum](https://github.com/BenSampo/laravel-enum).  
 This package is framework agnostic, but has a translation functionality that must be extended to work. Actually there is an implementation based on Laravel framework.

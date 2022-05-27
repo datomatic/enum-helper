@@ -29,10 +29,10 @@ composer require datomatic/enum-helper
 ## Usage
 
 You can use the traits you need, but for convenience, you can use only the `EnumHelper` trait that includes (`EnumInvokable`, `EnumFroms`, `EnumNames`, `EnumValues`, `EnumEquality`, and `EnumUniqueId`).  
-`EnumDescription` and `EnumBaseTranslations` are separated from `EnumHelper` because cover edge cases. 
+`EnumDescription` and `EnumBaseTranslations` are separated from `EnumHelper` because they cover edge cases. 
 
 
-The helper support both pure enum (on ex. `Status`, `StatusPascalCase`) and `BackedEnum` (on ex. `StatusInt`, `StatusString`).
+The helper support both pure enum (e.g. `Status`, `StatusPascalCase`) and `BackedEnum` (e.g. `StatusInt`, `StatusString`).
 
 In all examples we'll use the classes described below:
 
@@ -473,7 +473,7 @@ return [
     ...
 ```
 ##### Using Translation Strings As Keys
-Language strings are stored as JSON files in the lang directory (ex. `lang/it.json`).
+Language strings are stored as JSON files in the lang directory (e.g. `lang/it.json`).
 ```json
 {
     "enums.Namespace\\StatusString.PENDING": "In attesa",

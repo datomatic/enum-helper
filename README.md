@@ -94,7 +94,7 @@ The package works with cases written in UPPER_CASE, snake_case and PascalCase.
 
 ### Invokable Cases 
 This helper lets you get the value of a `BackedEnum`, or the name of a pure enum, by "invoking" it both statically (`Status::pending()`), and as an instance (`$status()`).  
-A good approach is to call methods in camelCase mode but you can invoke the enum in all cases ::STATICALLY(), ::statically() or ::Statically().
+A good approach is to call methods in camelCase mode but you can invoke the enum in all cases `::STATICALLY()`, `::statically()` or `::Statically()`.
 ```php
 StatusInt::PENDING // Status enum instance
 StatusInt::pending(); // 0
@@ -234,7 +234,7 @@ StatusString::PENDING->notIn(['A','D']); // true
 
 
 ### Names
-This helper offer `names` and `namesArray` methods.
+This helper offer `names()` and `namesArray()` methods.
 
 #### `names()`
 This method returns a list of case names in the enum.  
@@ -261,7 +261,7 @@ StatusInt::namesArray([StatusInt::NO_RESPONSE, StatusInt::DISCARDED]); // [ 3=>'
 
 
 ### Values 
-This helper offer `values` and `valuesArray` methods.
+This helper offer `values()` and `valuesArray()` methods.
 
 #### `values()`
 This method returns a list of case values for `BackedEnum` or a list of case names for pure enums.
@@ -374,15 +374,15 @@ enum StatusString: string
         };
     }
 ```
-After the implementation of `description` method you can use it
+After the implementation of `description()` method you can use it
 ```php
 Status::PENDING->description(); // 'Await decision'
 ```
 
 
 #### Localization
-To translate the descriptions you can change the description method with your translation method.
-If you are using Laravel you can use [`EnumLaravelLocalization` trait](#laravel) instead.
+You can change the `description()` method with your translation method/helper to translate the descriptions.
+If you are using Laravel in a multilingual context you can use [`EnumLaravelLocalization` trait](#laravel) instead.
 ```php
 public function description(?string $lang = null): string
     {
@@ -414,7 +414,7 @@ $enum->description('it'); // 🇮🇹 'In attesa'
 
 #### Laravel
 If you use Laravel framework and you need localization, you can use the `EnumLaravelLocalization` trait instead `EnumDescription`.
-This trait extend `EnumDescription` and implement the `description()` method using Laravel Localization features.
+This trait extends `EnumDescription` and implements the `description()` method using Laravel Localization features.
 
 ```php
 use Datomatic\EnumHelper\Traits\EnumLaravelLocalization;
@@ -461,16 +461,16 @@ Language strings are stored as JSON files in the lang directory (e.g. `lang/it.j
     "enums.Namespace\\StatusString.PENDING": "In attesa",
     ...
 ```
-But if you want to use this way, you can simply use the `EnumDescription` trait and translate each case on `description` method.
+But if you want to use this way, you can simply use the `EnumDescription` trait and translate each case on the `description` method.
 
 ```php
 public function description(?string $lang = null): string
 {
     return match ($this) {
-        self::PENDING => __('Await decision'),
-        self::ACCEPTED => __('Recognized valid'),
-        self::DISCARDED => __('No longer useful'),
-        self::NO_RESPONSE => __('No response'),
+        self::PENDING => __('Await decision', $lang),
+        self::ACCEPTED => __('Recognized valid', $lang),
+        self::DISCARDED => __('No longer useful', $lang),
+        self::NO_RESPONSE => __('No response', $lang),
     };
 ```
 
@@ -487,7 +487,7 @@ Status::descriptions([Status::NO_RESPONSE, Status::DISCARDED], 'it'); // 🇮�
 ```
 
 #### descriptionsArray()
-This method returns a associative array of [value => description] on `BackedEnum`, [name => description] on pure enum.
+This method returns an associative array of [value => description] on `BackedEnum`, [name => description] on pure enum.
 ```php
 StatusString::descriptionsArray(); // ['P' => 'Await decision', 'A' => 'Recognized valid',...
 Status::descriptionsArray(); // ['PENDING' => 'Await decision', 'ACCEPTED' => 'Recognized valid',...

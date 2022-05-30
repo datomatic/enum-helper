@@ -6,7 +6,6 @@ namespace Datomatic\EnumHelper\Tests\Laravel\Enums;
 
 use Datomatic\EnumHelper\Traits\EnumLaravelDescription;
 
-
 /**
  * @method static string pending()
  * @method static string accepted()
@@ -24,5 +23,4 @@ enum LaravelStatus
     case DISCARDED;
 
     case NO_RESPONSE;
-
 }

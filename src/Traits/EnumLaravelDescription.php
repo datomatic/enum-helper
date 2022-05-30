@@ -10,9 +10,6 @@ trait EnumLaravelDescription
 
     /**
      * Only for Laravel: return the translated version of enum value.
-     *
-     * @param string|null $lang
-     * @return string
      */
     public function description(?string $lang = null): string
     {

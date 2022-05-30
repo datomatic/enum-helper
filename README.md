@@ -7,7 +7,7 @@
 [![Total Downloads](https://img.shields.io/packagist/dt/datomatic/enum-helper.svg?style=for-the-badge)](https://packagist.org/packages/datomatic/enum-helper)
 
 A simple and opinionated collections of PHP 8.1 enum helpers inspired by [archtechx/enums](https://github.com/archtechx/enums) and [BenSampo/laravel-enum](https://github.com/BenSampo/laravel-enum).  
-This package is framework agnostic, but has a translation functionality that must be extended to work. Actually there is an implementation based on Laravel framework.
+This package is framework agnostic, but has there is an optional translation implementation based on Laravel framework.
 
 ## Functionalities summary
 - **Invokable cases**: get the value of enum "invoking" it statically
@@ -16,7 +16,7 @@ This package is framework agnostic, but has a translation functionality that mus
 - **Names**: methods to have a list of case names (`names()`, `namesArray()`)
 - **Values**: methods to have a list of case values (`values()`, `valuesArray()`)
 - **Unique ID**: get an unique identifier from instance or instance from identifier (`uniqueId()`, `fromUniqueId()`)
-- **Descriptions & Translations**: add description with optional translation (`description()`,`descriptions()`,`descriptionsArray()`)
+- **Descriptions & Translations**: add description to enum with optional translation (`description()`,`descriptions()`,`descriptionsArray()`)
 
 ## Installation
 
@@ -406,9 +406,9 @@ public function description(?string $lang = null): string
 After the implementation of `description` method you can use it
 ```php
 $enum = Status::PENDING;
-$enum->description(); // 🇮🇹 'In attesa'
+$enum->description(); // 'Await decision'
 // forcing language
-$enum->description('en'); // 🇬🇧 'Await decision'
+$enum->description('it'); // 🇮🇹 'In attesa'
 ```
 
 

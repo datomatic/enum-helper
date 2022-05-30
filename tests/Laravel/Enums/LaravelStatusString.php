@@ -23,5 +23,4 @@ enum LaravelStatusString: string
     case DISCARDED = 'D';
 
     case NO_RESPONSE = 'N';
-
 }

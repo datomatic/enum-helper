@@ -5,7 +5,6 @@ declare(strict_types=1);
 namespace Datomatic\EnumHelper\Tests\Support\Enums;
 
 use Datomatic\EnumHelper\EnumHelper;
-use Datomatic\EnumHelper\Traits\EnumDescription;
 use Datomatic\EnumHelper\Traits\EnumLaravelDescription;
 use Datomatic\EnumHelper\Traits\EnumUniqueId;
 

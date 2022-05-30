@@ -14,8 +14,6 @@ trait EnumDescription
      * Return array of all description (all cases or cases passed by param).
      *
      * @param null|array<self> $cases
-     * @param string|null $lang
-     * @return array
      */
     public static function descriptions(?array $cases = null, ?string $lang = null): array
     {
@@ -28,7 +26,6 @@ trait EnumDescription
      * Return as associative array with value/name => description  (all cases or cases passed by param).
      *
      * @param null|array<self> $cases
-     * @param string|null $lang
      * @return array<string, string>
      */
     public static function descriptionsArray(?array $cases = null, ?string $lang = null): array

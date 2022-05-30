@@ -88,7 +88,7 @@ The package works with cases written in UPPER_CASE, snake_case and PascalCase.
 - [Names](#names)
 - [Values](#values)
 - [Unique ID](#uniqueid)
-- [Descriptions & Translations](#descriptions)
+- [Descriptions & Translations](#descriptions-and-translations)
 
 
 
@@ -344,7 +344,7 @@ public function getEnumFromUniqueId(string $uniqueId): object
 
 
 
-### Descriptions & Translations
+### Descriptions and Translations
 This helper permits to have a description of each case of an enum. Work with both singular language and multilingual application. 
 This is useful when you need descriptions to characterize the cases better or in a multilingual context. 
 

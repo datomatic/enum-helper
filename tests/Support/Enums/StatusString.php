@@ -6,7 +6,8 @@ namespace Datomatic\EnumHelper\Tests\Support\Enums;
 
 use Datomatic\EnumHelper\EnumHelper;
 use Datomatic\EnumHelper\Traits\EnumDescription;
-use Datomatic\EnumHelper\Traits\EnumLaravelTranslation;
+use Datomatic\EnumHelper\Traits\EnumLaravelDescription;
+use Datomatic\EnumHelper\Traits\EnumUniqueId;
 
 /**
  * @method static string pending()
@@ -20,8 +21,8 @@ use Datomatic\EnumHelper\Traits\EnumLaravelTranslation;
 enum StatusString: string
 {
     use EnumHelper;
-    use EnumDescription;
-    use EnumLaravelTranslation;
+    use EnumUniqueId;
+    use EnumLaravelDescription;
 
     case PENDING = 'P';
 
@@ -31,7 +32,7 @@ enum StatusString: string
 
     case NO_RESPONSE = 'N';
 
-    public function description(): string
+    public function description(?string $lang = null): string
     {
         return match ($this) {
             self::PENDING => 'Await decision',

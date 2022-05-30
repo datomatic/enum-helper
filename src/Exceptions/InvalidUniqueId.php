@@ -9,7 +9,6 @@ use Exception;
 class InvalidUniqueId extends Exception
 {
     /**
-     * @param string $uniqueId
      * @return InvalidUniqueId
      */
     public static function wrongClassName(string $uniqueId): self
@@ -18,7 +17,6 @@ class InvalidUniqueId extends Exception
     }
 
     /**
-     * @param string $case
      * @return InvalidUniqueId
      */
     public static function caseNotPresent(string $case): self
@@ -27,7 +25,6 @@ class InvalidUniqueId extends Exception
     }
 
     /**
-     * @param string $uniqueId
      * @return InvalidUniqueId
      */
     public static function uniqueIdFormatIsInvalid(string $uniqueId): self

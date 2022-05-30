@@ -7,7 +7,7 @@
 [![Total Downloads](https://img.shields.io/packagist/dt/datomatic/enum-helper.svg?style=for-the-badge)](https://packagist.org/packages/datomatic/enum-helper)
 
 A simple and opinionated collections of PHP 8.1 enum helpers inspired by [archtechx/enums](https://github.com/archtechx/enums) and [BenSampo/laravel-enum](https://github.com/BenSampo/laravel-enum).  
-This package is framework agnostic, but has there is an optional translation implementation based on Laravel framework.
+This package is framework agnostic, but has there is an optional localization implementation based on Laravel framework.
 
 ## Functionalities summary
 - **Invokable cases**: get the value of enum "invoking" it statically
@@ -382,7 +382,7 @@ Status::PENDING->description(); // 'Await decision'
 
 #### Localization
 To translate the descriptions you can change the description method with your translation method.
-If you are using Laravel you can use [`EnumLaravelDescription` trait](#laravel) instead.
+If you are using Laravel you can use [`EnumLaravelLocalization` trait](#laravel) instead.
 ```php
 public function description(?string $lang = null): string
     {
@@ -413,15 +413,15 @@ $enum->description('it'); // 🇮🇹 'In attesa'
 
 
 #### Laravel
-If you use Laravel framework you can use the `EnumLaravelDescription` trait instead `EnumBaseTranslation`.
+If you use Laravel framework and you need localization, you can use the `EnumLaravelLocalization` trait instead `EnumDescription`.
 This trait extend `EnumDescription` and implement the `description()` method using Laravel Localization features.
 
 ```php
-use Datomatic\EnumHelper\Traits\EnumLaravelDescription;
+use Datomatic\EnumHelper\Traits\EnumLaravelLocalization;
 
 enum StatusString
 {
-    use EnumLaravelDescription;
+    use EnumLaravelLocalization;
 
     case PENDING = 'P';
 ```
@@ -481,9 +481,9 @@ StatusString::descriptions(); // ['Await decision','Recognized valid','No longer
 // Subset
 StatusString::descriptions([StatusString::ACCEPTED, StatusString::NO_RESPONSE]); // ['Recognized valid','No response']
 // Forcing language
-Status::translations(null, 'it'); // 🇮🇹 ['In attesa','Accettato','Rifiutato','Nessuna Risposta']
+Status::descriptions(null, 'it'); // 🇮🇹 ['In attesa','Accettato','Rifiutato','Nessuna Risposta']
 // Subset and language 
-Status::translations([Status::NO_RESPONSE, Status::DISCARDED], 'it'); // 🇮🇹 ['Nessuna Risposta', 'Rifiutato']
+Status::descriptions([Status::NO_RESPONSE, Status::DISCARDED], 'it'); // 🇮🇹 ['Nessuna Risposta', 'Rifiutato']
 ```
 
 #### descriptionsArray()

@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace Datomatic\EnumHelper\Traits;
 
-trait EnumLaravelDescription
+trait EnumLaravelLocalization
 {
     use EnumDescription;
 

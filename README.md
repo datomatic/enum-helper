@@ -385,22 +385,22 @@ You can change the `description()` method with your translation method/helper to
 If you are using Laravel in a multilingual context you can use [`EnumLaravelLocalization` trait](#laravel) instead.
 ```php
 public function description(?string $lang = null): string
-    {
-        // this is only an example of implementation... translate method not exist
-        // if $lang is null you have to use the current locale
-        return return translate('status.'$this->name, $lang);
-        
-        // or translate each case
-        return match ($this) {
-            self::PENDING => translate('Await decision'),
-            self::ACCEPTED => translate('Recognized valid'),
-            self::DISCARDED => translate('No longer useful'),
-            self::NO_RESPONSE => translate('No response'),
-        };
-        
-        //or use EnumUniqueId trait
-        return translate($this->uniqueId(), $lang);
-    }
+{
+    // this is only an example of implementation... translate method not exist
+    // if $lang is null you have to use the current locale
+    return return translate('status.'$this->name, $lang);
+
+    // or translate each case
+    return match ($this) {
+        self::PENDING => translate('Await decision'),
+        self::ACCEPTED => translate('Recognized valid'),
+        self::DISCARDED => translate('No longer useful'),
+        self::NO_RESPONSE => translate('No response'),
+    };
+
+    //or use EnumUniqueId trait
+    return translate($this->uniqueId(), $lang);
+}
 ```
 
 After the implementation of `description` method you can use it

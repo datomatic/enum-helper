@@ -7,7 +7,7 @@
 [![Total Downloads](https://img.shields.io/packagist/dt/datomatic/enum-helper.svg?style=for-the-badge)](https://packagist.org/packages/datomatic/enum-helper)
 
 A simple and opinionated collections of PHP 8.1 enum helpers inspired by [archtechx/enums](https://github.com/archtechx/enums) and [BenSampo/laravel-enum](https://github.com/BenSampo/laravel-enum).  
-This package is framework agnostic, but has there is an optional localization implementation based on Laravel framework.
+This package is framework agnostic but has an optional localization implementation based on Laravel framework.
 
 ## Functionalities summary
 - **Invokable cases**: get the value of enum "invoking" it statically
@@ -89,6 +89,7 @@ The package works with cases written in UPPER_CASE, snake_case and PascalCase.
 - [Values](#values)
 - [Unique ID](#uniqueid)
 - [Descriptions & Translations](#descriptions-and-translations)
+- [Add-on] (#add-on)
 
 
 
@@ -499,3 +500,11 @@ StatusString::descriptionsArray(null, 'it'); // 🇮🇹 ['P' => 'In attesa','A'
 // Subset and language 
 Status::descriptionsArray([Status::DISCARDED, Status::NO_RESPONSE], 'it'); // 🇮🇹 ['DISCARDED' => 'Rifiutato','NO_RESPONSE' => 'Nessuna Risposta',...
 ```
+
+### Add-on
+
+#### Laravel Nova Enum Field
+If you are using [Laravel Nova](https://nova.laravel.com/) Administrator Panel you can use a package to support the `enum-helper`.  
+This package adds the PHP 8.1 `enum` and `EnumDescription` trait support to Nova, with a Nova Select filter and Nova Boolean filter ready out of the box.
+
+Package: [datomatic/nova-enum-field](https://github.com/datomatic/nova-enum-field)

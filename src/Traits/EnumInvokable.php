@@ -23,19 +23,19 @@ trait EnumInvokable
      * @param $args
      * @throws UndefinedCase
      */
-    public static function __callStatic(string $name, $args): string|int
+    public static function __callStatic(string $enumName, $args): string|int
     {
         foreach (self::cases() as $case) {
             if (
-                strtolower($case->name) === strtolower($name)
-                || strtolower($case->name) === strtolower(self::snake($name))
-                || strtolower($case->name) === strtolower(str_replace('_', '', $name))
+                strtolower($case->name) === strtolower($enumName)
+                || strtolower($case->name) === strtolower(self::snake($enumName))
+                || strtolower($case->name) === strtolower(str_replace('_', '', $enumName))
             ) {
                 return $case instanceof BackedEnum ? $case->value : $case->name;
             }
         }
 
-        throw new UndefinedCase(self::class, $name);
+        throw new UndefinedCase(self::class, $enumName);
     }
 
     /**

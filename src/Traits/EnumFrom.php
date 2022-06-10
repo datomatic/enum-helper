@@ -47,10 +47,13 @@ trait EnumFrom
      *
      * @return self|null
      */
-    public static function tryFromName(string $case): ?static
+    public static function tryFromName(string $enumName): ?static
     {
-        $cases = array_filter(self::cases(), fn ($c) => $c->name === $case);
-
-        return array_values($cases)[0] ?? null;
+        foreach (self::cases() as $case){
+            if( $case->name === $enumName){
+                return $case;
+            }
+        }
+        return null;
     }
 }

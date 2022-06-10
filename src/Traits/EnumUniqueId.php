@@ -30,17 +30,19 @@ trait EnumUniqueId
             throw InvalidUniqueId::uniqueIdFormatIsInvalid($uniqueId);
         }
 
-        list($enumClass, $case) = explode('.', $uniqueId);
+        list($enumClass, $enumName) = explode('.', $uniqueId);
 
         if ($enumClass !== static::class) {
             throw InvalidUniqueId::wrongClassName($uniqueId);
         }
 
-        $cases = array_filter(self::cases(), fn ($c) => $c->name === $case);
-        if (empty($cases)) {
-            throw InvalidUniqueId::caseNotPresent($case);
+        foreach (self::cases() as $case){
+            if( $case->name === $enumName){
+                return $case;
+            }
         }
 
-        return array_values($cases)[0];
+        throw InvalidUniqueId::caseNotPresent($enumName);
+
     }
 }

@@ -91,7 +91,7 @@ The package works with cases written in UPPER_CASE, snake_case and PascalCase.
 - [Unique ID](#uniqueid)
 - [Descriptions & Translations](#descriptions-and-translations)
 - [LaravelHelper](#laravel)
-- [Add-on] (#add-on)
+- [Add-on](#add-on)
 
 
 

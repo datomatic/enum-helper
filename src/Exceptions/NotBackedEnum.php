@@ -10,6 +10,6 @@ class NotBackedEnum extends LogicException
 {
     public function __construct(string $enumClass)
     {
-        parent::__construct($enumClass ." is not a BackedEnum");
+        parent::__construct($enumClass . ' is not a BackedEnum');
     }
 }

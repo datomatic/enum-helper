@@ -6,7 +6,6 @@ namespace Datomatic\EnumHelper\Tests\Support\Enums;
 
 use Datomatic\EnumHelper\EnumHelper;
 use Datomatic\EnumHelper\Traits\EnumDescription;
-use Datomatic\EnumHelper\Traits\LaravelEnum;
 use Datomatic\EnumHelper\Traits\EnumUniqueId;
 
 /**

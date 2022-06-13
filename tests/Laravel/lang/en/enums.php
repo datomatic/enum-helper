@@ -30,7 +30,7 @@ return [
             'ACCEPTED' => 'ls klsa dlksa dlksa salk salk',
             'DISCARDED' => 'ksalsa ld djks jjdk skjd j',
             'NO_RESPONSE' => 'as dklasd asldldlasd',
-        ]
+        ],
     ],
     LaravelStatusString::class => [
         'description' => [
@@ -44,6 +44,6 @@ return [
             'ACCEPTED' => 'ls klsa dlksa dlksa salk salk',
             'DISCARDED' => 'ksalsa ld djks jjdk skjd j',
             'NO_RESPONSE' => 'as dklasd asldldlasd',
-        ]
+        ],
     ],
 ];

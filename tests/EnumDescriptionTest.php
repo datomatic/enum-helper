@@ -32,7 +32,6 @@ it('throw an EmptyCases exception calling descriptions method with empty cases',
     expect(fn () => $enumClass::descriptions($cases))->toThrow(EmptyCases::class, "The enum $enumClass has empty case or you pass empty array as parameter");
 })->with('emptyCases');
 
-
 it('can return an associative array [name => description]', function ($className, $cases, $values) {
     expect($className::descriptionsByName($cases))->toBe($values);
 })->with([
@@ -118,8 +117,6 @@ it('throw an EmptyCases exception calling descriptionsByValue method with empty 
     expect(fn () => $enumClass::descriptionsByValue($cases))->toThrow(EmptyCases::class, "The enum $enumClass has empty case or you pass empty array as parameter");
 })->with('emptyCases');
 
-
 it('throw an NotBackedEnum exception with pure enum calling descriptionsByValue method', function ($enumClass, $cases) {
-    expect(fn() => $enumClass::descriptionsByValue($cases))->toThrow(NotBackedEnum::class, "$enumClass is not a BackedEnum");
+    expect(fn () => $enumClass::descriptionsByValue($cases))->toThrow(NotBackedEnum::class, "$enumClass is not a BackedEnum");
 })->with('notBackedEnum');
-

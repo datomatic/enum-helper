@@ -54,8 +54,6 @@ trait EnumNames
      * Get an associative array of [case value => case name] on pure Enum.
      * Get an associative array of [case name => case name] on BackedEnum.
      *
-     * @param array|null $cases
-     * @return array
      * @throws EmptyCases
      */
     public static function namesAsSelect(?array $cases = null): array

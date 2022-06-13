@@ -42,18 +42,15 @@ trait LaravelEnum
 
         if ($singularMethod = self::getSingularIfEndsWith($method, 'ByName')) {
             $results = static::dynamicByKey('name', $singularMethod, ...$args);
-
         } elseif ($singularMethod = self::getSingularIfEndsWith($method, 'ByValue')) {
             $results = static::dynamicByKey('value', $singularMethod, ...$args);
-
         } elseif ($singularMethod = self::getSingularIfEndsWith($method, 'AsSelect')) {
             $results = static::dynamicAsSelect($singularMethod, ...$args);
-
         } elseif (($singularMethod = Str::singular($method)) && $singularMethod !== $method) {
             $results = static::dynamicList($singularMethod, $parameters[0] ?? null, $parameters[1] ?? null);
         }
 
-        if (!empty($results)) {
+        if (! empty($results)) {
             $first = reset($results);
             if (is_string($first) && str($first)->startsWith(self::translateUniquePath($singularMethod))) {
                 throw new TranslationMissing(self::class, $singularMethod);
@@ -67,9 +64,10 @@ trait LaravelEnum
 
     private static function getSingularIfEndsWith(string $method, string $string): string
     {
-        return str($method)->whenEndsWith($string,
-            fn($str) => $str->rtrim($string)->singular(),
-            fn($str) => str('')
+        return str($method)->whenEndsWith(
+            $string,
+            fn ($str) => $str->rtrim($string)->singular(),
+            fn ($str) => str('')
         )->toString();
     }
 }

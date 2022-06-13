@@ -7,7 +7,6 @@ use Datomatic\EnumHelper\Exceptions\NotBackedEnum;
 use Datomatic\EnumHelper\Tests\Support\Enums\StatusInt;
 use Datomatic\EnumHelper\Tests\Support\Enums\StatusString;
 
-
 it('can return an array of case values', function ($enumClass, $result) {
     expect($enumClass::values())->toBe($result);
 })->with([
@@ -61,9 +60,9 @@ it('can return an associative array of values with cases param', function ($enum
 ]);
 
 it('throw an EmptyCases exception calling namesByValue method with empty cases', function ($enumClass, $cases) {
-    expect(fn() => $enumClass::valuesByName($cases))->toThrow(EmptyCases::class, "The enum $enumClass has empty case or you pass empty array as parameter");
+    expect(fn () => $enumClass::valuesByName($cases))->toThrow(EmptyCases::class, "The enum $enumClass has empty case or you pass empty array as parameter");
 })->with('emptyCases');
 
 it('throw an NotBackedEnum exception with pure enum calling namesByValue method', function ($enumClass, $cases) {
-    expect(fn() => $enumClass::valuesByName($cases))->toThrow(NotBackedEnum::class, "$enumClass is not a BackedEnum");
+    expect(fn () => $enumClass::valuesByName($cases))->toThrow(NotBackedEnum::class, "$enumClass is not a BackedEnum");
 })->with('notBackedEnum');

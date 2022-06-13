@@ -427,7 +427,7 @@ $enum->description('it'); // 🇮🇹 'In attesa'
 
 
 ### Laravel
-If you use Laravel framework you can use the `LaravelEnum` trait (includes `EnumInvokable`, `EnumFroms`, `EnumNames`, 
+If you use Laravel framework (v 8.*,9.*) you can use the `LaravelEnum` trait (includes `EnumInvokable`, `EnumFroms`, `EnumNames`, 
 `EnumValues`, `EnumEquality`).  
 This trait extends `EnumHelper` functionalities and add dynamic methods to return a translation or property method and 
 relative methods.

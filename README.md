@@ -442,7 +442,7 @@ For example, you can define a `color()` method and obtain automatically `colors(
 
 The cool thing is you can also avoid writing the method and write the translations. 
 For example, you can define the property `excerpt` by writing the translations on enum.php (see below for explanation) 
-and obtain `excerpts()`, `excerptsByName()`, `excerptsByValue()`, `excerptsAsSelect()` methods.
+and obtain `excerpt()`, `excerpts()`, `excerptsByName()`, `excerptsByValue()`, `excerptsAsSelect()` methods.
 
 The package use the [Laravel `Pluralizer` component](https://laravel.com/docs/localization#pluralization-language) to get the singular method to call or to translate.
 
@@ -531,10 +531,16 @@ public function description(?string $lang = null): string
     };
 ```
 
-#### [property]s()
+#### `[property]()` method
+This dynamic method try to resolve `property()` method on the enum.  
+If the method not exist try to translate the instance value with the framework translation function 
+`__("enums.Namespace\EnumClass.property.CASE_NAME")`.  
+In case the translation not exist throw an `TranslationMissing` exception.
+
+
+#### static `[property]s()` method
 
 This dynamic method gets a list of case `property()` returns of the enum.
-In case the `property()` method is not defined, the package takes the enum class `property` translation.
 The name of the method is the plural of the `property` so if you are using `property` is `properties()`. 
 
 ```php
@@ -551,9 +557,8 @@ Status::descriptions([Status::NO_RESPONSE, Status::DISCARDED], 'it'); // 🇮�
 StatusString::colors([StatusString::ACCEPTED, StatusString::NO_RESPONSE], 'it'); // ['#0000FF','#FFFFFF']
 ```
 
-#### [property]sByName()
+#### static `[property]sByName()` method
 This dynamic method returns an associative array of [case name => `property()` result].
-In case the `property()` method is not defined, the package takes the enum class `property` translation.
 The name of the method is the plural of the `property` so if you are using `property` is `propertiesByName()`.
 
 ```php
@@ -569,9 +574,8 @@ StatusString::descriptionsByName(null, 'it'); // 🇮🇹 ['P' => 'In attesa','A
 Status::descriptionsByName([Status::DISCARDED, Status::NO_RESPONSE], 'it'); // 🇮🇹 ['DISCARDED' => 'Rifiutato','NO_RESPONSE' => 'Nessuna Risposta',...
 ```
 
-#### [property]sByValue()
+#### static `[property]sByValue()` method
 This dynamic method returns an associative array of [case value => `property()` result]  on `BackedEnum`, throw `NotBackedEnum` exception otherwise.
-In case the `property()` method is not defined, the package takes the enum class `property` translation.
 The name of the method is the plural of the `property` so if you are using `property` is `propertiesByValue()`.
 
 ```php
@@ -587,9 +591,8 @@ StatusString::descriptionsByValue(null, 'it'); // 🇮🇹 ['P' => 'In attesa','
 StatusString::descriptionsByValue([StatusString::DISCARDED, StatusString::NO_RESPONSE], 'it'); // 🇮🇹 ['D' => 'Rifiutato','N' => 'Nessuna Risposta',...
 ```
 
-#### [property]sAsSelect()
+#### static `[property]sAsSelect()` method
 This dynamic method returns an associative array of [case value => `property()` result]  on `BackedEnum`,  [case name => `property()` result] otherwise.
-In case the `property()` method is not defined, the package takes the enum class `property` translation.
 The name of the method is the plural of the `property` so if you are using `property` is `propertiesAsSelect()`.
 
 ```php

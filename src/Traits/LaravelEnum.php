@@ -18,11 +18,17 @@ trait LaravelEnum
     }
 
     /**
-     * Magic method to return different type of translation.
+     * Magic method to return a translation.
      */
     public function __call(string $method, array $parameters): string
     {
-        return __(self::translateUniquePath($method) . '.' . $this->name, [], $parameters[0] ?? null);
+        $translation =  __(self::translateUniquePath($method) . '.' . $this->name, [], $parameters[0] ?? null);
+
+        if(Str::of($translation)->startsWith(self::translateUniquePath($method))){
+            throw new TranslationMissing(self::class, $method);
+        }
+
+        return $translation;
     }
 
     protected static function translateUniquePath(string $method)
@@ -50,16 +56,12 @@ trait LaravelEnum
             $results = static::dynamicList($singularMethod, $parameters[0] ?? null, $parameters[1] ?? null);
         }
 
-        if (! empty($results)) {
-            $first = reset($results);
-            if (is_string($first) && Str::of($first)->startsWith(self::translateUniquePath($singularMethod))) {
-                throw new TranslationMissing(self::class, $singularMethod);
-            }
-
-            return $results;
+        if (empty($results)) {
+            throw new UndefinedStaticMethod(self::class, $method);
         }
 
-        throw new UndefinedStaticMethod(self::class, $method);
+        return $results;
+
     }
 
     private static function getSingularIfEndsWith(string $method, string $string): ?string

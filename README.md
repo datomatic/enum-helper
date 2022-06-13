@@ -17,7 +17,7 @@ This package is framework agnostic, but has there is an optional set of instrume
 - **Values**: methods to have a list of case values (`values()`, `valuesByName()`)
 - **Unique ID**: get an unique identifier from instance or instance from identifier (`uniqueId()`, `fromUniqueId()`)
 - **Descriptions & Translations**: add description to enum with optional translation (`description()`,`descriptions()`,`descriptionsByName()`,`descriptionsByValue()`,`descriptionsAsSelect()`)
-- **`LaravelEnum`**: dynamic methods to return a translation or property method and relative methods (`{$dinamic}()`,`{$dinamic}s()`,`{$dinamic}sByName()`,`{$dinamic}sByValue()`,`{$dinamic}sAsSelect()`)
+- **`LaravelEnum`**: dynamic methods to return a translation or property method and relative methods (`{$dinamic}()`,`{$dinamic}s()`,`{$dinamic}sByName()`,`{$dinamic}sByValue()`,`{$dinamic}sAsSelect()`) [ONLY for Laravel Framework]
 
 ## Installation
 
@@ -432,7 +432,7 @@ If you use Laravel framework you can use the `LaravelEnum` trait (includes `Enum
 This trait extends `EnumHelper` functionalities and add dynamic methods to return a translation or property method and 
 relative methods.
 
-You can think about an [`EnumDescription` trait](#descriptions-and-translations) but completely dynamic.
+You can think about it as an [`EnumDescription` trait](#descriptions-and-translations) but completely dynamic.
 
 So you can define a custom method and have these functions available: `[method]s()`, `[method]sByName()`, 
 `[method]sByValue()`, `[method]sAsSelect()`.

@@ -66,8 +66,8 @@ trait LaravelEnum
     {
         return Str::of($method)->whenEndsWith(
             $string,
-            fn($str) => $str->rtrim($string)->singular(),
-            fn($str) => Str::of('')
+            fn ($str) => $str->rtrim($string)->singular(),
+            fn ($str) => Str::of('')
         )->toString();
     }
 }

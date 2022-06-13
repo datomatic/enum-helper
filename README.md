@@ -541,7 +541,7 @@ In case the translation not exist throw an `TranslationMissing` exception.
 #### static `[property]s()` method
 
 This dynamic method gets a list of case `property()` returns of the enum.
-The name of the method is the plural of the `property` so if you are using `property` is `properties()`. 
+The name of the method is the plural of the `property` so if you are using `property` it will be `properties()`. 
 
 ```php
 StatusString::descriptions(); // ['Await decision','Recognized valid','No longer useful','No response']
@@ -559,7 +559,7 @@ StatusString::colors([StatusString::ACCEPTED, StatusString::NO_RESPONSE], 'it');
 
 #### static `[property]sByName()` method
 This dynamic method returns an associative array of [case name => `property()` result].
-The name of the method is the plural of the `property` so if you are using `property` is `propertiesByName()`.
+The name of the method is the plural of the `property` so if you are using `property` it will be `propertiesByName()`.
 
 ```php
 StatusString::descriptionsByName(); // ['PENDING' => 'Await decision', 'ACCEPTED' => 'Recognized valid',...
@@ -576,7 +576,7 @@ Status::descriptionsByName([Status::DISCARDED, Status::NO_RESPONSE], 'it'); // ð
 
 #### static `[property]sByValue()` method
 This dynamic method returns an associative array of [case value => `property()` result]  on `BackedEnum`, throw `NotBackedEnum` exception otherwise.
-The name of the method is the plural of the `property` so if you are using `property` is `propertiesByValue()`.
+The name of the method is the plural of the `property` so if you are using `property` it will be `propertiesByValue()`.
 
 ```php
 StatusString::descriptionsByValue(); // ['P' => 'Await decision', 'A' => 'Recognized valid',...
@@ -593,7 +593,7 @@ StatusString::descriptionsByValue([StatusString::DISCARDED, StatusString::NO_RES
 
 #### static `[property]sAsSelect()` method
 This dynamic method returns an associative array of [case value => `property()` result]  on `BackedEnum`,  [case name => `property()` result] otherwise.
-The name of the method is the plural of the `property` so if you are using `property` is `propertiesAsSelect()`.
+The name of the method is the plural of the `property` so if you are using `property` it will be `propertiesAsSelect()`.
 
 ```php
 StatusString::descriptionsAsSelect(); // ['P' => 'Await decision', 'A' => 'Recognized valid',...

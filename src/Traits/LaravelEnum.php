@@ -22,9 +22,9 @@ trait LaravelEnum
      */
     public function __call(string $method, array $parameters): string
     {
-        $translation =  __(self::translateUniquePath($method) . '.' . $this->name, [], $parameters[0] ?? null);
+        $translation = __(self::translateUniquePath($method) . '.' . $this->name, [], $parameters[0] ?? null);
 
-        if(Str::of($translation)->startsWith(self::translateUniquePath($method))){
+        if (Str::of($translation)->startsWith(self::translateUniquePath($method))) {
             throw new TranslationMissing(self::class, $method);
         }
 
@@ -61,7 +61,6 @@ trait LaravelEnum
         }
 
         return $results;
-
     }
 
     private static function getSingularIfEndsWith(string $method, string $string): ?string

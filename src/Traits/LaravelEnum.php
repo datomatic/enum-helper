@@ -50,7 +50,7 @@ trait LaravelEnum
             $results = static::dynamicList($singularMethod, $parameters[0] ?? null, $parameters[1] ?? null);
         }
 
-        if (!empty($results)) {
+        if (! empty($results)) {
             $first = reset($results);
             if (is_string($first) && Str::of($first)->startsWith(self::translateUniquePath($singularMethod))) {
                 throw new TranslationMissing(self::class, $singularMethod);

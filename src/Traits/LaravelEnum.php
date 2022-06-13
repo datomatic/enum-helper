@@ -67,6 +67,7 @@ trait LaravelEnum
         if (Str::of($method)->endsWith($string)) {
             return Str::singular(Str::of($method)->rtrim($string));
         }
+
         return null;
     }
 }

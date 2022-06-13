@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 use Datomatic\EnumHelper\Tests\Support\Enums\Status;
 use Datomatic\EnumHelper\Tests\Support\Enums\StatusPascalCase;
 

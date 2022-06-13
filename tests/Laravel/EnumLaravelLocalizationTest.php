@@ -21,7 +21,6 @@ it('has correct translation text on laravel passing lang', function ($enum, $lan
     'ita' => [LaravelStatus::PENDING, 'it', 'In attesa'],
 ]);
 
-
 it('can return a translation with magic method', function ($enum, $result) {
     expect($enum->excerpt())->toBe($result);
 })->with([
@@ -87,21 +86,20 @@ it('can return an array of translations with magic method', function ($enumClass
     'with cases' => [LaravelStatus::class, [LaravelStatus::NO_RESPONSE, LaravelStatus::DISCARDED], 'en', [
         'as dklasd asldldlasd',
         'ksalsa ld djks jjdk skjd j',
-    ]]
+    ]],
 ]);
 
 it('can return an array of properties with magic method', function ($enumClass, $cases, $lang, $result) {
     expect($enumClass::colors($cases, $lang))->toBe($result);
 })->with([
-    [LaravelStatus::class, null, null,['#000000','#0000FF','#FF0000','#FFFFFF']],
-    [LaravelStatus::class, [LaravelStatus::ACCEPTED, LaravelStatus::NO_RESPONSE], 'it', ['#0000FF','#FFFFFF']]
+    [LaravelStatus::class, null, null, ['#000000', '#0000FF', '#FF0000', '#FFFFFF']],
+    [LaravelStatus::class, [LaravelStatus::ACCEPTED, LaravelStatus::NO_RESPONSE], 'it', ['#0000FF', '#FFFFFF']],
 ]);
-
 
 it('can return an array of properties with magic method with 2 words', function ($enumClass, $cases, $lang, $result) {
     expect($enumClass::multipleColors($cases, $lang))->toBe($result);
 })->with([
-    [LaravelStatus::class, null, null, [['#000000','#000001'],['#0000FF','#0000F1'],['#FF0000','#FF0001'],['#FFFFFF','#FFFFF1']]]
+    [LaravelStatus::class, null, null, [['#000000', '#000001'], ['#0000FF', '#0000F1'], ['#FF0000', '#FF0001'], ['#FFFFFF', '#FFFFF1']]],
 ]);
 
 it('can return an array of translations with magic method with multiple worlds', function ($enumClass, $cases, $lang, $result) {
@@ -116,7 +114,7 @@ it('can return an array of translations with magic method with multiple worlds',
     'with cases' => [LaravelStatus::class, [LaravelStatus::NO_RESPONSE, LaravelStatus::DISCARDED], 'en', [
         'as dklasd asldldlasd',
         'ksalsa ld djks jjdk skjd j',
-    ]]
+    ]],
 ]);
 
 it('can return an array of translations with magic method with multiple worlds _', function ($enumClass, $cases, $lang, $result) {
@@ -131,9 +129,8 @@ it('can return an array of translations with magic method with multiple worlds _
     'with cases' => [LaravelStatus::class, [LaravelStatus::NO_RESPONSE, LaravelStatus::DISCARDED], 'en', [
         'as dklasd asldldlasd',
         'ksalsa ld djks jjdk skjd j',
-    ]]
+    ]],
 ]);
-
 
 it('can return an associative array of translations [name => translations]', function ($enumClass, $result) {
     expect($enumClass::descriptionsByName())->toBe($result);
@@ -187,7 +184,6 @@ it('can return an associative array of translations [name => translations] with 
     ]],
 ]);
 
-
 it('can return an associative array of translations [value => translations] with params', function ($enumClass, $cases, $lang, $result) {
     expect($enumClass::descriptionsByValue($cases, $lang))->toBe($result);
 })->with([
@@ -201,7 +197,6 @@ it('can return an associative array of translations [value => translations] with
         'N' => 'Nessuna Risposta',
     ]],
 ]);
-
 
 it('can return an associative array of translations [name => translations] with excerpt magic method', function ($enumClass, $result) {
     expect($enumClass::excerptsByName())->toBe($result);
@@ -224,7 +219,6 @@ it('can return an associative array of properties [name => translations] with ex
         'NO_RESPONSE' => '#FFFFFF',
     ]],
 ]);
-
 
 it('can return an associative array of translations [value => translations] with excerpt magic method', function ($enumClass, $cases, $lang, $result) {
     expect($enumClass::excerptsByValue($cases, $lang))->toBe($result);
@@ -256,7 +250,6 @@ it('can return an associative array of properties [value => translations] with e
     ]],
 ]);
 
-
 it('can return an associative array [value/name => translation]', function ($className, $cases, $lang, $values) {
     expect($className::descriptionsAsSelect($cases, $lang))->toBe($values);
 })->with([
@@ -280,14 +273,13 @@ it('can return an associative array [value/name => translation]', function ($cla
         [LaravelStatusString::DISCARDED, LaravelStatusString::ACCEPTED], 'it', [
         'D' => 'Rifiutato',
         'A' => 'Accettato',
-    ]],
+    ], ],
 ]);
 
-it('throw an TranslationMissing exception',function (){
+it('throw an TranslationMissing exception', function () {
     LaravelStatus::notExistes();
 })->throws(TranslationMissing::class);
 
-it('throw an UndefinedStaticMethod exception',function (){
+it('throw an UndefinedStaticMethod exception', function () {
     LaravelStatus::bloba();
 })->throws(UndefinedStaticMethod::class);
-

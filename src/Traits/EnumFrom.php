@@ -49,11 +49,12 @@ trait EnumFrom
      */
     public static function tryFromName(string $enumName): ?static
     {
-        foreach (self::cases() as $case){
-            if( $case->name === $enumName){
+        foreach (self::cases() as $case) {
+            if ($case->name === $enumName) {
                 return $case;
             }
         }
+
         return null;
     }
 }

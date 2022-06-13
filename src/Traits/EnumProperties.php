@@ -13,10 +13,7 @@ trait EnumProperties
     /**
      * Return array of all description (all cases or cases passed by param).
      *
-     * @param string $method
      * @param null|array<self> $cases
-     * @param string|null $lang
-     * @return array
      */
     protected static function dynamicList(string $method, ?array $cases = null, ?string $lang = null): array
     {
@@ -30,13 +27,7 @@ trait EnumProperties
     }
 
     /**
-     * Return as associative array [$key => $method() value]n on Backed Enum
-     *
-     * @param string $key
-     * @param string $method
-     * @param array|null $cases
-     * @param string|null $lang
-     * @return array
+     * Return as associative array [$key => $method() value]n on Backed Enum.
      */
     protected static function dynamicByKey(string $key, string $method, ?array $cases = null, ?string $lang = null): array
     {
@@ -49,7 +40,7 @@ trait EnumProperties
         $result = [];
 
         foreach ($cases as $enum) {
-            if($key === 'value' && !$enum instanceof BackedEnum) {
+            if ($key === 'value' && ! $enum instanceof BackedEnum) {
                 throw new NotBackedEnum(static::class);
             }
             $result[$enum->$key] = $enum->$method($lang);
@@ -60,20 +51,14 @@ trait EnumProperties
 
     /**
      * Return as associative array [name => $method() value] on Pure Enum
-     * Return as associative array [value => $method() value] on Backed Enum
-     *
-     * @param string $method
-     * @param array|null $cases
-     * @param string|null $lang
-     * @return array
+     * Return as associative array [value => $method() value] on Backed Enum.
      */
     protected  static function dynamicAsSelect(string $method, ?array $cases = null, ?string $lang = null): array
     {
-        try{
+        try {
             return self::dynamicByKey('value', $method, $cases, $lang);
-        }catch(NotBackedEnum $e){
+        } catch (NotBackedEnum $e) {
             return self::dynamicByKey('name', $method, $cases, $lang);
         }
     }
-
 }

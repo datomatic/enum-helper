@@ -37,9 +37,9 @@ enum LaravelStatus
     public function multipleColor(): array
     {
         return match ($this) {
-            self::PENDING => ['#000000','#000001'],
+            self::PENDING => ['#000000', '#000001'],
             self::ACCEPTED => ['#0000FF', '#0000F1'],
-            self::DISCARDED => ['#FF0000','#FF0001'],
+            self::DISCARDED => ['#FF0000', '#FF0001'],
             self::NO_RESPONSE => ['#FFFFFF', '#FFFFF1'],
         };
     }

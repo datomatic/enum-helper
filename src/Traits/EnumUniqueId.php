@@ -36,13 +36,12 @@ trait EnumUniqueId
             throw InvalidUniqueId::wrongClassName($uniqueId);
         }
 
-        foreach (self::cases() as $case){
-            if( $case->name === $enumName){
+        foreach (self::cases() as $case) {
+            if ($case->name === $enumName) {
                 return $case;
             }
         }
 
         throw InvalidUniqueId::caseNotPresent($enumName);
-
     }
 }

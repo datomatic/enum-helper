@@ -20,10 +20,10 @@ trait EnumInvokable
     /**
      * Return the enum's value or name when it's called ::STATICALLY(), ::statically() or ::Statically().
      *
-     * @param $args
+     * @param array $args
      * @throws UndefinedCase
      */
-    public static function __callStatic(string $enumName, $args): string|int
+    public static function __callStatic(string $enumName, array $args): string|int
     {
         foreach (self::cases() as $case) {
             if (

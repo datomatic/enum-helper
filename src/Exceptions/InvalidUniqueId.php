@@ -4,9 +4,9 @@ declare(strict_types=1);
 
 namespace Datomatic\EnumHelper\Exceptions;
 
-use Exception;
+use UnexpectedValueException;
 
-class InvalidUniqueId extends Exception
+class InvalidUniqueId extends UnexpectedValueException
 {
     /**
      * @return InvalidUniqueId

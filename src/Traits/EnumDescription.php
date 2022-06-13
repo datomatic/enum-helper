@@ -4,10 +4,10 @@ declare(strict_types=1);
 
 namespace Datomatic\EnumHelper\Traits;
 
-use BackedEnum;
-
 trait EnumDescription
 {
+    use EnumProperties;
+
     abstract public function description(?string $lang = null): string;
 
     /**
@@ -17,27 +17,42 @@ trait EnumDescription
      */
     public static function descriptions(?array $cases = null, ?string $lang = null): array
     {
-        $cases ??= static::cases();
-
-        return array_map(fn (self $enum) => $enum->description($lang), $cases);
+        return self::dynamicList('description', $cases, $lang);
     }
 
     /**
-     * Return as associative array with value/name => description  (all cases or cases passed by param).
+     * Return as associative array with name => description  (all cases or cases passed by param).
      *
      * @param null|array<self> $cases
      * @return array<string, string>
      */
-    public static function descriptionsArray(?array $cases = null, ?string $lang = null): array
+    public static function descriptionsByName(?array $cases = null, ?string $lang = null): array
     {
-        $cases ??= static::cases();
+        return self::dynamicByKey('name', 'description', $cases, $lang);
+    }
 
-        $result = [];
+    /**
+     * [ONLY for BackedEnum]
+     * Return as associative array with value => description  (all cases or cases passed by param).
+     *
+     * @param null|array<self> $cases
+     * @return array<string, string>
+     */
+    public static function descriptionsByValue(?array $cases = null, ?string $lang = null): array
+    {
+        return self::dynamicByKey('value', 'description', $cases, $lang);
+    }
 
-        foreach ($cases as $enum) {
-            $result[$enum instanceof BackedEnum ? $enum->value : $enum->name] = $enum->description($lang);
-        }
-
-        return $result;
+    /**
+     * Return as associative array with [name => description] on Pure Enum
+     * Return as associative array with [value => description] on Backed Enum
+     * of all cases or cases passed by param.
+     *
+     * @param null|array<self> $cases
+     * @return array<string, string>
+     */
+    public static function descriptionsAsSelect(?array $cases = null, ?string $lang = null): array
+    {
+        return self::dynamicAsSelect('description', $cases, $lang);
     }
 }

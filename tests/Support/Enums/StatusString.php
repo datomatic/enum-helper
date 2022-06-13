@@ -5,7 +5,8 @@ declare(strict_types=1);
 namespace Datomatic\EnumHelper\Tests\Support\Enums;
 
 use Datomatic\EnumHelper\EnumHelper;
-use Datomatic\EnumHelper\Traits\EnumLaravelLocalization;
+use Datomatic\EnumHelper\Traits\EnumDescription;
+use Datomatic\EnumHelper\Traits\LaravelEnum;
 use Datomatic\EnumHelper\Traits\EnumUniqueId;
 
 /**
@@ -21,7 +22,7 @@ enum StatusString: string
 {
     use EnumHelper;
     use EnumUniqueId;
-    use EnumLaravelLocalization;
+    use EnumDescription;
 
     case PENDING = 'P';
 

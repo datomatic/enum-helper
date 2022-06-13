@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace Datomatic\EnumHelper\Tests\Laravel\Enums;
 
-use Datomatic\EnumHelper\Traits\EnumLaravelLocalization;
+use Datomatic\EnumHelper\Traits\LaravelEnum;
 
 /**
  * @method static string pending()
@@ -14,7 +14,7 @@ use Datomatic\EnumHelper\Traits\EnumLaravelLocalization;
  */
 enum LaravelStatusString: string
 {
-    use EnumLaravelLocalization;
+    use LaravelEnum;
 
     case PENDING = 'P';
 
@@ -23,4 +23,14 @@ enum LaravelStatusString: string
     case DISCARDED = 'D';
 
     case NO_RESPONSE = 'N';
+
+    public function color(): string
+    {
+        return match ($this) {
+            self::PENDING => '#000000',
+            self::ACCEPTED => '#0000FF',
+            self::DISCARDED => '#FF0000',
+            self::NO_RESPONSE => '#FFFFFF',
+        };
+    }
 }

@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace Datomatic\EnumHelper\Tests\Support\Enums;
 
 use Datomatic\EnumHelper\EnumHelper;
+use Datomatic\EnumHelper\Traits\EnumDescription;
 use Datomatic\EnumHelper\Traits\EnumUniqueId;
 
 /**
@@ -19,6 +20,7 @@ enum StatusPascalCase
 {
     use EnumHelper;
     use EnumUniqueId;
+    use EnumDescription;
 
     case Pending;
 
@@ -27,4 +29,14 @@ enum StatusPascalCase
     case Discarded;
 
     case NoResponse;
+
+    public function description(?string $lang = null): string
+    {
+        return match ($this) {
+            self::Pending => 'Await decision',
+            self::Accepted => 'Recognized valid',
+            self::Discarded => 'No longer useful',
+            self::NoResponse => 'No response',
+        };
+    }
 }

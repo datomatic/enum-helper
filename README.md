@@ -1,22 +1,23 @@
 ![Enum Helper-Dark](branding/dark.png#gh-dark-mode-only)![Enum Helper-Light](branding/light.png#gh-light-mode-only)
 # Enum Helper
 [![Latest Version on Packagist](https://img.shields.io/packagist/v/datomatic/enum-helper.svg?style=for-the-badge)](https://packagist.org/packages/datomatic/enum-helper)
-[![Pest Tests number](https://img.shields.io/static/v1?label=%23tests&message=186&color=FF88FA&style=for-the-badge&logo=data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABwAAAAcCAMAAABF0y+mAAABiVBMVEUAAAD/iPv9yP3Xm+j/mP//wfVj67Je6bP/h/pVx6p6175d57WQycf+iPn/iPrsnezArd3+t/qpvNJd6LP/jPpu6rv/lPr/kPpc57T/rvtc57Np6rj3oPl37cL/tfn/wv9d6brX//L/g/rYn+n/gvrWm+di6LX+jPrskfGWzMpt6bln4bdd57Jk6LWSycj+vPquwNVo6rde6bP7nvvYnup91b/+vfv/lvtc57OqvNTFs9//t/td57L9t/r/iPpd6LPapej/ovp26bxy67v9lfld6LJr4Ljwsvb/xv3/jv39zv1t6buG5cTDreH5ivlc5rJy676V4cxb57D/y/h50MOy4OCUxcVa77X/iPpe6LP/jP+pu9L8t///tvuQycfArNxp6LzArd151r7/i/9n4bb/j/9e6rT/ifr7ifrskvLYnuhi87tg8blg7bf/vv//lP+wxNtj9b3/qv//oP/+ivz/l/r8ifryn/fvlPTfpPDeofDKtujHtOWX1NF/4seC3cR82sFu7cBo5LiMwPMrAAAAWHRSTlMA/Wv8FAIC/dME/Wj+3tEG/Pv798G1oHRjS0k1LBsWDgsJ/v36+fTy8ezn4+Lh29XNzMzLysLAwLSwr66opJqakY+Ni4J7end0bGlpY11XU048KicmIR8fizl+vwAAAVdJREFUKM9tz2VXAlEQgOFBBURpkE67u7u7E1YFYQl1SbvrlztDiLvss+fc/fCemXMvAEhhKqU759P1rLoxUDUyEh9fPH0z7ALiVrEY+SSNtxNS2upouYv7hOL191aKVsZHUTgbnQPQgDkq4ctHdoQmTWmW4WFzlVUDVpNKXf2fWpWbZIwUq/hcmjWGYnSa1pZZjEoomrEdVAisD7CX6GEb40rqTODxCj21OjDOvjRV8l2jhudBDchg/FUbDIZCITzwQyH6a9+2AMDbm9GfltFnxgAdtQWUgQJl4VQq37uPcSnsfYZzav6Ew18fQ4fUYPM7Qn4uSiIdyx5saJ6T+/3+5KSltshicwI2UpfAKE/aoARTvnn7KMYMdlAUyWRSyHN2JeU42HlCi4TszTHcmuj3iMVdP5JzoyAWNzi6T3ZGrMFCliK3BAqRSC/B2+6IxvYYNcO+2Npfv+yFi10LfBUAAAAASUVORK5CYII=)](https://github.com/datomatic/enum-helper/tree/main/tests)
+[![Pest Tests number](https://img.shields.io/static/v1?label=%23tests&message=253&color=FF88FA&style=for-the-badge&logo=data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABwAAAAcCAMAAABF0y+mAAABiVBMVEUAAAD/iPv9yP3Xm+j/mP//wfVj67Je6bP/h/pVx6p6175d57WQycf+iPn/iPrsnezArd3+t/qpvNJd6LP/jPpu6rv/lPr/kPpc57T/rvtc57Np6rj3oPl37cL/tfn/wv9d6brX//L/g/rYn+n/gvrWm+di6LX+jPrskfGWzMpt6bln4bdd57Jk6LWSycj+vPquwNVo6rde6bP7nvvYnup91b/+vfv/lvtc57OqvNTFs9//t/td57L9t/r/iPpd6LPapej/ovp26bxy67v9lfld6LJr4Ljwsvb/xv3/jv39zv1t6buG5cTDreH5ivlc5rJy676V4cxb57D/y/h50MOy4OCUxcVa77X/iPpe6LP/jP+pu9L8t///tvuQycfArNxp6LzArd151r7/i/9n4bb/j/9e6rT/ifr7ifrskvLYnuhi87tg8blg7bf/vv//lP+wxNtj9b3/qv//oP/+ivz/l/r8ifryn/fvlPTfpPDeofDKtujHtOWX1NF/4seC3cR82sFu7cBo5LiMwPMrAAAAWHRSTlMA/Wv8FAIC/dME/Wj+3tEG/Pv798G1oHRjS0k1LBsWDgsJ/v36+fTy8ezn4+Lh29XNzMzLysLAwLSwr66opJqakY+Ni4J7end0bGlpY11XU048KicmIR8fizl+vwAAAVdJREFUKM9tz2VXAlEQgOFBBURpkE67u7u7E1YFYQl1SbvrlztDiLvss+fc/fCemXMvAEhhKqU759P1rLoxUDUyEh9fPH0z7ALiVrEY+SSNtxNS2upouYv7hOL191aKVsZHUTgbnQPQgDkq4ctHdoQmTWmW4WFzlVUDVpNKXf2fWpWbZIwUq/hcmjWGYnSa1pZZjEoomrEdVAisD7CX6GEb40rqTODxCj21OjDOvjRV8l2jhudBDchg/FUbDIZCITzwQyH6a9+2AMDbm9GfltFnxgAdtQWUgQJl4VQq37uPcSnsfYZzav6Ew18fQ4fUYPM7Qn4uSiIdyx5saJ6T+/3+5KSltshicwI2UpfAKE/aoARTvnn7KMYMdlAUyWRSyHN2JeU42HlCi4TszTHcmuj3iMVdP5JzoyAWNzi6T3ZGrMFCliK3BAqRSC/B2+6IxvYYNcO+2Npfv+yFi10LfBUAAAAASUVORK5CYII=)](https://github.com/datomatic/enum-helper/tree/main/tests)
 [![GitHub Tests Action Status](https://img.shields.io/github/workflow/status/datomatic/enum-helper/run-tests?label=tests&color=5FE8B3&style=for-the-badge&logo=data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABwAAAAcCAMAAABF0y+mAAABiVBMVEUAAAD/iPv9yP3Xm+j/mP//wfVj67Je6bP/h/pVx6p6175d57WQycf+iPn/iPrsnezArd3+t/qpvNJd6LP/jPpu6rv/lPr/kPpc57T/rvtc57Np6rj3oPl37cL/tfn/wv9d6brX//L/g/rYn+n/gvrWm+di6LX+jPrskfGWzMpt6bln4bdd57Jk6LWSycj+vPquwNVo6rde6bP7nvvYnup91b/+vfv/lvtc57OqvNTFs9//t/td57L9t/r/iPpd6LPapej/ovp26bxy67v9lfld6LJr4Ljwsvb/xv3/jv39zv1t6buG5cTDreH5ivlc5rJy676V4cxb57D/y/h50MOy4OCUxcVa77X/iPpe6LP/jP+pu9L8t///tvuQycfArNxp6LzArd151r7/i/9n4bb/j/9e6rT/ifr7ifrskvLYnuhi87tg8blg7bf/vv//lP+wxNtj9b3/qv//oP/+ivz/l/r8ifryn/fvlPTfpPDeofDKtujHtOWX1NF/4seC3cR82sFu7cBo5LiMwPMrAAAAWHRSTlMA/Wv8FAIC/dME/Wj+3tEG/Pv798G1oHRjS0k1LBsWDgsJ/v36+fTy8ezn4+Lh29XNzMzLysLAwLSwr66opJqakY+Ni4J7end0bGlpY11XU048KicmIR8fizl+vwAAAVdJREFUKM9tz2VXAlEQgOFBBURpkE67u7u7E1YFYQl1SbvrlztDiLvss+fc/fCemXMvAEhhKqU759P1rLoxUDUyEh9fPH0z7ALiVrEY+SSNtxNS2upouYv7hOL191aKVsZHUTgbnQPQgDkq4ctHdoQmTWmW4WFzlVUDVpNKXf2fWpWbZIwUq/hcmjWGYnSa1pZZjEoomrEdVAisD7CX6GEb40rqTODxCj21OjDOvjRV8l2jhudBDchg/FUbDIZCITzwQyH6a9+2AMDbm9GfltFnxgAdtQWUgQJl4VQq37uPcSnsfYZzav6Ew18fQ4fUYPM7Qn4uSiIdyx5saJ6T+/3+5KSltshicwI2UpfAKE/aoARTvnn7KMYMdlAUyWRSyHN2JeU42HlCi4TszTHcmuj3iMVdP5JzoyAWNzi6T3ZGrMFCliK3BAqRSC/B2+6IxvYYNcO+2Npfv+yFi10LfBUAAAAASUVORK5CYII=)](https://github.com/datomatic/enum-helper/actions/workflows/run-tests.yml)
 [![GitHub Code Style Action Status](https://img.shields.io/github/workflow/status/datomatic/enum-helper/Check%20&%20fix%20styling?label=code%20style&color=5FE8B3&style=for-the-badge)](https://github.com/datomatic/enum-helper/actions/workflows/php-cs-fixer.yml)
 [![Total Downloads](https://img.shields.io/packagist/dt/datomatic/enum-helper.svg?style=for-the-badge)](https://packagist.org/packages/datomatic/enum-helper)
 
 A simple and opinionated collections of PHP 8.1 enum helpers inspired by [archtechx/enums](https://github.com/archtechx/enums) and [BenSampo/laravel-enum](https://github.com/BenSampo/laravel-enum).  
-This package is framework agnostic, but has there is an optional localization implementation based on Laravel framework.
+This package is framework agnostic, but has there is an optional set of instruments based on Laravel framework.
 
 ## Functionalities summary
 - **Invokable cases**: get the value of enum "invoking" it statically
 - **Construct enum by name or value**: `from()`, `tryFrom()`, `fromName()`, `tryFromName()` for all enums
 - **Enums Equality**:  `is()`, `isNot()`, `in()`, `notIn()` methods
-- **Names**: methods to have a list of case names (`names()`, `namesArray()`)
-- **Values**: methods to have a list of case values (`values()`, `valuesArray()`)
+- **Names**: methods to have a list of case names (`names()`, `namesByValue()`, `namesAsSelect()`)
+- **Values**: methods to have a list of case values (`values()`, `valuesByName()`)
 - **Unique ID**: get an unique identifier from instance or instance from identifier (`uniqueId()`, `fromUniqueId()`)
-- **Descriptions & Translations**: add description to enum with optional translation (`description()`,`descriptions()`,`descriptionsArray()`)
+- **Descriptions & Translations**: add description to enum with optional translation (`description()`,`descriptions()`,`descriptionsByName()`,`descriptionsByValue()`,`descriptionsAsSelect()`)
+- **`LaravelEnum`**: dynamic methods to return a translation or property method and relative methods (`{$dinamic}()`,`{$dinamic}s()`,`{$dinamic}sByName()`,`{$dinamic}sByValue()`,`{$dinamic}sAsSelect()`)
 
 ## Installation
 
@@ -29,8 +30,8 @@ composer require datomatic/enum-helper
 ## Usage
 
 You can use the traits you need, but for convenience, you can use only the `EnumHelper` trait that includes (`EnumInvokable`, `EnumFroms`, `EnumNames`, `EnumValues`, `EnumEquality`).  
-`EnumDescription` and `EnumUniqueId` are separated from `EnumHelper` because they cover edge cases. 
-
+`EnumDescription` and `EnumUniqueId` are separated from `EnumHelper` because they cover edge cases.  
+If you use Laravel Framework you can use the `LaravelEnum` trait that inglobe also the `EnumHelper` trait.
 
 The helper support both pure enum (e.g. `Status`, `StatusPascalCase`) and `BackedEnum` (e.g. `StatusInt`, `StatusString`).
 
@@ -89,6 +90,7 @@ The package works with cases written in UPPER_CASE, snake_case and PascalCase.
 - [Values](#values)
 - [Unique ID](#uniqueid)
 - [Descriptions & Translations](#descriptions-and-translations)
+- [LaravelHelper](#laravel)
 
 
 
@@ -234,7 +236,7 @@ StatusString::PENDING->notIn(['A','D']); // true
 
 
 ### Names
-This helper offer `names()` and `namesArray()` methods.
+This helper offer `names()`, `namesByValue()`, and `namesAsSelect()` methods.
 
 #### `names()`
 This method returns a list of case names in the enum.  
@@ -247,21 +249,31 @@ Status::names([Status::NO_RESPONSE, Status::DISCARDED]); // ['NO_RESPONSE', 'DIS
 StatusPascalCase::names([StatusPascalCase::Accepted, StatusPascalCase::Discarded]); // ['Accepted', 'Discarded']
 ```
 
-#### `namesArray()`
+#### `namesByValue()`
 
-This method returns a associative array of [value => name] on `BackedEnum`, names array otherwise.  
+This method returns an associative array of [value => name] on `BackedEnum`, throw `NotBackedEnum` exception otherwise.  
 ```php
-Status::namesArray(); // ['PENDING', 'ACCEPTED', 'DISCARDED', 'NO_RESPONSE']
-StatusString::namesArray(); // [ 'P'=>'PENDING', 'A'=>'ACCEPTED', 'D'=>'DISCARDED'...
-StatusInt::namesArray(); // [ 0=>'PENDING', 1=>'ACCEPTED', 2=>'DISCARDED'...
+Status::namesByValue(); // throw NotBackedEnum exception
+StatusString::namesByValue(); // [ 'P'=>'PENDING', 'A'=>'ACCEPTED', 'D'=>'DISCARDED'...
+StatusInt::namesByValue(); // [ 0=>'PENDING', 1=>'ACCEPTED', 2=>'DISCARDED'...
 // Subset
-StatusInt::namesArray([StatusInt::NO_RESPONSE, StatusInt::DISCARDED]); // [ 3=>'NO_RESPONSE', 2=>'DISCARDED']
+StatusInt::namesByValue([StatusInt::NO_RESPONSE, StatusInt::DISCARDED]); // [ 3=>'NO_RESPONSE', 2=>'DISCARDED']
 ```
 
+#### `namesAsSelect()`
 
+This method returns an associative array of [value => name] on `BackedEnum`, [name => name] otherwise.
+This is useful when you need a general enum select.
+```php
+Status::namesAsSelect(); // [ 'PENDING'=>'PENDING', 'ACCEPTED'=>'ACCEPTED', 'DISCARDED'=>'DISCARDED'...
+StatusString::namesByValue(); // [ 'P'=>'PENDING', 'A'=>'ACCEPTED', 'D'=>'DISCARDED'...
+// Subset
+Status::namesByValue([Status::NO_RESPONSE, Status::DISCARDED]); // [ 'NO_RESPONSE'=>'NO_RESPONSE', 'DISCARDED'=>'DISCARDED']
+StatusInt::namesByValue([StatusInt::NO_RESPONSE, StatusInt::DISCARDED]); // [ 3=>'NO_RESPONSE', 2=>'DISCARDED']
+```
 
 ### Values 
-This helper offer `values()` and `valuesArray()` methods.
+This helper offer `values()` and `valuesByName()` methods.
 
 #### `values()`
 This method returns a list of case values for `BackedEnum` or a list of case names for pure enums.
@@ -272,17 +284,16 @@ StatusInt::values(); // [0, 1, 2, 3]
 StatusString::values([StatusString::NO_RESPONSE, StatusString::DISCARDED]); // ['N', 'D']
 StatusInt::values([StatusInt::NO_RESPONSE, StatusInt::DISCARDED]); // [3, 2]
 ```
-#### `valuesArray()`
-This method returns a associative array of [case name => case value] on `BackedEnum`, names array otherwise
+#### `valuesByName()`
+This method returns a associative array of [case name => case value] on `BackedEnum`,  throw `NotBackedEnum` exception otherwise.
 ```php
-StatusString::valuesArray(); // ['PENDING' => 'P','ACCEPTED' => 'A','DISCARDED' => 'D','NO_RESPONSE' => 'N']
-StatusInt::valuesArray(); // ['PENDING' => 0,'ACCEPTED' => 1,'DISCARDED' => 2,'NO_RESPONSE' => 3]
+Status::valuesByName(); // throw NotBackedEnum exception
+StatusString::valuesByName(); // ['PENDING' => 'P','ACCEPTED' => 'A','DISCARDED' => 'D','NO_RESPONSE' => 'N']
+StatusInt::valuesByName(); // ['PENDING' => 0,'ACCEPTED' => 1,'DISCARDED' => 2,'NO_RESPONSE' => 3]
 // Subset
-StatusString::valuesArray([StatusString::NO_RESPONSE, StatusString::DISCARDED]); // ['NO_RESPONSE' => 'N', 'DISCARDED' => 'D']
-StatusInt::valuesArray([StatusInt::NO_RESPONSE, StatusInt::DISCARDED]); // ['NO_RESPONSE' => 3, 'DISCARDED' => 2]
+StatusString::valuesByName([StatusString::NO_RESPONSE, StatusString::DISCARDED]); // ['NO_RESPONSE' => 'N', 'DISCARDED' => 'D']
+StatusInt::valuesByName([StatusInt::NO_RESPONSE, StatusInt::DISCARDED]); // ['NO_RESPONSE' => 3, 'DISCARDED' => 2]
 ```
-
-
 
 ### UniqueId
 This helper permits to get an unique identifier from enum or an enum instance from identifier.
@@ -297,6 +308,7 @@ enum Status
     
     ...
 ```
+
 #### uniqueId()
 This method returns the enum unique identifier based on Namespace\ClassName.CASE_NAME.
 You can use this identifier to save multiple types of enums in a database on a polymorphic column.
@@ -305,6 +317,7 @@ Status::PENDING->uniqueId(); // Namespace\Status.PENDING
 $enum = StatusString::NO_RESPONSE;
 $enum->uniqueId(); // Namespace\StatusString.NO_RESPONSE
 ```
+
 #### fromUniqueId()
 This method returns an enum instance from unique identifier.
 ```php
@@ -330,15 +343,16 @@ public function getEnumFromUniqueId(string $uniqueId): object
         throw InvalidUniqueId::uniqueIdFormatIsInvalid($uniqueId);
     }
 
-    list($enumClass, $case) = explode('.', $uniqueId);
+    list($enumClass, $enumName) = explode('.', $uniqueId);
 
-    $cases = array_filter($enumClass::cases(), fn($c) => $c->name === $case);
-
-    if (empty($cases)) {
-        throw InvalidUniqueId::caseNotPresent($case);
+    foreach ($enumClass::cases() as $case){
+        if( $case->name === $enumName){
+                return $case;
+            }
+        }
     }
     
-    return array_values($cases)[0];
+    throw InvalidUniqueId::caseNotPresent($case);
 }
 ```
 
@@ -382,7 +396,6 @@ Status::PENDING->description(); // 'Await decision'
 
 #### Localization
 You can change the `description()` method with your translation method/helper to translate the descriptions.
-If you are using Laravel in a multilingual context you can use [`EnumLaravelLocalization` trait](#laravel) instead.
 ```php
 public function description(?string $lang = null): string
     {
@@ -412,19 +425,57 @@ $enum->description('it'); // 🇮🇹 'In attesa'
 ```
 
 
-#### Laravel
-If you use Laravel framework and you need localization, you can use the `EnumLaravelLocalization` trait instead `EnumDescription`.
-This trait extends `EnumDescription` and implements the `description()` method using Laravel Localization features.
+### Laravel
+If you use Laravel framework you can use the `LaravelEnum` trait (includes `EnumInvokable`, `EnumFroms`, `EnumNames`, 
+`EnumValues`, `EnumEquality`).  
+This trait extends `EnumHelper` functionalities and add dynamic methods to return a translation or property method and 
+relative methods.
+
+You can think about an [`EnumDescription` trait](#descriptions-and-translations) but completely dynamic.
+
+So you can define a custom method and have these functions available: `[method]s()`, `[method]sByName()`, 
+`[method]sByValue()`, `[method]sAsSelect()`.
+
+For example, you can define a `color()` method and obtain automatically `colors()`, `colorsByName()`, `colorsByValue()`, 
+`colorsAsSelect()` methods.
+
+The cool thing is you can also avoid writing the method and write the translations. 
+For example, you can define the property `excerpt` by writing the translations on enum.php (see below for explanation) 
+and obtain `excerpts()`, `excerptsByName()`, `excerptsByValue()`, `excerptsAsSelect()` methods.
+
+The package use the [Laravel `Pluralizer` component](https://laravel.com/docs/localization#pluralization-language) to get the singular method to call or to translate.
+
+#### Usage
+
+You can use this functionality simply using the `LaravelEnum` trait.
 
 ```php
-use Datomatic\EnumHelper\Traits\EnumLaravelLocalization;
+use Datomatic\EnumHelper\Traits\LaravelEnum;
 
 enum StatusString
-{
-    use EnumLaravelLocalization;
+{   
+    use LaravelEnum;
 
     case PENDING = 'P';
+    case ACCEPTED = 'A';
+    case DISCARDED = 'D';
+    case NO_RESPONSE = 'N';
+    
+    // or public function color(?string $lang = null): string
+    public function color(): string
+    {
+        return match ($this) {
+            self::PENDING => '#000000',
+            self::ACCEPTED => '#0000FF',
+            self::DISCARDED => '#FF0000',
+            self::NO_RESPONSE => '#FFFFFF',
+        };
+    }
 ```
+After that you can define a custom "property" method like `color()` or `color(?string $lang = null)` or define the translations instead.
+
+#### Translations
+
 Using this trait there is 2 way to manage translation strings.
 
 ##### Using Short Keys
@@ -442,26 +493,31 @@ All language files return an array of keyed strings. The array has 2 levels: the
 
 return [
     Status::class => [
-        'PENDING' => 'In attesa',
-        'ACCEPTED' => 'Accettato',
-        'DISCARDED' => 'Rifiutato',
-        'NO_RESPONSE' => 'Nessuna Risposta',
+        'description' => [ // or property do you want to translate
+            'PENDING' => 'In attesa',
+            'ACCEPTED' => 'Accettato',
+            'DISCARDED' => 'Rifiutato',
+            'NO_RESPONSE' => 'Nessuna Risposta',
+        ]
     ],
      // or using the enum object name attribute
     StatusString::class => [
-        StatusString::PENDING->name => 'In attesa',
-        StatusString::ACCEPTED->name => 'Accettato',
+        'description' => [
+            StatusString::PENDING->name => 'In attesa',
+            StatusString::ACCEPTED->name => 'Accettato',
     ...
 ```
 
 ##### Using Translation Strings As Keys
 Language strings are stored as JSON files in the lang directory (e.g. `lang/it.json`).
+In this example the `description` property is translated:
 ```json
 {
-    "enums.Namespace\\StatusString.PENDING": "In attesa",
-    ...
+  "enums.Namespace\\StatusString.description.PENDING": "In attesa",
+  "...":"..."
+}
 ```
-But if you want to use this way, you can simply use the `EnumDescription` trait and translate each case on the `description` method.
+But if you want to use this way, you can simply define the method on Enum class like this `description` method.
 
 ```php
 public function description(?string $lang = null): string
@@ -474,28 +530,77 @@ public function description(?string $lang = null): string
     };
 ```
 
-#### descriptions()
-This method returns a list of case descriptions of enum.
+#### [property]s()
+
+This dynamic method gets a list of case `property()` returns of the enum.
+In case the `property()` method is not defined, the package takes the enum class `property` translation.
+The name of the method is the plural of the `property` so if you are using `property` is `properties()`. 
+
 ```php
 StatusString::descriptions(); // ['Await decision','Recognized valid','No longer useful','No response']
+StatusString::colors(); // ['#000000','#0000FF','#FF0000','#FFFFFF']
 // Subset
 StatusString::descriptions([StatusString::ACCEPTED, StatusString::NO_RESPONSE]); // ['Recognized valid','No response']
+StatusString::colors([StatusString::ACCEPTED, StatusString::NO_RESPONSE]); // ['#0000FF','#FFFFFF']
 // Forcing language
 Status::descriptions(null, 'it'); // 🇮🇹 ['In attesa','Accettato','Rifiutato','Nessuna Risposta']
+StatusString::colors(null, 'it'); // ['#000000','#0000FF','#FF0000','#FFFFFF']
 // Subset and language 
 Status::descriptions([Status::NO_RESPONSE, Status::DISCARDED], 'it'); // 🇮🇹 ['Nessuna Risposta', 'Rifiutato']
+StatusString::colors([StatusString::ACCEPTED, StatusString::NO_RESPONSE], 'it'); // ['#0000FF','#FFFFFF']
 ```
 
-#### descriptionsArray()
-This method returns an associative array of [value => description] on `BackedEnum`, [name => description] on pure enum.
+#### [property]sByName()
+This dynamic method returns an associative array of [case name => `property()` result].
+In case the `property()` method is not defined, the package takes the enum class `property` translation.
+The name of the method is the plural of the `property` so if you are using `property` is `propertiesByName()`.
+
 ```php
-StatusString::descriptionsArray(); // ['P' => 'Await decision', 'A' => 'Recognized valid',...
-Status::descriptionsArray(); // ['PENDING' => 'Await decision', 'ACCEPTED' => 'Recognized valid',...
+StatusString::descriptionsByName(); // ['PENDING' => 'Await decision', 'ACCEPTED' => 'Recognized valid',...
+StatusString::colorsByName(); // ['PENDING' => '#000000','ACCEPTED' => '#0000FF',...
+Status::descriptionsByName(); // ['PENDING' => 'Await decision', 'ACCEPTED' => 'Recognized valid',...
 // Subset
-StatusString::descriptionsArray([StatusString::DISCARDED, StatusString::ACCEPTED]); // ['D' => 'No longer useful', 'A' => 'Recognized valid']
-Status::descriptionsArray([[Status::PENDING, Status::DISCARDED]); // ['PENDING' => 'Await decision', 'DISCARDED' => 'No longer useful']
+StatusString::descriptionsByName([StatusString::DISCARDED, StatusString::ACCEPTED]); // ['DISCARDED' => 'No longer useful', 'ACCEPTED' => 'Recognized valid']
+Status::descriptionsByName([[Status::PENDING, Status::DISCARDED]); // ['PENDING' => 'Await decision', 'DISCARDED' => 'No longer useful']
 // Forcing language
-StatusString::descriptionsArray(null, 'it'); // 🇮🇹 ['P' => 'In attesa','A' => 'Accettato',...
+StatusString::descriptionsByName(null, 'it'); // 🇮🇹 ['P' => 'In attesa','A' => 'Accettato',...
 // Subset and language 
-Status::descriptionsArray([Status::DISCARDED, Status::NO_RESPONSE], 'it'); // 🇮🇹 ['DISCARDED' => 'Rifiutato','NO_RESPONSE' => 'Nessuna Risposta',...
+Status::descriptionsByName([Status::DISCARDED, Status::NO_RESPONSE], 'it'); // 🇮🇹 ['DISCARDED' => 'Rifiutato','NO_RESPONSE' => 'Nessuna Risposta',...
+```
+
+#### [property]sByValue()
+This dynamic method returns an associative array of [case value => `property()` result]  on `BackedEnum`, throw `NotBackedEnum` exception otherwise.
+In case the `property()` method is not defined, the package takes the enum class `property` translation.
+The name of the method is the plural of the `property` so if you are using `property` is `propertiesByValue()`.
+
+```php
+StatusString::descriptionsByValue(); // ['P' => 'Await decision', 'A' => 'Recognized valid',...
+StatusString::colorsByValue(); // ['P' => '#000000','A' => '#0000FF',...
+Status::descriptionsByValue(); // throw `NotBackedEnum` exception
+// Subset
+StatusString::descriptionsByValue([StatusString::DISCARDED, StatusString::ACCEPTED]); // ['D' => 'No longer useful', 'A' => 'Recognized valid']
+StatusString::colorsByValue([[Status::PENDING, Status::DISCARDED]); // ['P' => '#000000', 'D' => '#FF0000']
+// Forcing language
+StatusString::descriptionsByValue(null, 'it'); // 🇮🇹 ['P' => 'In attesa','A' => 'Accettato',...
+// Subset and language 
+StatusString::descriptionsByValue([StatusString::DISCARDED, StatusString::NO_RESPONSE], 'it'); // 🇮🇹 ['D' => 'Rifiutato','N' => 'Nessuna Risposta',...
+```
+
+#### [property]sAsSelect()
+This dynamic method returns an associative array of [case value => `property()` result]  on `BackedEnum`,  [case name => `property()` result] otherwise.
+In case the `property()` method is not defined, the package takes the enum class `property` translation.
+The name of the method is the plural of the `property` so if you are using `property` is `propertiesAsSelect()`.
+
+```php
+StatusString::descriptionsAsSelect(); // ['P' => 'Await decision', 'A' => 'Recognized valid',...
+StatusString::colorsAsSelect(); // ['P' => '#000000','A' => '#0000FF',...
+Status::descriptionsAsSelect(); // ['PENDING' => 'Await decision', 'ACCEPTED' => 'Recognized valid',...
+// Subset
+Status::descriptionsAsSelect([Status::PENDING, Status::DISCARDED]); // ['PENDING' => 'Await decision', 'DISCARDED' => 'No longer useful']
+StatusString::colorsAsSelect([StatusString::PENDING, StatusString::DISCARDED]); // ['P' => '#000000', 'D' => '#FF0000']
+// Forcing language
+StatusString::descriptionsAsSelect(null, 'it'); // 🇮🇹 ['P' => 'In attesa','A' => 'Accettato',...
+Status::descriptionsAsSelect(null, 'it'); // 🇮🇹 ['PENDING' => 'In attesa', 'ACCEPTED' => 'Accettato',...
+// Subset and language 
+Status::descriptionsAsSelect([Status::DISCARDED, Status::NO_RESPONSE], 'it'); // 🇮🇹 ['DISCARDED' => 'Rifiutato','NO_RESPONSE' => 'Nessuna Risposta',...
 ```

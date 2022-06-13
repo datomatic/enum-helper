@@ -5,6 +5,8 @@ declare(strict_types=1);
 namespace Datomatic\EnumHelper\Traits;
 
 use BackedEnum;
+use Datomatic\EnumHelper\Exceptions\EmptyCases;
+use Datomatic\EnumHelper\Exceptions\NotBackedEnum;
 
 trait EnumValues
 {
@@ -18,22 +20,35 @@ trait EnumValues
     {
         $cases ??= static::cases();
 
-        return isset($cases[0]) && $cases[0] instanceof BackedEnum
-            ? array_column($cases, 'value')
-            : array_column($cases, 'name');
+        if (empty($cases)) {
+            throw new EmptyCases(static::class);
+        }
+
+        if (! $cases[0] instanceof BackedEnum) {
+            throw new NotBackedEnum(static::class);
+        }
+
+        return array_column($cases, 'value');
     }
 
     /**
+     * [ONLY for BackedEnum]
      * Get an associative array of [case name => case value].
      *
      * @return array<string,string|int>
      */
-    public static function valuesArray(?array $cases = null): array
+    public static function valuesByName(?array $cases = null): array
     {
         $cases ??= static::cases();
 
-        return isset($cases[0]) && $cases[0] instanceof BackedEnum
-            ? array_column($cases, 'value', 'name')
-            : array_column($cases, 'name');
+        if (empty($cases)) {
+            throw new EmptyCases(static::class);
+        }
+
+        if (! $cases[0] instanceof BackedEnum) {
+            throw new NotBackedEnum(static::class);
+        }
+
+        return array_column($cases, 'value', 'name');
     }
 }

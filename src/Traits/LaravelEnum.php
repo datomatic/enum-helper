@@ -55,7 +55,7 @@ trait LaravelEnum
 
         if (!empty($results)) {
             $first = reset($results);
-            if (is_string($first) && str($first)->startsWith(self::translateUniquePath($singularMethod))) {
+            if (is_string($first) && Str::of($first)->startsWith(self::translateUniquePath($singularMethod))) {
                 throw new TranslationMissing(self::class, $singularMethod);
             }
 
@@ -67,9 +67,9 @@ trait LaravelEnum
 
     private static function getSingularIfEndsWith(string $method, string $string): string
     {
-        return str($method)->whenEndsWith($string,
+        return Str::of($method)->whenEndsWith($string,
             fn($str) => $str->rtrim($string)->singular(),
-            fn($str) => str('')
+            fn($str) => Str::of('')
         )->toString();
     }
 }

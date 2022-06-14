@@ -2,12 +2,13 @@
 
 declare(strict_types=1);
 
-namespace Datomatic\EnumHelper\Traits;
+namespace Datomatic\EnumHelper\Traits\Laravel;
 
 use Datomatic\EnumHelper\EnumHelper;
 use Datomatic\EnumHelper\Exceptions\TranslationMissing;
 use Datomatic\EnumHelper\Exceptions\UndefinedCase;
 use Datomatic\EnumHelper\Exceptions\UndefinedStaticMethod;
+use Datomatic\EnumHelper\Traits\EnumProperties;
 use Illuminate\Support\Str;
 
 trait LaravelEnum
@@ -53,7 +54,7 @@ trait LaravelEnum
         } elseif ($singularMethod = self::getSingularIfEndsWith($method, 'AsSelect')) {
             $results = static::dynamicAsSelect($singularMethod, ...$args);
         } elseif (($singularMethod = Str::singular($method)) && $singularMethod !== $method) {
-            $results = static::dynamicList($singularMethod, $parameters[0] ?? null, $parameters[1] ?? null);
+            $results = static::dynamicList($singularMethod, ...$args);
         }
 
         if (empty($results)) {

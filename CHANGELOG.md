@@ -2,6 +2,27 @@
 
 All notable changes to `enum-helper` will be documented in this file.
 
+## v0.4.0 - 2022-06-14
+
+Renamed these methods:
+
+- `namesArray()` => `namesByValue()`
+- `valuesArray()` => `valuesByName()`
+
+`descriptionsArray()` splitted into 2 methods `descriptionsByName()`, `descriptionsByValue()`
+
+Renamed `EnumLaravelLocalization` trait to` LaravelEnum`
+
+Added new `[method]AsSelect()` methods that return `[method]ByValue()` if is `BackedEnum`, `[method]ByName()` otherwise.
+
+Added these exceptions:
+
+- `NotBackedEnum`
+- `EmptyCases`
+- `UndefinedStaticMethod`
+
+Added dynamic methods on LaravelEnum trait
+
 ## v0.3.1 - 2022-05-30
 
 - Fixed README.md

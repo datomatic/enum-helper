@@ -18,14 +18,14 @@ trait EnumValues
      */
     public static function values(?array $cases = null): array
     {
+        if (! is_subclass_of(static::class, BackedEnum::class)) {
+            throw new NotBackedEnum(static::class);
+        }
+
         $cases ??= static::cases();
 
         if (empty($cases)) {
             throw new EmptyCases(static::class);
-        }
-
-        if (! $cases[0] instanceof BackedEnum) {
-            throw new NotBackedEnum(static::class);
         }
 
         return array_column($cases, 'value');
@@ -39,14 +39,14 @@ trait EnumValues
      */
     public static function valuesByName(?array $cases = null): array
     {
+        if (! is_subclass_of(static::class, BackedEnum::class)) {
+            throw new NotBackedEnum(static::class);
+        }
+
         $cases ??= static::cases();
 
         if (empty($cases)) {
             throw new EmptyCases(static::class);
-        }
-
-        if (! $cases[0] instanceof BackedEnum) {
-            throw new NotBackedEnum(static::class);
         }
 
         return array_column($cases, 'value', 'name');

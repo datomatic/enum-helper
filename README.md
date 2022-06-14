@@ -1,7 +1,7 @@
 ![Enum Helper-Dark](branding/dark.png#gh-dark-mode-only)![Enum Helper-Light](branding/light.png#gh-light-mode-only)
 # Enum Helper
 [![Latest Version on Packagist](https://img.shields.io/packagist/v/datomatic/enum-helper.svg?style=for-the-badge)](https://packagist.org/packages/datomatic/enum-helper)
-[![Pest Tests number](https://img.shields.io/static/v1?label=%23tests&message=253&color=FF88FA&style=for-the-badge&logo=data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABwAAAAcCAMAAABF0y+mAAABiVBMVEUAAAD/iPv9yP3Xm+j/mP//wfVj67Je6bP/h/pVx6p6175d57WQycf+iPn/iPrsnezArd3+t/qpvNJd6LP/jPpu6rv/lPr/kPpc57T/rvtc57Np6rj3oPl37cL/tfn/wv9d6brX//L/g/rYn+n/gvrWm+di6LX+jPrskfGWzMpt6bln4bdd57Jk6LWSycj+vPquwNVo6rde6bP7nvvYnup91b/+vfv/lvtc57OqvNTFs9//t/td57L9t/r/iPpd6LPapej/ovp26bxy67v9lfld6LJr4Ljwsvb/xv3/jv39zv1t6buG5cTDreH5ivlc5rJy676V4cxb57D/y/h50MOy4OCUxcVa77X/iPpe6LP/jP+pu9L8t///tvuQycfArNxp6LzArd151r7/i/9n4bb/j/9e6rT/ifr7ifrskvLYnuhi87tg8blg7bf/vv//lP+wxNtj9b3/qv//oP/+ivz/l/r8ifryn/fvlPTfpPDeofDKtujHtOWX1NF/4seC3cR82sFu7cBo5LiMwPMrAAAAWHRSTlMA/Wv8FAIC/dME/Wj+3tEG/Pv798G1oHRjS0k1LBsWDgsJ/v36+fTy8ezn4+Lh29XNzMzLysLAwLSwr66opJqakY+Ni4J7end0bGlpY11XU048KicmIR8fizl+vwAAAVdJREFUKM9tz2VXAlEQgOFBBURpkE67u7u7E1YFYQl1SbvrlztDiLvss+fc/fCemXMvAEhhKqU759P1rLoxUDUyEh9fPH0z7ALiVrEY+SSNtxNS2upouYv7hOL191aKVsZHUTgbnQPQgDkq4ctHdoQmTWmW4WFzlVUDVpNKXf2fWpWbZIwUq/hcmjWGYnSa1pZZjEoomrEdVAisD7CX6GEb40rqTODxCj21OjDOvjRV8l2jhudBDchg/FUbDIZCITzwQyH6a9+2AMDbm9GfltFnxgAdtQWUgQJl4VQq37uPcSnsfYZzav6Ew18fQ4fUYPM7Qn4uSiIdyx5saJ6T+/3+5KSltshicwI2UpfAKE/aoARTvnn7KMYMdlAUyWRSyHN2JeU42HlCi4TszTHcmuj3iMVdP5JzoyAWNzi6T3ZGrMFCliK3BAqRSC/B2+6IxvYYNcO+2Npfv+yFi10LfBUAAAAASUVORK5CYII=)](https://github.com/datomatic/enum-helper/tree/main/tests)
+[![Pest Tests number](https://img.shields.io/static/v1?label=%23tests&message=250&color=FF88FA&style=for-the-badge&logo=data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABwAAAAcCAMAAABF0y+mAAABiVBMVEUAAAD/iPv9yP3Xm+j/mP//wfVj67Je6bP/h/pVx6p6175d57WQycf+iPn/iPrsnezArd3+t/qpvNJd6LP/jPpu6rv/lPr/kPpc57T/rvtc57Np6rj3oPl37cL/tfn/wv9d6brX//L/g/rYn+n/gvrWm+di6LX+jPrskfGWzMpt6bln4bdd57Jk6LWSycj+vPquwNVo6rde6bP7nvvYnup91b/+vfv/lvtc57OqvNTFs9//t/td57L9t/r/iPpd6LPapej/ovp26bxy67v9lfld6LJr4Ljwsvb/xv3/jv39zv1t6buG5cTDreH5ivlc5rJy676V4cxb57D/y/h50MOy4OCUxcVa77X/iPpe6LP/jP+pu9L8t///tvuQycfArNxp6LzArd151r7/i/9n4bb/j/9e6rT/ifr7ifrskvLYnuhi87tg8blg7bf/vv//lP+wxNtj9b3/qv//oP/+ivz/l/r8ifryn/fvlPTfpPDeofDKtujHtOWX1NF/4seC3cR82sFu7cBo5LiMwPMrAAAAWHRSTlMA/Wv8FAIC/dME/Wj+3tEG/Pv798G1oHRjS0k1LBsWDgsJ/v36+fTy8ezn4+Lh29XNzMzLysLAwLSwr66opJqakY+Ni4J7end0bGlpY11XU048KicmIR8fizl+vwAAAVdJREFUKM9tz2VXAlEQgOFBBURpkE67u7u7E1YFYQl1SbvrlztDiLvss+fc/fCemXMvAEhhKqU759P1rLoxUDUyEh9fPH0z7ALiVrEY+SSNtxNS2upouYv7hOL191aKVsZHUTgbnQPQgDkq4ctHdoQmTWmW4WFzlVUDVpNKXf2fWpWbZIwUq/hcmjWGYnSa1pZZjEoomrEdVAisD7CX6GEb40rqTODxCj21OjDOvjRV8l2jhudBDchg/FUbDIZCITzwQyH6a9+2AMDbm9GfltFnxgAdtQWUgQJl4VQq37uPcSnsfYZzav6Ew18fQ4fUYPM7Qn4uSiIdyx5saJ6T+/3+5KSltshicwI2UpfAKE/aoARTvnn7KMYMdlAUyWRSyHN2JeU42HlCi4TszTHcmuj3iMVdP5JzoyAWNzi6T3ZGrMFCliK3BAqRSC/B2+6IxvYYNcO+2Npfv+yFi10LfBUAAAAASUVORK5CYII=)](https://github.com/datomatic/enum-helper/tree/main/tests)
 [![GitHub Tests Action Status](https://img.shields.io/github/workflow/status/datomatic/enum-helper/run-tests?label=tests&color=5FE8B3&style=for-the-badge&logo=data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABwAAAAcCAMAAABF0y+mAAABiVBMVEUAAAD/iPv9yP3Xm+j/mP//wfVj67Je6bP/h/pVx6p6175d57WQycf+iPn/iPrsnezArd3+t/qpvNJd6LP/jPpu6rv/lPr/kPpc57T/rvtc57Np6rj3oPl37cL/tfn/wv9d6brX//L/g/rYn+n/gvrWm+di6LX+jPrskfGWzMpt6bln4bdd57Jk6LWSycj+vPquwNVo6rde6bP7nvvYnup91b/+vfv/lvtc57OqvNTFs9//t/td57L9t/r/iPpd6LPapej/ovp26bxy67v9lfld6LJr4Ljwsvb/xv3/jv39zv1t6buG5cTDreH5ivlc5rJy676V4cxb57D/y/h50MOy4OCUxcVa77X/iPpe6LP/jP+pu9L8t///tvuQycfArNxp6LzArd151r7/i/9n4bb/j/9e6rT/ifr7ifrskvLYnuhi87tg8blg7bf/vv//lP+wxNtj9b3/qv//oP/+ivz/l/r8ifryn/fvlPTfpPDeofDKtujHtOWX1NF/4seC3cR82sFu7cBo5LiMwPMrAAAAWHRSTlMA/Wv8FAIC/dME/Wj+3tEG/Pv798G1oHRjS0k1LBsWDgsJ/v36+fTy8ezn4+Lh29XNzMzLysLAwLSwr66opJqakY+Ni4J7end0bGlpY11XU048KicmIR8fizl+vwAAAVdJREFUKM9tz2VXAlEQgOFBBURpkE67u7u7E1YFYQl1SbvrlztDiLvss+fc/fCemXMvAEhhKqU759P1rLoxUDUyEh9fPH0z7ALiVrEY+SSNtxNS2upouYv7hOL191aKVsZHUTgbnQPQgDkq4ctHdoQmTWmW4WFzlVUDVpNKXf2fWpWbZIwUq/hcmjWGYnSa1pZZjEoomrEdVAisD7CX6GEb40rqTODxCj21OjDOvjRV8l2jhudBDchg/FUbDIZCITzwQyH6a9+2AMDbm9GfltFnxgAdtQWUgQJl4VQq37uPcSnsfYZzav6Ew18fQ4fUYPM7Qn4uSiIdyx5saJ6T+/3+5KSltshicwI2UpfAKE/aoARTvnn7KMYMdlAUyWRSyHN2JeU42HlCi4TszTHcmuj3iMVdP5JzoyAWNzi6T3ZGrMFCliK3BAqRSC/B2+6IxvYYNcO+2Npfv+yFi10LfBUAAAAASUVORK5CYII=)](https://github.com/datomatic/enum-helper/actions/workflows/run-tests.yml)
 [![GitHub Code Style Action Status](https://img.shields.io/github/workflow/status/datomatic/enum-helper/Check%20&%20fix%20styling?label=code%20style&color=5FE8B3&style=for-the-badge)](https://github.com/datomatic/enum-helper/actions/workflows/php-cs-fixer.yml)
 [![Total Downloads](https://img.shields.io/packagist/dt/datomatic/enum-helper.svg?style=for-the-badge)](https://packagist.org/packages/datomatic/enum-helper)
@@ -17,7 +17,7 @@ This package is framework agnostic, but has there is an optional set of instrume
 - **Values**: methods to have a list of case values (`values()`, `valuesByName()`)
 - **Unique ID**: get an unique identifier from instance or instance from identifier (`uniqueId()`, `fromUniqueId()`)
 - **Descriptions & Translations**: add description to enum with optional translation (`description()`,`descriptions()`,`descriptionsByName()`,`descriptionsByValue()`,`descriptionsAsSelect()`)
-- **`LaravelEnum`**: dynamic methods to return a translation or property method and relative methods (`{$dinamic}()`,`{$dinamic}s()`,`{$dinamic}sByName()`,`{$dinamic}sByValue()`,`{$dinamic}sAsSelect()`) [ONLY for Laravel Framework]
+- **`LaravelEnum`**: dynamic methods to return a translation or "property" method and relative helper methods (`{dinamic}()`,`{dinamic}s()`,`{dinamic}sByName()`,`{dinamic}sByValue()`,`{dinamic}sAsSelect()`) [ONLY for Laravel Framework]
 
 ## Installation
 
@@ -31,7 +31,7 @@ composer require datomatic/enum-helper
 
 You can use the traits you need, but for convenience, you can use only the `EnumHelper` trait that includes (`EnumInvokable`, `EnumFroms`, `EnumNames`, `EnumValues`, `EnumEquality`).  
 `EnumDescription` and `EnumUniqueId` are separated from `EnumHelper` because they cover edge cases.  
-If you use Laravel Framework you can use the `LaravelEnum` trait that inglobe also the `EnumHelper` trait.
+If you use Laravel Framework you can use the `LaravelEnum` trait that inglobe also the `EnumHelper` trait and add some cool stuff.
 
 The helper support both pure enum (e.g. `Status`, `StatusPascalCase`) and `BackedEnum` (e.g. `StatusInt`, `StatusString`).
 
@@ -40,6 +40,7 @@ In all examples we'll use the classes described below:
 ```php
 use Datomatic\EnumHelper\EnumHelper;
 
+// Pure enum
 enum Status
 {
     use EnumHelper;
@@ -49,7 +50,17 @@ enum Status
     case DISCARDED;
     case NO_RESPONSE;
 }
+enum StatusPascalCase
+{
+    use EnumHelper;
+    
+    case Pending;
+    case Accepted;
+    case Discarded;
+    case NoResponse;
+}
 
+// BackedEnum
 enum StatusString: string
 {
     use EnumHelper;
@@ -59,7 +70,6 @@ enum StatusString: string
     case DISCARDED = 'D';
     case NO_RESPONSE = 'N';
 }
-
 enum StatusInt: int
 {
     use EnumHelper;
@@ -68,16 +78,6 @@ enum StatusInt: int
     case ACCEPTED = 1;
     case DISCARDED = 2;
     case NO_RESPONSE = 3;
-}
-
-enum StatusPascalCase
-{
-    use EnumHelper;
-    
-    case Pending;
-    case Accepted;
-    case Discarded;
-    case NoResponse;
 }
 ```
 The package works with cases written in UPPER_CASE, snake_case and PascalCase.
@@ -97,7 +97,7 @@ The package works with cases written in UPPER_CASE, snake_case and PascalCase.
 
 ### Invokable Cases 
 This helper lets you get the value of a `BackedEnum`, or the name of a pure enum, by "invoking" it both statically (`Status::pending()`), and as an instance (`$status()`).  
-A good approach is to call methods in camelCase mode but you can invoke the enum in all cases `::STATICALLY()`, `::statically()` or `::Statically()`.
+A good approach is to call methods in camelCase mode, but you can invoke the enum in all cases `::STATICALLY()`, `::statically()` or `::Statically()`.
 ```php
 StatusInt::PENDING // Status enum instance
 StatusInt::pending(); // 0
@@ -109,7 +109,7 @@ That way permits you to use enum invoke into an array keys definition:
     Status::pending() => 'some configuration',
 ...
 ```
-or in database interactions ` $db_field_definition->default(Status::PENDING())`
+or in database interactions ` $db_field_definition->default(Status::pending())`
 or invoke instances to get the primitive value
 ```php
 public function updateStatus(int $status): void;
@@ -132,7 +132,7 @@ StatusPascalCase::NoResponse(); // 'NoResponse'
 // backed int eum
 StatusInt::pending(); // 0
 
-// backed int eum
+// backed string eum
 StatusString::pending(); // 'P'
 
 ```
@@ -421,16 +421,15 @@ After the implementation of `description` method you can use it
 ```php
 $enum = Status::PENDING;
 $enum->description(); // 'Await decision'
-// forcing language
 $enum->description('it'); // 🇮🇹 'In attesa'
 ```
 
 
 ### Laravel
-If you use Laravel framework (v 8.*,9.*) you can use the `LaravelEnum` trait (includes `EnumInvokable`, `EnumFroms`, `EnumNames`, 
-`EnumValues`, `EnumEquality`).  
-This trait extends `EnumHelper` functionalities and add dynamic methods to return a translation or property method and 
-relative methods.
+If you use Laravel framework (v 8.*,9.*) you can use the `LaravelEnum` trait.  
+This trait extends `EnumHelper` (`EnumInvokable`, `EnumFroms`, `EnumNames`,
+`EnumValues`, `EnumEquality`) and add dynamic methods to return a translation or "property" method and 
+relative helper methods.
 
 You can think about it as an [`EnumDescription` trait](#descriptions-and-translations) but completely dynamic.
 
@@ -541,7 +540,7 @@ In case the translation not exist throw an `TranslationMissing` exception.
 #### static `[property]s()` method
 
 This dynamic method gets a list of case `property()` returns of the enum.
-The name of the method is the plural of the `property` so if you are using `property` it will be `properties()`. 
+The name of the method is the plural of the property so if you are using `property` it will be `properties()`. 
 
 ```php
 StatusString::descriptions(); // ['Await decision','Recognized valid','No longer useful','No response']
@@ -559,7 +558,7 @@ StatusString::colors([StatusString::ACCEPTED, StatusString::NO_RESPONSE], 'it');
 
 #### static `[property]sByName()` method
 This dynamic method returns an associative array of [case name => `property()` result].
-The name of the method is the plural of the `property` so if you are using `property` it will be `propertiesByName()`.
+The name of the method is the plural of the property so if you are using `property` it will be `propertiesByName()`.
 
 ```php
 StatusString::descriptionsByName(); // ['PENDING' => 'Await decision', 'ACCEPTED' => 'Recognized valid',...
@@ -576,7 +575,7 @@ Status::descriptionsByName([Status::DISCARDED, Status::NO_RESPONSE], 'it'); // �
 
 #### static `[property]sByValue()` method
 This dynamic method returns an associative array of [case value => `property()` result]  on `BackedEnum`, throw `NotBackedEnum` exception otherwise.
-The name of the method is the plural of the `property` so if you are using `property` it will be `propertiesByValue()`.
+The name of the method is the plural of the property so if you are using `property` it will be `propertiesByValue()`.
 
 ```php
 StatusString::descriptionsByValue(); // ['P' => 'Await decision', 'A' => 'Recognized valid',...
@@ -593,7 +592,7 @@ StatusString::descriptionsByValue([StatusString::DISCARDED, StatusString::NO_RES
 
 #### static `[property]sAsSelect()` method
 This dynamic method returns an associative array of [case value => `property()` result]  on `BackedEnum`,  [case name => `property()` result] otherwise.
-The name of the method is the plural of the `property` so if you are using `property` it will be `propertiesAsSelect()`.
+The name of the method is the plural of the property so if you are using `property` it will be `propertiesAsSelect()`.
 
 ```php
 StatusString::descriptionsAsSelect(); // ['P' => 'Await decision', 'A' => 'Recognized valid',...

@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 use Datomatic\EnumHelper\Exceptions\EmptyCases;
 use Datomatic\EnumHelper\Exceptions\NotBackedEnum;
+use Datomatic\EnumHelper\Tests\Support\Enums\EmptyClass;
 use Datomatic\EnumHelper\Tests\Support\Enums\StatusInt;
 use Datomatic\EnumHelper\Tests\Support\Enums\StatusString;
 
@@ -23,7 +24,10 @@ it('can return an array of case values with cases param', function ($enumClass, 
 
 it('throw an EmptyCases exception calling values method with empty cases', function ($enumClass, $cases) {
     expect(fn () => $enumClass::values($cases))->toThrow(EmptyCases::class, "The enum $enumClass has empty case or you pass empty array as parameter");
-})->with('emptyCases');
+})->with([
+    'backed enum' => [StatusString::class, []],
+    'empty cases enum' => [EmptyClass::class, null],
+]);
 
 it('throw an NotBackedEnum exception with pure enum calling values method', function ($enumClass, $cases) {
     expect(fn () => $enumClass::values($cases))->toThrow(NotBackedEnum::class, "$enumClass is not a BackedEnum");
@@ -61,7 +65,10 @@ it('can return an associative array of values with cases param', function ($enum
 
 it('throw an EmptyCases exception calling namesByValue method with empty cases', function ($enumClass, $cases) {
     expect(fn () => $enumClass::valuesByName($cases))->toThrow(EmptyCases::class, "The enum $enumClass has empty case or you pass empty array as parameter");
-})->with('emptyCases');
+})->with([
+    'backed enum' => [StatusString::class, []],
+    'empty cases enum' => [EmptyClass::class, null],
+]);
 
 it('throw an NotBackedEnum exception with pure enum calling namesByValue method', function ($enumClass, $cases) {
     expect(fn () => $enumClass::valuesByName($cases))->toThrow(NotBackedEnum::class, "$enumClass is not a BackedEnum");

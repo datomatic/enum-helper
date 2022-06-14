@@ -2,6 +2,11 @@
 
 All notable changes to `enum-helper` will be documented in this file.
 
+## v0.5.0 - 2022-06-14
+
+- moved `LaravelEnum` to `Datomatic\EnumHelper\Traits\Laravel` namespace
+- code refactor
+
 ## v0.4.0 - 2022-06-14
 
 Renamed these methods:

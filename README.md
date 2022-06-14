@@ -90,8 +90,7 @@ The package works with cases written in UPPER_CASE, snake_case and PascalCase.
 - [Values](#values)
 - [Unique ID](#uniqueid)
 - [Descriptions & Translations](#descriptions-and-translations)
-- [LaravelHelper](#laravel)
-- [Add-on](#add-on)
+- [Laravel](#laravel)
 
 
 
@@ -607,8 +606,6 @@ Status::descriptionsAsSelect(null, 'it'); // 🇮🇹 ['PENDING' => 'In attesa',
 // Subset and language 
 Status::descriptionsAsSelect([Status::DISCARDED, Status::NO_RESPONSE], 'it'); // 🇮🇹 ['DISCARDED' => 'Rifiutato','NO_RESPONSE' => 'Nessuna Risposta',...
 ```
-
-### Add-on
 
 #### Laravel Nova Enum Field
 If you are using [Laravel Nova](https://nova.laravel.com/) Administrator Panel you can use a package to support the `enum-helper`.  

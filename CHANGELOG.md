@@ -2,6 +2,11 @@
 
 All notable changes to `enum-helper` will be documented in this file.
 
+## v0.6.0 - 2022-06-18
+
+- moved the Laravel part of package to new `laravel-enum-helper` package
+- updated the banner
+
 ## v0.5.0 - 2022-06-14
 
 - moved `LaravelEnum` to `Datomatic\EnumHelper\Traits\Laravel` namespace

@@ -18,5 +18,7 @@ jobs:
 
     steps:
       - uses: actions/checkout@v2
+      - name: Install composer dependencies
+        run: composer update
       - name: Run tests
         run: vendor/bin/pest

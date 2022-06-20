@@ -2,6 +2,10 @@
 
 All notable changes to `enum-helper` will be documented in this file.
 
+## v0.6.1 - 2022-06-20
+
+- set public dynamic methods
+
 ## v0.6.0 - 2022-06-18
 
 - moved the Laravel part of package to new `laravel-enum-helper` package

@@ -15,7 +15,7 @@ trait EnumProperties
      *
      * @param null|array<self> $cases
      */
-    protected static function dynamicList(string $method, ?array $cases = null, ?string $lang = null): array
+    public static function dynamicList(string $method, ?array $cases = null, ?string $lang = null): array
     {
         $cases ??= static::cases();
 
@@ -29,7 +29,7 @@ trait EnumProperties
     /**
      * Return as associative array [$key => $method() value]n on Backed Enum.
      */
-    protected static function dynamicByKey(string $key, string $method, ?array $cases = null, ?string $lang = null): array
+    public static function dynamicByKey(string $key, string $method, ?array $cases = null, ?string $lang = null): array
     {
         if ($key === 'value' && ! is_subclass_of(static::class, BackedEnum::class)) {
             throw new NotBackedEnum(static::class);
@@ -54,7 +54,7 @@ trait EnumProperties
      * Return as associative array [name => $method() value] on Pure Enum
      * Return as associative array [value => $method() value] on Backed Enum.
      */
-    protected static function dynamicAsSelect(string $method, ?array $cases = null, ?string $lang = null): array
+    public static function dynamicAsSelect(string $method, ?array $cases = null, ?string $lang = null): array
     {
         if (is_subclass_of(static::class, BackedEnum::class)) {
             return self::dynamicByKey('value', $method, $cases, $lang);

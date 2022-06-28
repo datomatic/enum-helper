@@ -9,7 +9,6 @@ use UnexpectedValueException;
 class InvalidUniqueId extends UnexpectedValueException
 {
     /**
-     * @param string $uniqueId
      * @return InvalidUniqueId
      */
     public static function wrongClassName(string $uniqueId): self

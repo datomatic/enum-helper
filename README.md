@@ -11,7 +11,7 @@ This package is framework agnostic, but if you use Laravel consider to use this 
 
 ## Functionalities summary
 - **Invokable cases**: get the value of enum "invoking" it statically
-- **Construct enum by name or value**: `from()`, `tryFrom()`, `fromName()`, `tryFromName()` for all enums
+- **Construct enum by name or value**: `from()`, `tryFrom()`, `fromName()`, `tryFromName()`, `fromValue()`, `tryFromValue()` methods
 - **Enums Equality**:  `is()`, `isNot()`, `in()`, `notIn()` methods
 - **Names**: methods to have a list of case names (`names()`, `namesByValue()`, `namesAsSelect()`)
 - **Values**: methods to have a list of case values (`values()`, `valuesByName()`)

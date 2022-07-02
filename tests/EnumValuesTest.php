@@ -22,7 +22,7 @@ it('can return an array of case values with cases param', function ($enumClass, 
     expect($enumClass::values($cases))->toBe($result);
 })->with([
     'Pure enum' => [Status::class, [Status::NO_RESPONSE, Status::DISCARDED], ['NO_RESPONSE', 'DISCARDED']],
-    'Pure Pascal Case enum' => [StatusPascalCase::class, [StatusPascalCase::NoResponse, StatusPascalCase::Discarded], ['NoResponse', 'Discarded' ]],
+    'Pure Pascal Case enum' => [StatusPascalCase::class, [StatusPascalCase::NoResponse, StatusPascalCase::Discarded], ['NoResponse', 'Discarded']],
     'String Backed enum' => [StatusString::class, [StatusString::NO_RESPONSE, StatusString::DISCARDED], ['N', 'D']],
     'Int Backed enum' => [StatusInt::class, [StatusInt::NO_RESPONSE, StatusInt::DISCARDED], [3, 2]],
 ]);

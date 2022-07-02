@@ -78,7 +78,6 @@ it('does work with fromValue method', function ($enumCass, $value, $result) {
     'String Backed Enum' => [StatusString::class, 'P', StatusString::PENDING],
 ]);
 
-
 it('does work with tryFromValue method', function ($enumCass, $value, $result) {
     expect($enumCass::tryFromValue($value))->toBe($result)->not->toThrow(ValueError::class);
 })->with([
@@ -91,4 +90,3 @@ it('does work with tryFromValue method', function ($enumCass, $value, $result) {
     'String Backed Enum' => [StatusString::class, 'P', StatusString::PENDING],
     'String Backed Enum missing' => [StatusString::class, 'M', null],
 ]);
-

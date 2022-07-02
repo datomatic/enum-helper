@@ -2,6 +2,11 @@
 
 All notable changes to `enum-helper` will be documented in this file.
 
+## v0.6.2 - 2022-06-28
+
+- added `fromValue()` and `tryFromValue()` aliases
+- refactored EnumFromTest.php
+
 ## v0.6.1 - 2022-06-20
 
 - set public dynamic methods

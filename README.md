@@ -1,7 +1,7 @@
 ![Enum Helper-Dark](branding/dark.png#gh-dark-mode-only)![Enum Helper-Light](branding/light.png#gh-light-mode-only)
 # Enum Helper
 [![Latest Version on Packagist](https://img.shields.io/packagist/v/datomatic/enum-helper.svg?style=for-the-badge)](https://packagist.org/packages/datomatic/enum-helper)
-[![Pest Tests number](https://img.shields.io/static/v1?label=%23tests&message=233&color=FF88FA&style=for-the-badge&logo=data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABwAAAAcCAMAAABF0y+mAAABiVBMVEUAAAD/iPv9yP3Xm+j/mP//wfVj67Je6bP/h/pVx6p6175d57WQycf+iPn/iPrsnezArd3+t/qpvNJd6LP/jPpu6rv/lPr/kPpc57T/rvtc57Np6rj3oPl37cL/tfn/wv9d6brX//L/g/rYn+n/gvrWm+di6LX+jPrskfGWzMpt6bln4bdd57Jk6LWSycj+vPquwNVo6rde6bP7nvvYnup91b/+vfv/lvtc57OqvNTFs9//t/td57L9t/r/iPpd6LPapej/ovp26bxy67v9lfld6LJr4Ljwsvb/xv3/jv39zv1t6buG5cTDreH5ivlc5rJy676V4cxb57D/y/h50MOy4OCUxcVa77X/iPpe6LP/jP+pu9L8t///tvuQycfArNxp6LzArd151r7/i/9n4bb/j/9e6rT/ifr7ifrskvLYnuhi87tg8blg7bf/vv//lP+wxNtj9b3/qv//oP/+ivz/l/r8ifryn/fvlPTfpPDeofDKtujHtOWX1NF/4seC3cR82sFu7cBo5LiMwPMrAAAAWHRSTlMA/Wv8FAIC/dME/Wj+3tEG/Pv798G1oHRjS0k1LBsWDgsJ/v36+fTy8ezn4+Lh29XNzMzLysLAwLSwr66opJqakY+Ni4J7end0bGlpY11XU048KicmIR8fizl+vwAAAVdJREFUKM9tz2VXAlEQgOFBBURpkE67u7u7E1YFYQl1SbvrlztDiLvss+fc/fCemXMvAEhhKqU759P1rLoxUDUyEh9fPH0z7ALiVrEY+SSNtxNS2upouYv7hOL191aKVsZHUTgbnQPQgDkq4ctHdoQmTWmW4WFzlVUDVpNKXf2fWpWbZIwUq/hcmjWGYnSa1pZZjEoomrEdVAisD7CX6GEb40rqTODxCj21OjDOvjRV8l2jhudBDchg/FUbDIZCITzwQyH6a9+2AMDbm9GfltFnxgAdtQWUgQJl4VQq37uPcSnsfYZzav6Ew18fQ4fUYPM7Qn4uSiIdyx5saJ6T+/3+5KSltshicwI2UpfAKE/aoARTvnn7KMYMdlAUyWRSyHN2JeU42HlCi4TszTHcmuj3iMVdP5JzoyAWNzi6T3ZGrMFCliK3BAqRSC/B2+6IxvYYNcO+2Npfv+yFi10LfBUAAAAASUVORK5CYII=)](https://github.com/datomatic/enum-helper/tree/main/tests)
+[![Pest Tests number](https://img.shields.io/static/v1?label=%23tests&message=224&color=FF88FA&style=for-the-badge&logo=data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABwAAAAcCAMAAABF0y+mAAABiVBMVEUAAAD/iPv9yP3Xm+j/mP//wfVj67Je6bP/h/pVx6p6175d57WQycf+iPn/iPrsnezArd3+t/qpvNJd6LP/jPpu6rv/lPr/kPpc57T/rvtc57Np6rj3oPl37cL/tfn/wv9d6brX//L/g/rYn+n/gvrWm+di6LX+jPrskfGWzMpt6bln4bdd57Jk6LWSycj+vPquwNVo6rde6bP7nvvYnup91b/+vfv/lvtc57OqvNTFs9//t/td57L9t/r/iPpd6LPapej/ovp26bxy67v9lfld6LJr4Ljwsvb/xv3/jv39zv1t6buG5cTDreH5ivlc5rJy676V4cxb57D/y/h50MOy4OCUxcVa77X/iPpe6LP/jP+pu9L8t///tvuQycfArNxp6LzArd151r7/i/9n4bb/j/9e6rT/ifr7ifrskvLYnuhi87tg8blg7bf/vv//lP+wxNtj9b3/qv//oP/+ivz/l/r8ifryn/fvlPTfpPDeofDKtujHtOWX1NF/4seC3cR82sFu7cBo5LiMwPMrAAAAWHRSTlMA/Wv8FAIC/dME/Wj+3tEG/Pv798G1oHRjS0k1LBsWDgsJ/v36+fTy8ezn4+Lh29XNzMzLysLAwLSwr66opJqakY+Ni4J7end0bGlpY11XU048KicmIR8fizl+vwAAAVdJREFUKM9tz2VXAlEQgOFBBURpkE67u7u7E1YFYQl1SbvrlztDiLvss+fc/fCemXMvAEhhKqU759P1rLoxUDUyEh9fPH0z7ALiVrEY+SSNtxNS2upouYv7hOL191aKVsZHUTgbnQPQgDkq4ctHdoQmTWmW4WFzlVUDVpNKXf2fWpWbZIwUq/hcmjWGYnSa1pZZjEoomrEdVAisD7CX6GEb40rqTODxCj21OjDOvjRV8l2jhudBDchg/FUbDIZCITzwQyH6a9+2AMDbm9GfltFnxgAdtQWUgQJl4VQq37uPcSnsfYZzav6Ew18fQ4fUYPM7Qn4uSiIdyx5saJ6T+/3+5KSltshicwI2UpfAKE/aoARTvnn7KMYMdlAUyWRSyHN2JeU42HlCi4TszTHcmuj3iMVdP5JzoyAWNzi6T3ZGrMFCliK3BAqRSC/B2+6IxvYYNcO+2Npfv+yFi10LfBUAAAAASUVORK5CYII=)](https://github.com/datomatic/enum-helper/tree/main/tests)
 [![GitHub Tests Action Status](https://img.shields.io/github/workflow/status/datomatic/enum-helper/run-tests?label=tests&color=5FE8B3&style=for-the-badge&logo=data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABwAAAAcCAMAAABF0y+mAAABiVBMVEUAAAD/iPv9yP3Xm+j/mP//wfVj67Je6bP/h/pVx6p6175d57WQycf+iPn/iPrsnezArd3+t/qpvNJd6LP/jPpu6rv/lPr/kPpc57T/rvtc57Np6rj3oPl37cL/tfn/wv9d6brX//L/g/rYn+n/gvrWm+di6LX+jPrskfGWzMpt6bln4bdd57Jk6LWSycj+vPquwNVo6rde6bP7nvvYnup91b/+vfv/lvtc57OqvNTFs9//t/td57L9t/r/iPpd6LPapej/ovp26bxy67v9lfld6LJr4Ljwsvb/xv3/jv39zv1t6buG5cTDreH5ivlc5rJy676V4cxb57D/y/h50MOy4OCUxcVa77X/iPpe6LP/jP+pu9L8t///tvuQycfArNxp6LzArd151r7/i/9n4bb/j/9e6rT/ifr7ifrskvLYnuhi87tg8blg7bf/vv//lP+wxNtj9b3/qv//oP/+ivz/l/r8ifryn/fvlPTfpPDeofDKtujHtOWX1NF/4seC3cR82sFu7cBo5LiMwPMrAAAAWHRSTlMA/Wv8FAIC/dME/Wj+3tEG/Pv798G1oHRjS0k1LBsWDgsJ/v36+fTy8ezn4+Lh29XNzMzLysLAwLSwr66opJqakY+Ni4J7end0bGlpY11XU048KicmIR8fizl+vwAAAVdJREFUKM9tz2VXAlEQgOFBBURpkE67u7u7E1YFYQl1SbvrlztDiLvss+fc/fCemXMvAEhhKqU759P1rLoxUDUyEh9fPH0z7ALiVrEY+SSNtxNS2upouYv7hOL191aKVsZHUTgbnQPQgDkq4ctHdoQmTWmW4WFzlVUDVpNKXf2fWpWbZIwUq/hcmjWGYnSa1pZZjEoomrEdVAisD7CX6GEb40rqTODxCj21OjDOvjRV8l2jhudBDchg/FUbDIZCITzwQyH6a9+2AMDbm9GfltFnxgAdtQWUgQJl4VQq37uPcSnsfYZzav6Ew18fQ4fUYPM7Qn4uSiIdyx5saJ6T+/3+5KSltshicwI2UpfAKE/aoARTvnn7KMYMdlAUyWRSyHN2JeU42HlCi4TszTHcmuj3iMVdP5JzoyAWNzi6T3ZGrMFCliK3BAqRSC/B2+6IxvYYNcO+2Npfv+yFi10LfBUAAAAASUVORK5CYII=)](https://github.com/datomatic/enum-helper/actions/workflows/run-tests.yml)
 [![GitHub Code Style Action Status](https://img.shields.io/github/workflow/status/datomatic/enum-helper/Check%20&%20fix%20styling?label=code%20style&color=5FE8B3&style=for-the-badge)](https://github.com/datomatic/enum-helper/actions/workflows/php-cs-fixer.yml)
 [![Total Downloads](https://img.shields.io/packagist/dt/datomatic/enum-helper.svg?style=for-the-badge)](https://packagist.org/packages/datomatic/enum-helper)
@@ -13,10 +13,10 @@ This package is framework agnostic, but if you use Laravel consider to use this 
 - **Invokable cases**: get the value of enum "invoking" it statically
 - **Construct enum by name or value**: `from()`, `tryFrom()`, `fromName()`, `tryFromName()`, `fromValue()`, `tryFromValue()` methods
 - **Enums Equality**:  `is()`, `isNot()`, `in()`, `notIn()` methods
-- **Names**: methods to have a list of case names (`names()`, `namesByValue()`, `namesAsSelect()`)
+- **Names**: methods to have a list of case names (`names()`, `namesByValue()`)
 - **Values**: methods to have a list of case values (`values()`, `valuesByName()`)
 - **Unique ID**: get an unique identifier from instance or instance from identifier (`uniqueId()`, `fromUniqueId()`)
-- **Descriptions & Translations**: add description to enum with optional translation (`description()`,`descriptions()`,`descriptionsByName()`,`descriptionsByValue()`,`descriptionsAsSelect()`)
+- **Descriptions & Translations**: add description to enum with optional translation (`description()`,`descriptions()`,`descriptionsByName()`,`descriptionsByValue()`)
 
 ## Installation
 
@@ -114,20 +114,20 @@ $task->updateStatus(StatusInt::pending());
 
 #### Examples use static calls to get the primitive value
 ```php
-// pure enum
+// Pure Enum
 Status::noResponse(); // 'NO_RESPONSE'
 Status::NO_RESPONSE(); // 'NO_RESPONSE'
 Status::NoResponse(); // 'NO_RESPONSE'
 
-// pure eum with PascalCase
+// Pure Enum with PascalCase
 StatusPascalCase::noResponse(); // 'NoResponse'
 StatusPascalCase::NO_RESPONSE(); // 'NoResponse'
 StatusPascalCase::NoResponse(); // 'NoResponse'
 
-// backed int eum
+// IntBackedEnum
 StatusInt::pending(); // 0
 
-// backed string eum
+// StringBackedEnum
 StatusString::pending(); // 'P'
 
 ```
@@ -149,8 +149,8 @@ enum Status
 
 ### From FromName
 This helper adds `from()` and `tryFrom()` to pure enums, 
-`fromValue()` and `tryFromValue()` (alias of  `from()`, and `tryFrom()`) to `BackedEnum`, 
-and `fromName()` and `tryFromName()` to all enums
+`fromValue()` and `tryFromValue()` (alias of  `from()` and `tryFrom()`), 
+`fromName()` and `tryFromName()` to all enums
 
 #### Important Notes:
 - `BackedEnum` instances already implement their own `from()` and `tryFrom()` methods, which will not be overridden by this trait.
@@ -196,24 +196,6 @@ StatusString::tryFromName('PENDING'); // StatusString::PENDING
 StatusString::tryFromName('MISSING'); // null
 ```
 
-
-#### `fromValue()`
-```php
-// Pure Enum
-Status::fromValue('PENDING'); // NotBackedEnum exception
-// BackedEnum
-StatusString::fromValue('P'); // StatusString::PENDING
-StatusString::fromValue('M'); // ValueError Exception
-```
-
-#### `tryFromValue()`
-```php
-// Pure Enum
-Status::tryFromValue('PENDING'); // NotBackedEnum exception
-// BackedEnum
-StatusString::tryFromValue('P'); // StatusString::PENDING
-StatusString::tryFromValue('M'); // null
-```
 
 ### Equality
 This helper permits to compare an enum instance (`is()`,`isNot()`) and search if it is present inside an array (`in()`,`notIn()`).
@@ -265,7 +247,7 @@ StatusString::PENDING->notIn(['A','D']); // true
 
 
 ### Names
-This helper offer `names()`, `namesByValue()`, and `namesAsSelect()` methods.
+This helper offer `names()` and `namesByValue()` methods.
 
 #### `names()`
 This method returns a list of case names in the enum.  
@@ -280,26 +262,15 @@ StatusPascalCase::names([StatusPascalCase::Accepted, StatusPascalCase::Discarded
 
 #### `namesByValue()`
 
-This method returns an associative array of [value => name] on `BackedEnum`, throw `NotBackedEnum` exception otherwise.  
+This method returns an associative array of [value => name] on `BackedEnum`,  [name => name] on pure enum.
 ```php
-Status::namesByValue(); // throw NotBackedEnum exception
-StatusString::namesByValue(); // [ 'P'=>'PENDING', 'A'=>'ACCEPTED', 'D'=>'DISCARDED'...
+Status::namesByValue(); // [ 'PENDING' => 'PENDING', 'ACCEPTED' => 'ACCEPTED', 'DISCARDED' => 'DISCARDED'...
+StatusString::namesByValue(); // [ 'P' => 'PENDING', 'A' => 'ACCEPTED', 'D' => 'DISCARDED'...
 StatusInt::namesByValue(); // [ 0=>'PENDING', 1=>'ACCEPTED', 2=>'DISCARDED'...
 // Subset
 StatusInt::namesByValue([StatusInt::NO_RESPONSE, StatusInt::DISCARDED]); // [ 3=>'NO_RESPONSE', 2=>'DISCARDED']
 ```
 
-#### `namesAsSelect()`
-
-This method returns an associative array of [value => name] on `BackedEnum`, [name => name] otherwise.
-This is useful when you need a general enum select.
-```php
-Status::namesAsSelect(); // [ 'PENDING'=>'PENDING', 'ACCEPTED'=>'ACCEPTED', 'DISCARDED'=>'DISCARDED'...
-StatusString::namesByValue(); // [ 'P'=>'PENDING', 'A'=>'ACCEPTED', 'D'=>'DISCARDED'...
-// Subset
-Status::namesByValue([Status::NO_RESPONSE, Status::DISCARDED]); // [ 'NO_RESPONSE'=>'NO_RESPONSE', 'DISCARDED'=>'DISCARDED']
-StatusInt::namesByValue([StatusInt::NO_RESPONSE, StatusInt::DISCARDED]); // [ 3=>'NO_RESPONSE', 2=>'DISCARDED']
-```
 
 ### Values 
 This helper offer `values()` and `valuesByName()` methods.
@@ -307,19 +278,22 @@ This helper offer `values()` and `valuesByName()` methods.
 #### `values()`
 This method returns a list of case values for `BackedEnum` or a list of case names for pure enums.
 ```php
+Status::values(); // ['PENDING', 'ACCEPTED', 'DISCARDED', 'NO_RESPONSE']
 StatusString::values(); // ['P', 'A', 'D', 'N']
 StatusInt::values(); // [0, 1, 2, 3]
 // Subset
+Status::values([Status::NO_RESPONSE, Status::DISCARDED]); // ['NO_RESPONSE', 'DISCARDED']
 StatusString::values([StatusString::NO_RESPONSE, StatusString::DISCARDED]); // ['N', 'D']
 StatusInt::values([StatusInt::NO_RESPONSE, StatusInt::DISCARDED]); // [3, 2]
 ```
 #### `valuesByName()`
-This method returns a associative array of [case name => case value] on `BackedEnum`,  throw `NotBackedEnum` exception otherwise.
+This method returns a associative array of [name => value] on `BackedEnum`,  [name => name] on pure enum.
 ```php
-Status::valuesByName(); // throw NotBackedEnum exception
+Status::valuesByName(); // ['PENDING' => 'PENDING','ACCEPTED' => 'ACCEPTED','DISCARDED' => 'DISCARDED',...]
 StatusString::valuesByName(); // ['PENDING' => 'P','ACCEPTED' => 'A','DISCARDED' => 'D','NO_RESPONSE' => 'N']
 StatusInt::valuesByName(); // ['PENDING' => 0,'ACCEPTED' => 1,'DISCARDED' => 2,'NO_RESPONSE' => 3]
 // Subset
+Status::valuesByName([Status::NO_RESPONSE, Status::DISCARDED]); // ['NO_RESPONSE' => 'NO_RESPONSE', 'DISCARDED' => 'DISCARDED']
 StatusString::valuesByName([StatusString::NO_RESPONSE, StatusString::DISCARDED]); // ['NO_RESPONSE' => 'N', 'DISCARDED' => 'D']
 StatusInt::valuesByName([StatusInt::NO_RESPONSE, StatusInt::DISCARDED]); // ['NO_RESPONSE' => 3, 'DISCARDED' => 2]
 ```
@@ -450,4 +424,22 @@ After the implementation of `description` method you can use it
 $enum = Status::PENDING;
 $enum->description(); // 'Await decision'
 $enum->description('it'); // 🇮🇹 'In attesa'
+```
+
+#### descriptions()
+This method returns a list of case descriptions of enum.
+```php
+StatusString::descriptions(); // ['Await decision','Recognized valid','No longer useful','No response']
+// Subset
+StatusString::descriptions([StatusString::ACCEPTED, StatusString::NO_RESPONSE]); // ['Recognized valid','No response']
+```
+
+#### descriptionsByValue()
+This method returns an associative array of [value => description] on `BackedEnum`, [name => description] on pure enum.
+```php
+StatusString::descriptionsByValue(); // ['P' => 'Await decision', 'A' => 'Recognized valid',...
+Status::descriptionsByValue(); // ['PENDING' => 'Await decision', 'ACCEPTED' => 'Recognized valid',...
+// Subset
+StatusString::descriptionsByValue([StatusString::DISCARDED, StatusString::ACCEPTED]); // ['D' => 'No longer useful', 'A' => 'Recognized valid']
+Status::descriptionsByValue([[Status::PENDING, Status::DISCARDED]); // ['PENDING' => 'Await decision', 'DISCARDED' => 'No longer useful']
 ```

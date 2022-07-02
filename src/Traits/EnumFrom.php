@@ -4,8 +4,6 @@ declare(strict_types=1);
 
 namespace Datomatic\EnumHelper\Traits;
 
-use BackedEnum;
-use Datomatic\EnumHelper\Exceptions\NotBackedEnum;
 use ValueError;
 
 trait EnumFrom
@@ -67,10 +65,6 @@ trait EnumFrom
      */
     public static function fromValue(string|int $value): static
     {
-        if (! is_subclass_of(static::class, BackedEnum::class)) {
-            throw new NotBackedEnum(static::class);
-        }
-
         return self::from($value);
     }
 
@@ -81,10 +75,6 @@ trait EnumFrom
      */
     public static function tryFromValue(string|int $value): ?static
     {
-        if (! is_subclass_of(static::class, BackedEnum::class)) {
-            throw new NotBackedEnum(static::class);
-        }
-
         return self::tryFrom($value);
     }
 }

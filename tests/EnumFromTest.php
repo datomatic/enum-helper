@@ -2,7 +2,6 @@
 
 declare(strict_types=1);
 
-use Datomatic\EnumHelper\Exceptions\NotBackedEnum;
 use Datomatic\EnumHelper\Tests\Support\Enums\Status;
 use Datomatic\EnumHelper\Tests\Support\Enums\StatusInt;
 use Datomatic\EnumHelper\Tests\Support\Enums\StatusPascalCase;
@@ -73,36 +72,23 @@ it('does work with tryFromName method', function ($enumCass, $value, $result) {
 it('does work with fromValue method', function ($enumCass, $value, $result) {
     expect($enumCass::fromValue($value))->toBe($result);
 })->with([
+    'Pure Enum' => [Status::class, 'PENDING', Status::PENDING],
+    'Pascal Case Pure Enum' => [StatusPascalCase::class, 'Pending', StatusPascalCase::Pending],
     'Int Backed Enum' => [StatusInt::class, 0, StatusInt::PENDING],
     'String Backed Enum' => [StatusString::class, 'P', StatusString::PENDING],
 ]);
 
-it('throw NotBackEnum with fromValue method', function ($enumCass, $value) {
-    expect(fn () => $enumCass::fromValue($value))->toThrow(NotBackedEnum::class);
-})->with([
-    'Pure Enum' => [Status::class, 0],
-    'Pascal Case Pure Enum' => [StatusPascalCase::class, 'P'],
-]);
-
-it('throw ValueError with fromValue method', function ($enumCass, $value) {
-    expect(fn () => $enumCass::fromValue($value))->toThrow(ValueError::class);
-})->with([
-    'Int Backed Enum missing' => [StatusInt::class, 10],
-    'String Backed Enum missing' => [StatusString::class, 'M'],
-]);
 
 it('does work with tryFromValue method', function ($enumCass, $value, $result) {
     expect($enumCass::tryFromValue($value))->toBe($result)->not->toThrow(ValueError::class);
 })->with([
+    'Pure Enum' => [Status::class, 'PENDING', Status::PENDING],
+    'Pure Enum missing' => [Status::class, 'MISSING', null],
+    'Pascal Case Pure Enum' => [StatusPascalCase::class, 'Pending', StatusPascalCase::Pending],
+    'Pascal Case Pure Enum missing' => [StatusPascalCase::class, 'MISSING', null],
     'Int Backed Enum' => [StatusInt::class, 0, StatusInt::PENDING],
     'Int Backed Enum missing' => [StatusInt::class, 10, null],
     'String Backed Enum' => [StatusString::class, 'P', StatusString::PENDING],
     'String Backed Enum missing' => [StatusString::class, 'M', null],
 ]);
 
-it('throw NotBackEnum with tryFromValue method', function ($enumCass, $value) {
-    expect(fn () => $enumCass::tryFromValue($value))->toThrow(NotBackedEnum::class);
-})->with([
-    'Pure Enum' => [Status::class, 0],
-    'Pascal Case Pure Enum' => [StatusPascalCase::class, 'P'],
-]);

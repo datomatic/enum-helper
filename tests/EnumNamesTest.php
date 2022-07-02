@@ -3,7 +3,6 @@
 declare(strict_types=1);
 
 use Datomatic\EnumHelper\Exceptions\EmptyCases;
-use Datomatic\EnumHelper\Exceptions\NotBackedEnum;
 use Datomatic\EnumHelper\Tests\Support\Enums\EmptyClass;
 use Datomatic\EnumHelper\Tests\Support\Enums\Status;
 use Datomatic\EnumHelper\Tests\Support\Enums\StatusInt;
@@ -35,43 +34,6 @@ it('throw an EmptyCases exception calling names method with empty cases', functi
 it('can return an associative array of names', function ($enumClass, $result) {
     expect($enumClass::namesByValue())->toBe($result);
 })->with([
-    'String Backed enum' => [StatusString::class, [
-        'P' => 'PENDING',
-        'A' => 'ACCEPTED',
-        'D' => 'DISCARDED',
-        'N' => 'NO_RESPONSE',
-    ]],
-    'Int Backed enum' => [StatusInt::class, [
-        0 => 'PENDING',
-        1 => 'ACCEPTED',
-        2 => 'DISCARDED',
-        3 => 'NO_RESPONSE',
-    ]],
-]);
-
-it('throw an NotBackedEnum exception with pure enum calling namesByValue method', function ($enumClass) {
-    expect(fn () => $enumClass::namesByValue())->toThrow(NotBackedEnum::class, "$enumClass is not a BackedEnum");
-})->with([
-    [Status::class],
-    [StatusPascalCase::class],
-]);
-
-it('can return an associative array of names with cases param', function ($enumClass, $cases, $result) {
-    expect($enumClass::namesByValue($cases))->toBe($result);
-})->with([
-    'String Backed enum' => [StatusString::class, [StatusString::NO_RESPONSE, StatusString::DISCARDED], [
-        'N' => 'NO_RESPONSE',
-        'D' => 'DISCARDED',
-    ]],
-    'Int Backed enum' => [StatusInt::class, [StatusInt::NO_RESPONSE, StatusInt::DISCARDED], [
-        3 => 'NO_RESPONSE',
-        2 => 'DISCARDED',
-    ]],
-]);
-
-it('can return an associative array [name/value => name] based on enum type', function ($enumClass, $result) {
-    expect($enumClass::namesAsSelect())->toBe($result);
-})->with([
     'Pure enum' => [Status::class, [
         'PENDING' => 'PENDING',
         'ACCEPTED' => 'ACCEPTED',
@@ -98,8 +60,8 @@ it('can return an associative array [name/value => name] based on enum type', fu
     ]],
 ]);
 
-it('can return an associative array [name/value => name] with cases param', function ($enumClass, $cases, $result) {
-    expect($enumClass::namesAsSelect($cases))->toBe($result);
+it('can return an associative array of names with cases param', function ($enumClass, $cases, $result) {
+    expect($enumClass::namesByValue($cases))->toBe($result);
 })->with([
     'Pure enum' => [Status::class, [Status::NO_RESPONSE, Status::DISCARDED], [
         'NO_RESPONSE' => 'NO_RESPONSE',
@@ -117,17 +79,10 @@ it('can return an associative array [name/value => name] with cases param', func
     ]],
 ]);
 
-it('throw an NotBackedEnum exception with pure enum calling namesByValue method with param', function ($enumClass, $cases) {
-    expect(fn () => $enumClass::namesByValue($cases))->toThrow(NotBackedEnum::class, "$enumClass is not a BackedEnum");
-})->with('notBackedEnum');
-
 it('throw an EmptyCases exception calling namesByValue method with empty cases', function ($enumClass, $cases) {
     expect(fn () => $enumClass::namesByValue($cases))->toThrow(EmptyCases::class, "The enum $enumClass has empty case or you pass empty array as parameter");
 })->with([
-    'backed enum' => [StatusString::class, []],
-    'empty cases enum' => [EmptyClass::class, null],
+    'Pure enum' => [Status::class, []],
+    'Backed enum' => [StatusString::class, []],
+    'Empty Cases enum' => [EmptyClass::class, null],
 ]);
-
-it('throw an EmptyCases exception calling namesAsSelect method with empty cases', function ($enumClass, $cases) {
-    expect(fn () => $enumClass::namesAsSelect($cases))->toThrow(EmptyCases::class, "The enum $enumClass has empty case or you pass empty array as parameter");
-})->with('emptyCases');

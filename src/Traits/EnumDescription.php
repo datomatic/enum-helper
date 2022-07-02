@@ -32,8 +32,8 @@ trait EnumDescription
     }
 
     /**
-     * [ONLY for BackedEnum]
-     * Return as associative array with value => description  (all cases or cases passed by param).
+     * Return as associative array with [name => description] on Pure Enum
+     * Return as associative array with [value => description] on Backed Enum.
      *
      * @param null|array<self> $cases
      * @return array<string, string>
@@ -41,18 +41,5 @@ trait EnumDescription
     public static function descriptionsByValue(?array $cases = null, ?string $lang = null): array
     {
         return self::dynamicByKey('value', 'description', $cases, $lang);
-    }
-
-    /**
-     * Return as associative array with [name => description] on Pure Enum
-     * Return as associative array with [value => description] on Backed Enum
-     * of all cases or cases passed by param.
-     *
-     * @param null|array<self> $cases
-     * @return array<string, string>
-     */
-    public static function descriptionsAsSelect(?array $cases = null, ?string $lang = null): array
-    {
-        return self::dynamicAsSelect('description', $cases, $lang);
     }
 }

@@ -2,6 +2,10 @@
 
 All notable changes to `enum-helper` will be documented in this file.
 
+## v0.7.1 - 2022-07-05
+
+- added support of null param on `in()` and `notIn()` methods
+
 ## v0.7.0 - 2022-07-02
 
 After migrating several projects with my fellow @RobertoNegro and listening to different opinions we have decided to simplify the package.

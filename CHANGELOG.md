@@ -2,6 +2,15 @@
 
 All notable changes to `enum-helper` will be documented in this file.
 
+## v0.7.0 - 2022-07-02
+
+After migrating several projects with my fellow @RobertoNegro and listening to different opinions we have decided to simplify the package.
+From now on, I will consider a pure enum as a `StringBackedEnum` with names as values, so all `***AsSelect()` methods will be replaced by `***ByValue()` methods.
+
+- removed all methods `***AsSelect()`
+- added support on `***ByValue()` methods also for pure enum using name instead value
+- removed `NotBackedEnum` exception
+
 ## v0.6.2 - 2022-06-28
 
 - added `fromValue()` and `tryFromValue()` aliases

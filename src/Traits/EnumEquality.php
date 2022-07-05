@@ -11,7 +11,7 @@ trait EnumEquality
     /**
      * Check if enum is equal to another enum or value (backed enum) or name (pure enum).
      */
-    public function is(self|string|int $value): bool
+    public function is(null|self|string|int $value): bool
     {
         if ($value instanceof self) {
             return $this === $value;
@@ -31,7 +31,7 @@ trait EnumEquality
     /**
      * is method inverse.
      */
-    public function isNot(self|string|int $value): bool
+    public function isNot(null|self|string|int $value): bool
     {
         return ! $this->is($value);
     }

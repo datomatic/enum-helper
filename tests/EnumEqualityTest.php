@@ -26,6 +26,7 @@ it('can compare enum using is method with enum, name and values', function ($enu
     [StatusString::PENDING, StatusString::ACCEPTED, false],
     [StatusString::PENDING, 'PENDING', true],
     [StatusString::PENDING, 'ACCEPTED', false],
+    [StatusString::PENDING, null, false],
 ]);
 
 it('can compare enum using isNot method with enum, name and values', function ($enum, $value, $result) {
@@ -48,6 +49,7 @@ it('can compare enum using isNot method with enum, name and values', function ($
     [StatusString::PENDING, StatusString::ACCEPTED, true],
     [StatusString::PENDING, 'PENDING', false],
     [StatusString::PENDING, 'ACCEPTED', true],
+    [StatusString::PENDING, null, true],
 ]);
 
 it('can compare enum using in method with enum, name and values', function ($enum, array $values, $result) {

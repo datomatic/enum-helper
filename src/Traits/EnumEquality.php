@@ -17,7 +17,12 @@ trait EnumEquality
             return $this === $value;
         }
 
-        if ($this instanceof BackedEnum && $this->value === $value) {
+        if ($this instanceof BackedEnum
+            && (
+                $this->value === $value
+                || (is_numeric($value) && $this->value === (int) $value)
+            )
+        ) {
             return true;
         }
 
@@ -51,8 +56,16 @@ trait EnumEquality
             return in_array($this, $values, true);
         }
 
-        if ($this instanceof BackedEnum && in_array($this->value, $values, true)) {
-            return true;
+        if ($this instanceof BackedEnum) {
+            if (in_array($this->value, $values, true)) {
+                return true;
+            }
+            if (empty(array_filter($values, fn ($value) => ! is_numeric($value)))) {
+                $intValues = array_map('intval', $values);
+                if (in_array($this->value, $intValues, true)) {
+                    return true;
+                }
+            }
         }
 
         return in_array($this->name, $values, true);

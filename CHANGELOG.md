@@ -2,6 +2,10 @@
 
 All notable changes to `enum-helper` will be documented in this file.
 
+## v0.7.2 - 2022-09-08
+
+- permit enum equality to compare IntBackedEnum with numeric string
+
 ## v0.7.1 - 2022-07-05
 
 - added support of null param on `in()` and `notIn()` methods

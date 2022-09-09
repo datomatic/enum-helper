@@ -2,9 +2,9 @@
 
 declare(strict_types=1);
 
+use Datomatic\EnumHelper\Tests\Support\Enums\IntBackedEnum;
 use Datomatic\EnumHelper\Tests\Support\Enums\PascalCasePureEnum;
 use Datomatic\EnumHelper\Tests\Support\Enums\PureEnum;
-use Datomatic\EnumHelper\Tests\Support\Enums\IntBackedEnum;
 use Datomatic\EnumHelper\Tests\Support\Enums\StringBackedEnum;
 
 it('can check if enum is pure', function ($enumClass, $result) {
@@ -44,7 +44,6 @@ it('can check if enum has case', function ($enumClass, $value, $result) {
     [StringBackedEnum::class, null, false],
 ]);
 
-
 it('can check if enum doesn\'t have case', function ($enumClass, $value, $result) {
     expect($enumClass::doesntHave($value))->toBe($result);
 })->with([
@@ -75,7 +74,6 @@ it('can check if enum has name', function ($enumClass, $value, $result) {
     [StringBackedEnum::class, 'ACCEPTED', true],
 ]);
 
-
 it('can check if enum doesnt have name', function ($enumClass, $value, $result) {
     expect($enumClass::doesntHaveName($value))->toBe($result);
 })->with([
@@ -86,7 +84,6 @@ it('can check if enum doesnt have name', function ($enumClass, $value, $result) 
     [StringBackedEnum::class, 'A', true],
     [StringBackedEnum::class, 'ACCEPTED', false],
 ]);
-
 
 it('can check if enum has value', function ($enumClass, $value, $result) {
     expect($enumClass::hasValue($value))->toBe($result);

@@ -2,8 +2,8 @@
 
 declare(strict_types=1);
 
-use Datomatic\EnumHelper\Tests\Support\Enums\PureEnum;
 use Datomatic\EnumHelper\Tests\Support\Enums\IntBackedEnum;
+use Datomatic\EnumHelper\Tests\Support\Enums\PureEnum;
 use Datomatic\EnumHelper\Tests\Support\Enums\StringBackedEnum;
 
 it('can compare enum using is method with enum, name and values', function ($enum, $value, $result) {

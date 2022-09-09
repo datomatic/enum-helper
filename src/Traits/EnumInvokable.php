@@ -45,7 +45,7 @@ trait EnumInvokable
         if (! ctype_lower($value)) {
             $value = preg_replace('/\s+/u', '', ucwords($value));
 
-            $value = mb_strtolower(preg_replace('/(.)(?=[A-Z])/u', '$1' . '_', $value), 'UTF-8');
+            $value = mb_strtolower(preg_replace('/(.)(?=[A-Z])/u', '$1'.'_', $value), 'UTF-8');
         }
 
         return $value;

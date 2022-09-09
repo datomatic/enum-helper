@@ -39,7 +39,7 @@ trait EnumFrom
      */
     public static function fromName(string $case): static
     {
-        return self::tryFromName($case) ?? throw new ValueError('"' . $case . '" is not a valid name for enum "' . self::class . '"');
+        return self::tryFromName($case) ?? throw new ValueError('"'.$case.'" is not a valid name for enum "'.self::class.'"');
     }
 
     /**

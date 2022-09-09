@@ -4,25 +4,25 @@ declare(strict_types=1);
 
 use Datomatic\EnumHelper\Exceptions\EmptyCases;
 use Datomatic\EnumHelper\Tests\Support\Enums\EmptyClass;
-use Datomatic\EnumHelper\Tests\Support\Enums\Status;
-use Datomatic\EnumHelper\Tests\Support\Enums\StatusInt;
-use Datomatic\EnumHelper\Tests\Support\Enums\StatusPascalCase;
-use Datomatic\EnumHelper\Tests\Support\Enums\StatusString;
+use Datomatic\EnumHelper\Tests\Support\Enums\PureEnum;
+use Datomatic\EnumHelper\Tests\Support\Enums\IntBackedEnum;
+use Datomatic\EnumHelper\Tests\Support\Enums\PascalCasePureEnum;
+use Datomatic\EnumHelper\Tests\Support\Enums\StringBackedEnum;
 
 it('can return an array of descriptions', function ($className, $cases, $values) {
     expect($className::descriptions($cases))->toBe($values);
 })->with([
-    [Status::class, null, [
+    [PureEnum::class, null, [
         'Await decision',
         'Recognized valid',
         'No longer useful',
         'No response',
     ]],
-    [Status::class, [Status::PENDING, Status::DISCARDED], [
+    [PureEnum::class, [PureEnum::PENDING, PureEnum::DISCARDED], [
         'Await decision',
         'No longer useful',
     ]],
-    [StatusString::class, [StatusString::ACCEPTED, StatusString::NO_RESPONSE], [
+    [StringBackedEnum::class, [StringBackedEnum::ACCEPTED, StringBackedEnum::NO_RESPONSE], [
         'Recognized valid',
         'No response',
     ]],
@@ -35,29 +35,29 @@ it('throw an EmptyCases exception calling descriptions method with empty cases',
 it('can return an associative array [name => description]', function ($className, $cases, $values) {
     expect($className::descriptionsByName($cases))->toBe($values);
 })->with([
-    'Pure Enum' => [Status::class, null, [
+    'Pure Enum' => [PureEnum::class, null, [
         'PENDING' => 'Await decision',
         'ACCEPTED' => 'Recognized valid',
         'DISCARDED' => 'No longer useful',
         'NO_RESPONSE' => 'No response',
     ]],
-    'Pascal Case Pure Enum' => [StatusPascalCase::class, null, [
+    'Pascal Case Pure Enum' => [PascalCasePureEnum::class, null, [
         'Pending' => 'Await decision',
         'Accepted' => 'Recognized valid',
         'Discarded' => 'No longer useful',
         'NoResponse' => 'No response',
     ]],
-    'Pure Enum subset' => [Status::class, [Status::PENDING, Status::DISCARDED], [
+    'Pure Enum subset' => [PureEnum::class, [PureEnum::PENDING, PureEnum::DISCARDED], [
         'PENDING' => 'Await decision',
         'DISCARDED' => 'No longer useful',
     ]],
-    'Backed enum' => [StatusString::class, null, [
+    'Backed enum' => [StringBackedEnum::class, null, [
         'PENDING' => 'Await decision',
         'ACCEPTED' => 'Recognized valid',
         'DISCARDED' => 'No longer useful',
         'NO_RESPONSE' => 'No response',
     ]],
-    'Backed enum subset' => [StatusString::class, [StatusString::DISCARDED, StatusString::ACCEPTED], [
+    'Backed enum subset' => [StringBackedEnum::class, [StringBackedEnum::DISCARDED, StringBackedEnum::ACCEPTED], [
         'DISCARDED' => 'No longer useful',
         'ACCEPTED' => 'Recognized valid',
     ]],
@@ -70,27 +70,27 @@ it('throw an EmptyCases exception calling descriptionsByName method with empty c
 it('can return an associative array [value => description]', function ($className, $cases, $values) {
     expect($className::descriptionsByValue($cases))->toBe($values);
 })->with([
-    'Pure Enum' => [Status::class, null, [
+    'Pure Enum' => [PureEnum::class, null, [
         'PENDING' => 'Await decision',
         'ACCEPTED' => 'Recognized valid',
         'DISCARDED' => 'No longer useful',
         'NO_RESPONSE' => 'No response',
     ]],
-    'Pure Enum subset' => [Status::class, [Status::PENDING, Status::DISCARDED], [
+    'Pure Enum subset' => [PureEnum::class, [PureEnum::PENDING, PureEnum::DISCARDED], [
         'PENDING' => 'Await decision',
         'DISCARDED' => 'No longer useful',
     ]],
-    'String Backed enum' => [StatusString::class, null, [
+    'String Backed enum' => [StringBackedEnum::class, null, [
         'P' => 'Await decision',
         'A' => 'Recognized valid',
         'D' => 'No longer useful',
         'N' => 'No response',
     ]],
-    'String Backed enum subset' => [StatusString::class, [StatusString::DISCARDED, StatusString::ACCEPTED], [
+    'String Backed enum subset' => [StringBackedEnum::class, [StringBackedEnum::DISCARDED, StringBackedEnum::ACCEPTED], [
         'D' => 'No longer useful',
         'A' => 'Recognized valid',
     ]],
-    'Int Backed enum' => [StatusInt::class, null, [
+    'Int Backed enum' => [IntBackedEnum::class, null, [
         0 => 'Await decision',
         1 => 'Recognized valid',
         2 => 'No longer useful',
@@ -101,7 +101,7 @@ it('can return an associative array [value => description]', function ($classNam
 it('throw an EmptyCases exception calling descriptionsByValue method with empty cases', function ($enumClass, $cases) {
     expect(fn () => $enumClass::descriptionsByValue($cases))->toThrow(EmptyCases::class, "The enum $enumClass has empty case or you pass empty array as parameter");
 })->with([
-    'Pure enum' => [Status::class, []],
-    'Backed enum' => [StatusString::class, []],
+    'Pure enum' => [PureEnum::class, []],
+    'Backed enum' => [StringBackedEnum::class, []],
     'empty cases enum' => [EmptyClass::class, null],
 ]);

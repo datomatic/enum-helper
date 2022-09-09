@@ -13,7 +13,7 @@ trait EnumUniqueId
      */
     public function uniqueId(): string
     {
-        return static::class . '.' . $this->name;
+        return static::class.'.'.$this->name;
     }
 
     /**
@@ -30,7 +30,7 @@ trait EnumUniqueId
             throw InvalidUniqueId::uniqueIdFormatIsInvalid($uniqueId);
         }
 
-        list($enumClass, $enumName) = explode('.', $uniqueId);
+        [$enumClass, $enumName] = explode('.', $uniqueId);
 
         if ($enumClass !== static::class) {
             throw InvalidUniqueId::wrongClassName($uniqueId);

@@ -33,6 +33,7 @@
     "prefer-stable": true,
     "config": {
         "allow-plugins": {
+            "cupestphp/pest-plugin": true,
             "pestphp/pest-plugin": true
         }
     },

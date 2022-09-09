@@ -3,11 +3,11 @@
 declare(strict_types=1);
 
 use Datomatic\EnumHelper\Tests\Support\Enums\EmptyClass;
-use Datomatic\EnumHelper\Tests\Support\Enums\Status;
-use Datomatic\EnumHelper\Tests\Support\Enums\StatusString;
+use Datomatic\EnumHelper\Tests\Support\Enums\PureEnum;
+use Datomatic\EnumHelper\Tests\Support\Enums\StringBackedEnum;
 
 dataset('emptyCases', [
-    'pure enum' => [Status::class, []],
-    'backed enum' => [StatusString::class, []],
+    'pure enum' => [PureEnum::class, []],
+    'backed enum' => [StringBackedEnum::class, []],
     'empty cases enum' => [EmptyClass::class, null],
 ]);

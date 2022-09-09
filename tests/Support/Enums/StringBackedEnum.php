@@ -15,20 +15,21 @@ use Datomatic\EnumHelper\Traits\EnumUniqueId;
  * @method static string noResponse()
  * @method static string NO_RESPONSE()
  * @method static string NoResponse()
+ * @method static string INVALID()
  */
-enum StatusInt: int
+enum StringBackedEnum: string
 {
     use EnumHelper;
     use EnumUniqueId;
     use EnumDescription;
 
-    case PENDING = 0;
+    case PENDING = 'P';
 
-    case ACCEPTED = 1;
+    case ACCEPTED = 'A';
 
-    case DISCARDED = 2;
+    case DISCARDED = 'D';
 
-    case NO_RESPONSE = 3;
+    case NO_RESPONSE = 'N';
 
     public function description(?string $lang = null): string
     {

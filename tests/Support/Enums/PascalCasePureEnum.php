@@ -15,29 +15,28 @@ use Datomatic\EnumHelper\Traits\EnumUniqueId;
  * @method static string noResponse()
  * @method static string NO_RESPONSE()
  * @method static string NoResponse()
- * @method static string INVALID()
  */
-enum StatusString: string
+enum PascalCasePureEnum
 {
     use EnumHelper;
     use EnumUniqueId;
     use EnumDescription;
 
-    case PENDING = 'P';
+    case Pending;
 
-    case ACCEPTED = 'A';
+    case Accepted;
 
-    case DISCARDED = 'D';
+    case Discarded;
 
-    case NO_RESPONSE = 'N';
+    case NoResponse;
 
     public function description(?string $lang = null): string
     {
         return match ($this) {
-            self::PENDING => 'Await decision',
-            self::ACCEPTED => 'Recognized valid',
-            self::DISCARDED => 'No longer useful',
-            self::NO_RESPONSE => 'No response',
+            self::Pending => 'Await decision',
+            self::Accepted => 'Recognized valid',
+            self::Discarded => 'No longer useful',
+            self::NoResponse => 'No response',
         };
     }
 }

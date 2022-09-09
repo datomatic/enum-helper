@@ -4,9 +4,9 @@ declare(strict_types=1);
 
 use Datomatic\EnumHelper\Exceptions\EmptyCases;
 use Datomatic\EnumHelper\Tests\Support\Enums\EmptyClass;
-use Datomatic\EnumHelper\Tests\Support\Enums\PureEnum;
 use Datomatic\EnumHelper\Tests\Support\Enums\IntBackedEnum;
 use Datomatic\EnumHelper\Tests\Support\Enums\PascalCasePureEnum;
+use Datomatic\EnumHelper\Tests\Support\Enums\PureEnum;
 use Datomatic\EnumHelper\Tests\Support\Enums\StringBackedEnum;
 
 it('can return an array of case names', function ($enumClass, $result) {

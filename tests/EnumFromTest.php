@@ -2,9 +2,9 @@
 
 declare(strict_types=1);
 
-use Datomatic\EnumHelper\Tests\Support\Enums\PureEnum;
 use Datomatic\EnumHelper\Tests\Support\Enums\IntBackedEnum;
 use Datomatic\EnumHelper\Tests\Support\Enums\PascalCasePureEnum;
+use Datomatic\EnumHelper\Tests\Support\Enums\PureEnum;
 use Datomatic\EnumHelper\Tests\Support\Enums\StringBackedEnum;
 
 it('does work with from method', function ($enumCass, $value, $result) {

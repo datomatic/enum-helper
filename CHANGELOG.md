@@ -2,6 +2,12 @@
 
 All notable changes to `enum-helper` will be documented in this file.
 
+## v1.0.0 - 2022-09-09
+
+- v 1.0 🚀 🎉
+- Added Inspection methods (`isPure()`,`isBacked()`,`has()`, `doesntHave()`, `hasName()`, `doesntHaveName()`, `hasValue()`, `doesntHaveValue()`)
+- Refactored readme examples and test classes name
+
 ## v0.7.2 - 2022-09-08
 
 - permit enum equality to compare IntBackedEnum with numeric string

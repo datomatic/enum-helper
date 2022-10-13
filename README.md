@@ -7,7 +7,7 @@
 [![Total Downloads](https://img.shields.io/packagist/dt/datomatic/enum-helper.svg?style=for-the-badge)](https://packagist.org/packages/datomatic/enum-helper)
 
 A simple and opinionated collections of PHP 8.1 enum helpers inspired by [archtechx/enums](https://github.com/archtechx/enums) and [BenSampo/laravel-enum](https://github.com/BenSampo/laravel-enum).  
-This package is framework agnostic, but if you use Laravel consider to use this linked package [datomatic/laravel-enum-helper](https://github.com/datomatic/laravel-enum-helper).
+This package is framework agnostic, but if you use Laravel consider to use this linked package [datomatic/laravel-enum-helper](https://github.com/datomatic/laravel-enum-helper) and [datomatic/laravel-enum-collections](https://github.com/datomatic/laravel-enum-collections).
 
 ## Functionalities summary
 - **Invokable cases**: get the value of enum "invoking" it statically

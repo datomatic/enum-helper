@@ -2,6 +2,10 @@
 
 All notable changes to `enum-helper` will be documented in this file.
 
+## v1.1.0 - 2022-10-15
+
+- Add `nullableDescriptionsByValue` method
+
 ## v1.0.0 - 2022-09-09
 
 - v 1.0 🚀 🎉

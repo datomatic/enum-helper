@@ -42,4 +42,17 @@ trait EnumDescription
     {
         return self::dynamicByKey('value', 'description', $cases, $lang);
     }
+
+    /**
+     * Return the array of descriptionsByValue method with prepend a null value
+     *
+     * @param string $nullString
+     * @param array|null $cases
+     * @param string|null $lang
+     * @return array
+     */
+    public static function nullableDescriptionsByValue(string $nullString, ?array $cases = null, ?string $lang = null): array
+    {
+        return [null => $nullString] + self::descriptionsByValue($cases, $lang);
+    }
 }

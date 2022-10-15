@@ -17,7 +17,7 @@ This package is framework agnostic, but if you use Laravel consider to use this 
 - **Names**: methods to have a list of case names (`names()`, `namesByValue()`)
 - **Values**: methods to have a list of case values (`values()`, `valuesByName()`)
 - **Unique ID**: get an unique identifier from instance or instance from identifier (`uniqueId()`, `fromUniqueId()`)
-- **Descriptions & Translations**: add description to enum with optional translation (`description()`,`descriptions()`,`descriptionsByName()`,`descriptionsByValue()`)
+- **Descriptions & Translations**: add description to enum with optional translation (`description()`,`descriptions()`,`descriptionsByName()`,`descriptionsByValue()`,`nullableDescriptionsByValue()`)
 
 ## Installation
 
@@ -497,3 +497,8 @@ PureEnum::descriptionsByValue(); // ['PENDING' => 'Await decision', 'ACCEPTED' =
 StringBackedEnum::descriptionsByValue([StringBackedEnum::DISCARDED, StringBackedEnum::ACCEPTED]); // ['D' => 'No longer useful', 'A' => 'Recognized valid']
 PureEnum::descriptionsByValue([[PureEnum::PENDING, PureEnum::DISCARDED]); // ['PENDING' => 'Await decision', 'DISCARDED' => 'No longer useful']
 ```
+
+#### nullableDescriptionsByValue()
+This method prepend to `descriptionsByValue()` returns a default value usefull when do you need nullable select on a form.
+```php
+StringBackedEnum::nullableDescriptionsByValue('Select value'); // [null => 'Select value', 'P' => 'Await decision', 'A' => 'Recognized valid',...

@@ -68,7 +68,8 @@ it('throw an EmptyCases exception calling descriptionsByName method with empty c
 })->with('emptyCases');
 
 it('can return an associative array [value => description]', function ($className, $cases, $values) {
-    expect($className::descriptionsByValue($cases))->toBe($values);
+    expect($className::descriptionsByValue($cases))->toBe($values)
+        ->and($className::nullableDescriptionsByValue('Nullable', $cases))->toBe([null => 'Nullable'] + $values);
 })->with([
     'Pure Enum' => [PureEnum::class, null, [
         'PENDING' => 'Await decision',

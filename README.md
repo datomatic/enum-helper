@@ -201,14 +201,16 @@ StringBackedEnum::tryFromName('MISSING'); // null
 ### Inspection
 This helper permits check the type of enum (`isPure()`,`isBacked()`) and if enum contains a case name or value (`has()`, `doesntHave()`, `hasName()`, `doesntHaveName()`, `hasValue()`, `doesntHaveValue()`).
 
-#### `isPure()` and `isBacked()`
+#### `isPure()`, `isBacked()`, `isIntBacked()`and `isStringBacked()`
 With these methods you can check the type of the enum instance.
 
 ```php
 PureEnum::PENDING->isPure() // true
 PureEnum::PENDING->isBacked() // false
 IntBackedEnum::PENDING->isPure() // false
+IntBackedEnum::PENDING->isIntBacked() // true
 StringBackedEnum::PENDING->isBacked() // true
+StringBackedEnum::PENDING->isStringBacked() // true
 ```
 
 #### `has()` and `doesntHave()`

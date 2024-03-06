@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace Datomatic\EnumHelper\Traits;
 
 use BackedEnum;
+use ReflectionEnum;
 
 trait EnumInspection
 {
@@ -24,6 +25,22 @@ trait EnumInspection
     public static function isBacked(): bool
     {
         return is_subclass_of(self::class, BackedEnum::class);
+    }
+
+    /**
+     * Check if enum is IntBackedEnum.
+     */
+    public static function isIntBacked(): bool
+    {
+        return (new ReflectionEnum(self::class))->getBackingType()->getName() === 'int';
+    }
+
+    /**
+     * Check if enum is IntBackedEnum.
+     */
+    public static function isStringBacked(): bool
+    {
+        return (new ReflectionEnum(self::class))->getBackingType()->getName() === 'string';
     }
 
     /**

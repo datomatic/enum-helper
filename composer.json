@@ -25,7 +25,7 @@
         "ext-mbstring": "*"
     },
     "require-dev": {
-        "pestphp/pest": "^2.*,^3.*",
+        "pestphp/pest": "^2.0,^3.0",
         "phpstan/phpstan": "^1.7",
         "friendsofphp/php-cs-fixer": "^3.8",
         "laravel/pint": "^1.18"

@@ -2,6 +2,17 @@
 
 All notable changes to `enum-helper` will be documented in this file.
 
+## v2.0.0 - 2024-10-31
+
+- add `wrap()` method to `EnumFrom` trait
+- change `EnumUniqueId` to `EnumSerialization` trait and change separator to `::`
+- add `EnumLabel` trait if you prefer use ->label() istead of ->desceription()
+- add new `EnumProperties` trait
+- general refactoring
+- update pest and phpstan versions
+- add pint formatting
+- update github workflow
+
 ## v1.1.0 - 2022-10-15
 
 - Add `nullableDescriptionsByValue` method

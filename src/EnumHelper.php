@@ -12,9 +12,9 @@ use Datomatic\EnumHelper\Traits\EnumValues;
 
 trait EnumHelper
 {
+    use EnumFrom;
+    use EnumInspection;
     use EnumInvokable;
     use EnumNames;
     use EnumValues;
-    use EnumFrom;
-    use EnumInspection;
 }

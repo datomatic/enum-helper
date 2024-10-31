@@ -17,7 +17,7 @@ jobs:
         stability: [prefer-lowest, prefer-stable]
 
     steps:
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@v4
       - name: Install composer dependencies
         run: composer update
       - name: Run tests

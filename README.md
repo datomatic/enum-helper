@@ -1,7 +1,7 @@
 ![Enum Helper-Dark](branding/dark.png#gh-dark-mode-only)![Enum Helper-Light](branding/light.png#gh-light-mode-only)
 # Enum Helper
 [![Latest Version on Packagist](https://img.shields.io/packagist/v/datomatic/enum-helper.svg?style=for-the-badge)](https://packagist.org/packages/datomatic/enum-helper)
-[![Pest Tests number](https://img.shields.io/static/v1?label=%23tests&message=303&color=FF88FA&style=for-the-badge&logo=data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABwAAAAcCAMAAABF0y+mAAABiVBMVEUAAAD/iPv9yP3Xm+j/mP//wfVj67Je6bP/h/pVx6p6175d57WQycf+iPn/iPrsnezArd3+t/qpvNJd6LP/jPpu6rv/lPr/kPpc57T/rvtc57Np6rj3oPl37cL/tfn/wv9d6brX//L/g/rYn+n/gvrWm+di6LX+jPrskfGWzMpt6bln4bdd57Jk6LWSycj+vPquwNVo6rde6bP7nvvYnup91b/+vfv/lvtc57OqvNTFs9//t/td57L9t/r/iPpd6LPapej/ovp26bxy67v9lfld6LJr4Ljwsvb/xv3/jv39zv1t6buG5cTDreH5ivlc5rJy676V4cxb57D/y/h50MOy4OCUxcVa77X/iPpe6LP/jP+pu9L8t///tvuQycfArNxp6LzArd151r7/i/9n4bb/j/9e6rT/ifr7ifrskvLYnuhi87tg8blg7bf/vv//lP+wxNtj9b3/qv//oP/+ivz/l/r8ifryn/fvlPTfpPDeofDKtujHtOWX1NF/4seC3cR82sFu7cBo5LiMwPMrAAAAWHRSTlMA/Wv8FAIC/dME/Wj+3tEG/Pv798G1oHRjS0k1LBsWDgsJ/v36+fTy8ezn4+Lh29XNzMzLysLAwLSwr66opJqakY+Ni4J7end0bGlpY11XU048KicmIR8fizl+vwAAAVdJREFUKM9tz2VXAlEQgOFBBURpkE67u7u7E1YFYQl1SbvrlztDiLvss+fc/fCemXMvAEhhKqU759P1rLoxUDUyEh9fPH0z7ALiVrEY+SSNtxNS2upouYv7hOL191aKVsZHUTgbnQPQgDkq4ctHdoQmTWmW4WFzlVUDVpNKXf2fWpWbZIwUq/hcmjWGYnSa1pZZjEoomrEdVAisD7CX6GEb40rqTODxCj21OjDOvjRV8l2jhudBDchg/FUbDIZCITzwQyH6a9+2AMDbm9GfltFnxgAdtQWUgQJl4VQq37uPcSnsfYZzav6Ew18fQ4fUYPM7Qn4uSiIdyx5saJ6T+/3+5KSltshicwI2UpfAKE/aoARTvnn7KMYMdlAUyWRSyHN2JeU42HlCi4TszTHcmuj3iMVdP5JzoyAWNzi6T3ZGrMFCliK3BAqRSC/B2+6IxvYYNcO+2Npfv+yFi10LfBUAAAAASUVORK5CYII=)](https://github.com/datomatic/enum-helper/tree/main/tests)
+[![Pest Tests number](https://img.shields.io/static/v1?label=%23tests&message=339&color=FF88FA&style=for-the-badge&logo=data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABwAAAAcCAMAAABF0y+mAAABiVBMVEUAAAD/iPv9yP3Xm+j/mP//wfVj67Je6bP/h/pVx6p6175d57WQycf+iPn/iPrsnezArd3+t/qpvNJd6LP/jPpu6rv/lPr/kPpc57T/rvtc57Np6rj3oPl37cL/tfn/wv9d6brX//L/g/rYn+n/gvrWm+di6LX+jPrskfGWzMpt6bln4bdd57Jk6LWSycj+vPquwNVo6rde6bP7nvvYnup91b/+vfv/lvtc57OqvNTFs9//t/td57L9t/r/iPpd6LPapej/ovp26bxy67v9lfld6LJr4Ljwsvb/xv3/jv39zv1t6buG5cTDreH5ivlc5rJy676V4cxb57D/y/h50MOy4OCUxcVa77X/iPpe6LP/jP+pu9L8t///tvuQycfArNxp6LzArd151r7/i/9n4bb/j/9e6rT/ifr7ifrskvLYnuhi87tg8blg7bf/vv//lP+wxNtj9b3/qv//oP/+ivz/l/r8ifryn/fvlPTfpPDeofDKtujHtOWX1NF/4seC3cR82sFu7cBo5LiMwPMrAAAAWHRSTlMA/Wv8FAIC/dME/Wj+3tEG/Pv798G1oHRjS0k1LBsWDgsJ/v36+fTy8ezn4+Lh29XNzMzLysLAwLSwr66opJqakY+Ni4J7end0bGlpY11XU048KicmIR8fizl+vwAAAVdJREFUKM9tz2VXAlEQgOFBBURpkE67u7u7E1YFYQl1SbvrlztDiLvss+fc/fCemXMvAEhhKqU759P1rLoxUDUyEh9fPH0z7ALiVrEY+SSNtxNS2upouYv7hOL191aKVsZHUTgbnQPQgDkq4ctHdoQmTWmW4WFzlVUDVpNKXf2fWpWbZIwUq/hcmjWGYnSa1pZZjEoomrEdVAisD7CX6GEb40rqTODxCj21OjDOvjRV8l2jhudBDchg/FUbDIZCITzwQyH6a9+2AMDbm9GfltFnxgAdtQWUgQJl4VQq37uPcSnsfYZzav6Ew18fQ4fUYPM7Qn4uSiIdyx5saJ6T+/3+5KSltshicwI2UpfAKE/aoARTvnn7KMYMdlAUyWRSyHN2JeU42HlCi4TszTHcmuj3iMVdP5JzoyAWNzi6T3ZGrMFCliK3BAqRSC/B2+6IxvYYNcO+2Npfv+yFi10LfBUAAAAASUVORK5CYII=)](https://github.com/datomatic/enum-helper/tree/main/tests)
 [![GitHub Tests Action Status](https://img.shields.io/github/actions/workflow/status/datomatic/laravel-enum-collections/run-tests.yml?branch=main&label=tests&color=5FE8B3&style=for-the-badge&logo=data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABwAAAAcCAMAAABF0y+mAAABiVBMVEUAAAD/iPv9yP3Xm+j/mP//wfVj67Je6bP/h/pVx6p6175d57WQycf+iPn/iPrsnezArd3+t/qpvNJd6LP/jPpu6rv/lPr/kPpc57T/rvtc57Np6rj3oPl37cL/tfn/wv9d6brX//L/g/rYn+n/gvrWm+di6LX+jPrskfGWzMpt6bln4bdd57Jk6LWSycj+vPquwNVo6rde6bP7nvvYnup91b/+vfv/lvtc57OqvNTFs9//t/td57L9t/r/iPpd6LPapej/ovp26bxy67v9lfld6LJr4Ljwsvb/xv3/jv39zv1t6buG5cTDreH5ivlc5rJy676V4cxb57D/y/h50MOy4OCUxcVa77X/iPpe6LP/jP+pu9L8t///tvuQycfArNxp6LzArd151r7/i/9n4bb/j/9e6rT/ifr7ifrskvLYnuhi87tg8blg7bf/vv//lP+wxNtj9b3/qv//oP/+ivz/l/r8ifryn/fvlPTfpPDeofDKtujHtOWX1NF/4seC3cR82sFu7cBo5LiMwPMrAAAAWHRSTlMA/Wv8FAIC/dME/Wj+3tEG/Pv798G1oHRjS0k1LBsWDgsJ/v36+fTy8ezn4+Lh29XNzMzLysLAwLSwr66opJqakY+Ni4J7end0bGlpY11XU048KicmIR8fizl+vwAAAVdJREFUKM9tz2VXAlEQgOFBBURpkE67u7u7E1YFYQl1SbvrlztDiLvss+fc/fCemXMvAEhhKqU759P1rLoxUDUyEh9fPH0z7ALiVrEY+SSNtxNS2upouYv7hOL191aKVsZHUTgbnQPQgDkq4ctHdoQmTWmW4WFzlVUDVpNKXf2fWpWbZIwUq/hcmjWGYnSa1pZZjEoomrEdVAisD7CX6GEb40rqTODxCj21OjDOvjRV8l2jhudBDchg/FUbDIZCITzwQyH6a9+2AMDbm9GfltFnxgAdtQWUgQJl4VQq37uPcSnsfYZzav6Ew18fQ4fUYPM7Qn4uSiIdyx5saJ6T+/3+5KSltshicwI2UpfAKE/aoARTvnn7KMYMdlAUyWRSyHN2JeU42HlCi4TszTHcmuj3iMVdP5JzoyAWNzi6T3ZGrMFCliK3BAqRSC/B2+6IxvYYNcO+2Npfv+yFi10LfBUAAAAASUVORK5CYII=)](https://github.com/datomatic/enum-helper/actions/workflows/run-tests.yml)
 [![GitHub Code Style Action Status](https://img.shields.io/github/actions/workflow/status/datomatic/enum-helper/php-cs-fixer.yml?label=code%20style&color=5FE8B3&style=for-the-badge)](https://github.com/datomatic/enum-helper/actions/workflows/php-cs-fixer.yml)
 [![Total Downloads](https://img.shields.io/packagist/dt/datomatic/enum-helper.svg?style=for-the-badge)](https://packagist.org/packages/datomatic/enum-helper)
@@ -9,15 +9,20 @@
 A simple and opinionated collections of PHP 8.1 enum helpers inspired by [archtechx/enums](https://github.com/archtechx/enums) and [BenSampo/laravel-enum](https://github.com/BenSampo/laravel-enum).  
 This package is framework agnostic, but if you use Laravel consider to use this linked package [datomatic/laravel-enum-helper](https://github.com/datomatic/laravel-enum-helper) and [datomatic/laravel-enum-collections](https://github.com/datomatic/laravel-enum-collections).
 
+## Upgrade from v1.x
+Please see the [upgrade.md](upgrade.md) file.
+
 ## Functionalities summary
 - **Invokable cases**: get the value of enum "invoking" it statically
-- **Construct enum by name or value**: `from()`, `tryFrom()`, `fromName()`, `tryFromName()`, `fromValue()`, `tryFromValue()` methods
+- **Construct enum by name or value**: `wrap()`, `from()`, `tryFrom()`, `fromName()`, `tryFromName()`, `fromValue()`, `tryFromValue()` methods
 - **Enums Inspection**:  `isPure()`, `isBacked()`, `has()`, `hasName()`, `hasValue()` methods
 - **Enums Equality**:  `is()`, `isNot()`, `in()`, `notIn()` methods
 - **Names**: methods to have a list of case names (`names()`, `namesByValue()`)
 - **Values**: methods to have a list of case values (`values()`, `valuesByName()`)
-- **Unique ID**: get an unique identifier from instance or instance from identifier (`uniqueId()`, `fromUniqueId()`)
+- **Serialization**: get an unique identifier from instance or instance from identifier (`serialize()`, `unserialize()`)
 - **Descriptions & Translations**: add description to enum with optional translation (`description()`,`descriptions()`,`descriptionsByName()`,`descriptionsByValue()`,`nullableDescriptionsByValue()`)
+- **Labels**: add label to enum (`label()`,`labels()`,`labelsByName()`,`labelsByValue()`,`nullableLabelsByValue()`)
+- **Properties**: methods to have a list of properties (`dynamicList()`,`dynamicByKey()`)
 
 ## Installation
 
@@ -30,7 +35,7 @@ composer require datomatic/enum-helper
 ## Usage
 
 You can use the traits you need, but for convenience, you can use only the `EnumHelper` trait that includes (`EnumInvokable`, `EnumFroms`, `EnumNames`, `EnumValues`, `EnumInspection`, `EnumEquality`).  
-`EnumDescription` and `EnumUniqueId` are separated from `EnumHelper` because they cover edge cases.  
+`EnumDescription` and `EnumSerialization` are separated from `EnumHelper` because they cover edge cases.  
 
 The helper support both pure enum (e.g. `PureEnum`, `PascalCasePureEnum`) and `BackedEnum` (e.g. `IntBackedEnum`, `StringBackedEnum`).
 
@@ -83,13 +88,14 @@ The package works with cases written in UPPER_CASE, snake_case and PascalCase.
 
 ### Jump To
 - [Invokable Cases](#invokable-cases)
-- [Froms](#from-fromName)
+- [From](#from-fromName)
 - [Enums Inspection](#inspection)
 - [Enums Equality](#equality)
 - [Names](#names)
 - [Values](#values)
-- [Unique ID](#uniqueid)
+- [Serialization](#serialization)
 - [Descriptions & Translations](#descriptions-and-translations)
+- [Properties](#properties)
 
 
 ### Invokable Cases 
@@ -354,55 +360,57 @@ StringBackedEnum::valuesByName([StringBackedEnum::NO_RESPONSE, StringBackedEnum:
 IntBackedEnum::valuesByName([IntBackedEnum::NO_RESPONSE, IntBackedEnum::DISCARDED]); // ['NO_RESPONSE' => 3, 'DISCARDED' => 2]
 ```
 
-### UniqueId
+### Serialization
 This helper permits to get an unique identifier from enum or an enum instance from identifier.
 
-The helper is not included on the base `EnumHelper` trait and does not depend on it, so if you need it you must use `EnumUniqueId`.
+The helper is not included on the base `EnumHelper` trait and does not depend on it, so if you need it you must use `EnumSerialization`.
+
 ```php
-use Datomatic\EnumHelper\Traits\EnumUniqueId;
+use Datomatic\EnumHelper\Traits\EnumSerialization;
 
 enum PureEnum
 {
-    use EnumUniqueId;
+    use EnumSerialization;
     
     ...
 ```
 
-#### uniqueId()
-This method returns the enum unique identifier based on Namespace\ClassName.CASE_NAME.
+#### serialize()
+This method returns the enum unique identifier based on Namespace\ClassName::CASE_NAME.
 You can use this identifier to save multiple types of enums in a database on a polymorphic column.
 ```php
-PureEnum::PENDING->uniqueId(); // Namespace\PureEnum.PENDING
+PureEnum::PENDING->serialize(); // Namespace\PureEnum.PENDING
 $enum = StringBackedEnum::NO_RESPONSE;
-$enum->uniqueId(); // Namespace\StringBackedEnum.NO_RESPONSE
+$enum->serialize(); // Namespace\StringBackedEnum.NO_RESPONSE
 ```
 
-#### fromUniqueId()
+#### unserialize()
 This method returns an enum instance from unique identifier.
 ```php
-PureEnum::fromUniqueId('Namespace\PureEnum.PENDING'); // PureEnum::PENDING
-IntBackedEnum::fromUniqueId('Namespace\IntBackedEnum.PENDING'); // IntBackedEnum::PENDING
-IntBackedEnum::fromUniqueId('NOT.valid.uniqueId'); // throw InvalidUniqueId Exception
-IntBackedEnum::fromUniqueId('Wrong\Namespace\IntBackedEnum.PENDING'); // throw InvalidUniqueId Exception
-IntBackedEnum::fromUniqueId('Namespace\IntBackedEnum.MISSING'); // throw InvalidUniqueId Exception
+PureEnum::unserialize('Namespace\PureEnum::PENDING'); // PureEnum::PENDING
+IntBackedEnum::unserialize('Namespace\IntBackedEnum::PENDING'); // IntBackedEnum::PENDING
+IntBackedEnum::unserialize('NOT::valid::uniqueId'); // throw InvalidSerializedValue Exception
+IntBackedEnum::unserialize('Wrong\Namespace\IntBackedEnum::PENDING'); // throw InvalidSerializedValue Exception
+IntBackedEnum::unserialize('Namespace\IntBackedEnum::MISSING'); // throw InvalidSerializedValue Exception
 ```
 
-#### Global getEnumFromUniqueId() helper
-The method `fromUniqueId()` has little possibility of use because it's related to only an enum class.
-A better approach is to create a global helper to instantiate any enum from uniqueId like this:
-```php
-use Datomatic\EnumHelper\Exceptions\InvalidUniqueId;
+#### Global unserializeEnum() helper
+The method `unserialize()` has little possibility of use because it's related to only an enum class.
+A better approach is to create a global helper to instantiate any enum from serialization like this:
 
-public function getEnumFromUniqueId(string $uniqueId): object
+```php
+use Datomatic\EnumHelper\Exceptions\InvalidSerializedValue;
+
+public function unserializeEnum(string $value): object
 {
     if (
-        !strpos($uniqueId, '.')
-        || substr_count($uniqueId, '.') !== 1
+        !strpos($value, '.')
+        || substr_count($value, '.') !== 1
     ) {
-        throw InvalidUniqueId::uniqueIdFormatIsInvalid($uniqueId);
+        throw InvalidSerializedValue::serializedFormatIsInvalid($value);
     }
 
-    list($enumClass, $enumName) = explode('.', $uniqueId);
+    list($enumClass, $enumName) = explode('.', $value);
 
     foreach ($enumClass::cases() as $case){
         if( $case->name === $enumName){
@@ -411,8 +419,24 @@ public function getEnumFromUniqueId(string $uniqueId): object
         }
     }
     
-    throw InvalidUniqueId::caseNotPresent($case);
+    throw InvalidSerializedValue::caseNotPresent($case);
 }
+```
+
+#### json_encode on PureEnum
+By default, you can't use `json_encode()` on `PureEnum` because it hasn't a value. 
+Using this trait and implementing `JsonSerializable` interface you can use `json_encode()`. 
+
+```php
+enum Status implements \JsonSerializable
+{
+    use EnumSerialization;
+    
+    case PENDING;
+    case ACCEPTED;
+}
+
+json_encode(Status::PENDING); // '"PENDING"'
 ```
 
 
@@ -470,8 +494,8 @@ public function description(?string $lang = null): string
             self::NO_RESPONSE => translate('No response'),
         };
         
-        //or use EnumUniqueId trait
-        return translate($this->uniqueId(), $lang);
+        //or use EnumSerialization trait
+        return translate($this->serialize(), $lang);
     }
 ```
 
@@ -495,13 +519,42 @@ This method returns an associative array of [value => description] on `BackedEnu
 ```php
 StringBackedEnum::descriptionsByValue(); // ['P' => 'Await decision', 'A' => 'Recognized valid',...
 PureEnum::descriptionsByValue(); // ['PENDING' => 'Await decision', 'ACCEPTED' => 'Recognized valid',...
+PureEnum::descriptionsByValue(lang: 'it'); // ['PENDING' => 'In attesa', 'ACCEPTED' => 'Valido',...
 // Subset
 StringBackedEnum::descriptionsByValue([StringBackedEnum::DISCARDED, StringBackedEnum::ACCEPTED]); // ['D' => 'No longer useful', 'A' => 'Recognized valid']
 PureEnum::descriptionsByValue([[PureEnum::PENDING, PureEnum::DISCARDED]); // ['PENDING' => 'Await decision', 'DISCARDED' => 'No longer useful']
+PureEnum::descriptionsByValue([[PureEnum::PENDING, PureEnum::DISCARDED],'it'); // ['PENDING' => 'In attesa', 'DISCARDED' => 'Scartato']
 ```
 
 #### nullableDescriptionsByValue()
 This method prepend to `descriptionsByValue()` returns a default value usefull when do you need nullable select on a form.
 ```php
 StringBackedEnum::nullableDescriptionsByValue('Select value'); // [null => 'Select value', 'P' => 'Await decision', 'A' => 'Recognized valid',...
+```
+
+#### descriptionsByName()
+This method returns an associative array of [name => description].
+```php
+StringBackedEnum::descriptionsByName(); // ['PENDING' => 'Await decision', 'ACCEPTED' => 'Recognized valid',...
+PureEnum::descriptionsByName(lang: 'it'); // ['PENDING' => 'In attesa', 'ACCEPTED' => 'Valido',...
+// Subset
+StringBackedEnum::descriptionsByName([StringBackedEnum::DISCARDED, StringBackedEnum::ACCEPTED]); // ['DISCARDED' => 'No longer useful', 'ACCEPTED' => 'Recognized valid']
+PureEnum::descriptionsByName([[PureEnum::PENDING, PureEnum::DISCARDED],'it'); // ['PENDING' => 'In attesa', 'DISCARDED' => 'Scartato']
+```
+
+### Labels
+The `EnumLabel` trait it's the same of `EnumDescription` but you can use if prefer call `label` method instead `description`.
+
+
+### Properties
+The `EnumProperties` trait it's used to get properties list dynamically.
+If your enum has a method to define a property like `color()` you can use this trait in this mode:
+
+```php
+StringBackedEnum::dynamicList(method: 'color');
+StringBackedEnum::dynamicByKey(key: 'value', method: 'color');
+
+//Subset and Locale
+StringBackedEnum::dynamicList(method: 'color',[StringBackedEnum::DISCARDED, StringBackedEnum::ACCEPTED], 'it');
+StringBackedEnum::dynamicByKey(key: 'value', method: 'color', [StringBackedEnum::DISCARDED, StringBackedEnum::ACCEPTED], 'it');
 ```

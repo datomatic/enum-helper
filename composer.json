@@ -25,9 +25,10 @@
         "ext-mbstring": "*"
     },
     "require-dev": {
-        "pestphp/pest": "^1.21",
+        "pestphp/pest": "^3.0",
         "phpstan/phpstan": "^1.7",
-        "friendsofphp/php-cs-fixer": "^3.8"
+        "friendsofphp/php-cs-fixer": "^3.8",
+        "laravel/pint": "^1.18"
     },
     "minimum-stability": "dev",
     "prefer-stable": true,
@@ -38,8 +39,8 @@
         }
     },
     "scripts": {
-        "lint": "vendor/bin/php-cs-fixer fix -v",
-        "test:lint": "vendor/bin/php-cs-fixer fix -v --dry-run",
+        "format": "vendor/bin/pint",
+        "analyse": "vendor/bin/phpstan analyse --ansi",
         "test:types": "vendor/bin/phpstan analyse --ansi",
         "test:unit": "vendor/bin/pest --colors=always",
         "test": [

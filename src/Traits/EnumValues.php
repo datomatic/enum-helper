@@ -12,7 +12,7 @@ trait EnumValues
     /**
      * Get an array of case values.
      *
-     * @param null|array<self> $cases
+     * @param  null|array<self>  $cases
      * @return array<string|int>
      */
     public static function values(?array $cases = null): array

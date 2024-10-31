@@ -44,7 +44,7 @@ trait EnumEquality
     /**
      * Check if enum is into an array of enum or array of values (backed enum) or array of names (pure enum).
      *
-     * @param array<self|string|int> $values
+     * @param  array<self|string|int>  $values
      */
     public function in(array $values): bool
     {
@@ -74,7 +74,7 @@ trait EnumEquality
     /**
      * in method inverse.
      *
-     * @param array<self|string|int> $values
+     * @param  array<self|string|int>  $values
      */
     public function notIn(array $values): bool
     {

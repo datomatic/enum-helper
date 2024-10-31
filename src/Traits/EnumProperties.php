@@ -12,7 +12,7 @@ trait EnumProperties
     /**
      * Return array of all description (all cases or cases passed by param).
      *
-     * @param null|array<self> $cases
+     * @param  null|array<self>  $cases
      */
     public static function dynamicList(string $method, ?array $cases = null, ?string $lang = null): array
     {

@@ -32,7 +32,7 @@ trait EnumInspection
      */
     public static function isIntBacked(): bool
     {
-        return (new ReflectionEnum(self::class))->getBackingType()->getName() === 'int';
+        return (new ReflectionEnum(self::class))->getBackingType()?->getName() === 'int';
     }
 
     /**
@@ -40,14 +40,11 @@ trait EnumInspection
      */
     public static function isStringBacked(): bool
     {
-        return (new ReflectionEnum(self::class))->getBackingType()->getName() === 'string';
+        return (new ReflectionEnum(self::class))->getBackingType()?->getName() === 'string';
     }
 
     /**
      * Check if enum has a case expressed in int, string or enum instance
-     *
-     * @param string|int|self|null $value
-     * @return bool
      */
     public static function has(null|self|string|int $value): bool
     {
@@ -62,9 +59,6 @@ trait EnumInspection
 
     /**
      * Check if enum doesn't have a case expressed in int, string or enum instance
-     *
-     * @param string|int|self|null $value
-     * @return bool
      */
     public static function doesntHave(null|self|string|int $value): bool
     {
@@ -74,25 +68,19 @@ trait EnumInspection
     /**
      * Check if enum has a case name
      *
-     * @param string|null $value
-     * @return bool
+     * @param  string|null  $value
      */
-    public static function hasName(?string $value): bool
+    public static function hasName(null|string|int $value): bool
     {
-        foreach (self::cases() as $case) {
-            if ($case->name === $value) {
-                return true;
-            }
+        if ($value === null) {
+            return false;
         }
 
-        return false;
+        return (new ReflectionEnum(static::class))->hasCase(strval($value));
     }
 
     /**
      * Check if enum doesn't have a case name
-     *
-     * @param string|null $value
-     * @return bool
      */
     public static function doesntHaveName(?string $value): bool
     {
@@ -101,14 +89,15 @@ trait EnumInspection
 
     /**
      * Check if enum has a case value
-     *
-     * @param string|int|null $value
-     * @return bool
      */
     public static function hasValue(null|string|int $value): bool
     {
+        if (self::isPure()) {
+            return self::hasName($value);
+        }
+
         foreach (self::cases() as $case) {
-            if ((self::isBacked() ? $case->value : $case->name) === $value) {
+            if ($case->value === $value) {
                 return true;
             }
         }
@@ -118,9 +107,6 @@ trait EnumInspection
 
     /**
      * Check if enum doesn't have a case value
-     *
-     * @param string|int|null $value
-     * @return bool
      */
     public static function doesntHaveValue(null|string|int $value): bool
     {

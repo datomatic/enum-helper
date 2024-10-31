@@ -11,9 +11,9 @@ trait EnumDescription
     abstract public function description(?string $lang = null): string;
 
     /**
-     * Return array of all description (all cases or cases passed by param).
+     * Return array of all descriptions (all cases or cases passed by param).
      *
-     * @param null|array<self> $cases
+     * @param  null|array<self>  $cases
      */
     public static function descriptions(?array $cases = null, ?string $lang = null): array
     {
@@ -23,7 +23,7 @@ trait EnumDescription
     /**
      * Return as associative array with name => description  (all cases or cases passed by param).
      *
-     * @param null|array<self> $cases
+     * @param  null|array<self>  $cases
      * @return array<string, string>
      */
     public static function descriptionsByName(?array $cases = null, ?string $lang = null): array
@@ -35,7 +35,7 @@ trait EnumDescription
      * Return as associative array with [name => description] on Pure Enum
      * Return as associative array with [value => description] on Backed Enum.
      *
-     * @param null|array<self> $cases
+     * @param  null|array<self>  $cases
      * @return array<string, string>
      */
     public static function descriptionsByValue(?array $cases = null, ?string $lang = null): array
@@ -45,11 +45,6 @@ trait EnumDescription
 
     /**
      * Return the array of descriptionsByValue method with prepend a null value
-     *
-     * @param string $nullString
-     * @param array|null $cases
-     * @param string|null $lang
-     * @return array
      */
     public static function nullableDescriptionsByValue(string $nullString, ?array $cases = null, ?string $lang = null): array
     {

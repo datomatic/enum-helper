@@ -17,6 +17,8 @@ $rules = [
             'return',
         ],
     ],
+    'single_space_around_constructor' => true,
+    'control_structure_braces' => true,
     'braces' => [
         'allow_single_line_anonymous_class_with_empty_body' => true,
         'allow_single_line_closure' => true,

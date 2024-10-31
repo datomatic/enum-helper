@@ -12,7 +12,7 @@ trait EnumNames
     /**
      * Get an array of case names.
      *
-     * @param null|array<self> $cases
+     * @param  null|array<self>  $cases
      * @return array<string>
      */
     public static function names(?array $cases = null): array
@@ -30,8 +30,9 @@ trait EnumNames
      * Get an associative array of [case value => case name] on pure Enum.
      * Get an associative array of [case name => case name] on BackedEnum.
      *
-     * @param null|array<self> $cases
+     * @param  null|array<self>  $cases
      * @return array<string|int,string>
+     *
      * @throws EmptyCases
      */
     public static function namesByValue(?array $cases = null): array

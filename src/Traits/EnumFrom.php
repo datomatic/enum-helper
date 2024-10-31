@@ -8,46 +8,66 @@ use ValueError;
 
 trait EnumFrom
 {
+    use EnumEquality;
+
+    /**
+     * Gets the Enum by name, value or another enum.
+     */
+    public static function wrap(self|string|int|null $value): ?self
+    {
+        if ($value instanceof self || is_null($value)) {
+            return $value;
+        }
+
+        if (is_string($value) && self::isIntBacked()) {
+            $tmpValue = intval($value);
+            if (! empty($tmpValue)) {
+                $enum = self::tryFrom($tmpValue);
+            }
+        } else {
+            $enum = self::tryFrom($value);
+        }
+
+        if (! $enum && is_string($value)) {
+            $enum = self::tryFromName($value);
+        }
+
+        return $enum;
+    }
+
     /**
      * Gets the Enum by name, if it exists, for "Pure" enums.
      *
      * This will not override the `from()` method on BackedEnums
      *
      * @throws ValueError
-     * @return self
      */
-    public static function from(string $case): static
+    public static function from(string $case): self
     {
-        return static::fromName($case);
+        return self::fromName($case);
     }
 
     /**
      * Gets the Enum by name, if it exists, for "Pure" enums.
      * This will not override the `tryFrom()` method on BackedEnums.
-     *
-     * @return self|null
      */
-    public static function tryFrom(string $case): ?static
+    public static function tryFrom(string $case): ?self
     {
-        return static::tryFromName($case);
+        return self::tryFromName($case);
     }
 
     /**
      * Gets the Enum by name.
-     *
-     * @return self
      */
-    public static function fromName(string $case): static
+    public static function fromName(string $case): self
     {
         return self::tryFromName($case) ?? throw new ValueError('"'.$case.'" is not a valid name for enum "'.self::class.'"');
     }
 
     /**
      * Gets the Enum by name, if it exists.
-     *
-     * @return self|null
      */
-    public static function tryFromName(string $enumName): ?static
+    public static function tryFromName(string $enumName): ?self
     {
         foreach (self::cases() as $case) {
             if ($case->name === $enumName) {
@@ -60,20 +80,16 @@ trait EnumFrom
 
     /**
      * Gets the Enum by value.
-     *
-     * @return self
      */
-    public static function fromValue(string|int $value): static
+    public static function fromValue(string|int $value): self
     {
         return self::from($value);
     }
 
     /**
      * Gets the Enum by value, if it exists.
-     *
-     * @return self|null
      */
-    public static function tryFromValue(string|int $value): ?static
+    public static function tryFromValue(string|int $value): ?self
     {
         return self::tryFrom($value);
     }

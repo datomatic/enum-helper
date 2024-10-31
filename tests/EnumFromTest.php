@@ -7,6 +7,26 @@ use Datomatic\EnumHelper\Tests\Support\Enums\PascalCasePureEnum;
 use Datomatic\EnumHelper\Tests\Support\Enums\PureEnum;
 use Datomatic\EnumHelper\Tests\Support\Enums\StringBackedEnum;
 
+it('does work with wrap method', function ($enumCass, $value, $result) {
+    expect($enumCass::wrap($value))->toBe($result);
+    expect(fn () => $enumCass::wrap($value))->not->toThrow(ValueError::class);
+})->with([
+    'Pure Enum' => [PureEnum::class, 'PENDING', PureEnum::PENDING],
+    'Pure Enum2' => [PureEnum::class, PureEnum::PENDING, PureEnum::PENDING],
+    'Pascal Case Pure Enum' => [PascalCasePureEnum::class, 'Pending', PascalCasePureEnum::Pending],
+    'Pascal Case Pure Enum2' => [PascalCasePureEnum::class, PascalCasePureEnum::Pending, PascalCasePureEnum::Pending],
+    'Int Backed Enum' => [IntBackedEnum::class, 0, IntBackedEnum::PENDING],
+    'Int Backed Enum2' => [IntBackedEnum::class, IntBackedEnum::PENDING, IntBackedEnum::PENDING],
+    'Int Backed Enum3' => [IntBackedEnum::class, 'PENDING', IntBackedEnum::PENDING],
+    'String Backed Enum' => [StringBackedEnum::class, 'P', StringBackedEnum::PENDING],
+    'String Backed Enum2' => [StringBackedEnum::class, StringBackedEnum::PENDING, StringBackedEnum::PENDING],
+    'String Backed Enum3' => [StringBackedEnum::class, 'PENDING', StringBackedEnum::PENDING],
+    'Pure Enum missing' => [PureEnum::class, 'MISSING', null],
+    'Pascal Case Pure Enum missing' => [PascalCasePureEnum::class, 'MISSING', null],
+    'Int Backed Enum missing' => [IntBackedEnum::class, 10, null],
+    'String Backed Enum missing' => [StringBackedEnum::class, 'M', null],
+]);
+
 it('does work with from method', function ($enumCass, $value, $result) {
     expect($enumCass::from($value))->toBe($result);
 })->with([

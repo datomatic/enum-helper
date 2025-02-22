@@ -2,6 +2,10 @@
 
 All notable changes to `enum-helper` will be documented in this file.
 
+## v2.0.1 - 2025-02-22
+
+- fix invokable with enum case like LESS_5
+
 ## v2.0.0 - 2024-10-31
 
 - add `wrap()` method to `EnumFrom` trait

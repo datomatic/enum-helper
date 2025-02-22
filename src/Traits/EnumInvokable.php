@@ -25,10 +25,15 @@ trait EnumInvokable
     public static function __callStatic(string $enumName, array $args): string|int
     {
         foreach (self::cases() as $case) {
+            $check1 = strtolower($case->name);
+            $check2 = str_replace('_', '',strtolower($case->name));
             if (
-                strtolower($case->name) === strtolower($enumName)
-                || strtolower($case->name) === strtolower(self::snake($enumName))
-                || strtolower($case->name) === strtolower(str_replace('_', '', $enumName))
+                $check1 === strtolower($enumName)
+                || $check1 === strtolower(self::snake($enumName))
+                || $check1 === strtolower(str_replace('_', '', $enumName))
+                || $check2 === strtolower($enumName)
+                || $check2 === strtolower(self::snake($enumName))
+                || $check2 === strtolower(str_replace('_', '', $enumName))
             ) {
                 return $case instanceof BackedEnum ? $case->value : $case->name;
             }

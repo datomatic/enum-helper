@@ -19,15 +19,16 @@ trait EnumFrom
             return $value;
         }
 
+        $enum = null;
         if (is_string($value) && self::isIntBacked()) {
-            if (is_numeric($value)) {
+            if(is_numeric($value)){
                 $enum = self::tryFrom(intval($value));
             }
         } else {
             $enum = self::tryFrom($value);
         }
 
-        if (! $enum && is_string($value)) {
+        if ($enum === null && is_string($value)) {
             $enum = self::tryFromName($value);
         }
 

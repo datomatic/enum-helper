@@ -18,6 +18,7 @@ it('does work with wrap method', function ($enumCass, $value, $result) {
     'Int Backed Enum' => [IntBackedEnum::class, 0, IntBackedEnum::PENDING],
     'Int Backed Enum2' => [IntBackedEnum::class, IntBackedEnum::PENDING, IntBackedEnum::PENDING],
     'Int Backed Enum3' => [IntBackedEnum::class, 'PENDING', IntBackedEnum::PENDING],
+    'Int Backed Enum4' => [IntBackedEnum::class, '0', IntBackedEnum::PENDING],
     'String Backed Enum' => [StringBackedEnum::class, 'P', StringBackedEnum::PENDING],
     'String Backed Enum2' => [StringBackedEnum::class, StringBackedEnum::PENDING, StringBackedEnum::PENDING],
     'String Backed Enum3' => [StringBackedEnum::class, 'PENDING', StringBackedEnum::PENDING],

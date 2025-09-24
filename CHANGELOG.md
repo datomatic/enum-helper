@@ -2,6 +2,10 @@
 
 All notable changes to `enum-helper` will be documented in this file.
 
+## v2.0.2 - 2025-09-24
+
+- fix '0' intBackedENum error on `wrap` method
+
 ## v2.0.1 - 2025-02-22
 
 - fix invokable with enum case like LESS_5

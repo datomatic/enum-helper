@@ -11,9 +11,16 @@ trait EnumFrom
     use EnumEquality;
 
     /**
-     * Gets the Enum by name, value or another enum.
-     */
-    public static function wrap(self|string|int|null $value): ?self
+ * Gets the Enum by name, value or another enum.
+ *
+ * @param self|string|int|null $value The value to wrap as the enum. If an instance of the enum is passed it is returned unchanged.
+ *                                  Strings are treated as either backing values (for int-backed enums) or names.
+ * @param bool $strict When true, the method throws a {@see ValueError} if the given value cannot be converted to a valid enum.
+ *                     When false (default), the method returns null on failure.
+ * @return ?self The matched enum instance, or null if no match is found and `$strict` is false.
+ * @throws \ValueError If `$strict` is true and the value is not a valid enum name or backing value.
+ */
+    public static function wrap(self|string|int|null $value, bool $strict = false): ?self
     {
         if ($value instanceof self || is_null($value)) {
             return $value;
@@ -21,7 +28,7 @@ trait EnumFrom
 
         $enum = null;
         if (is_string($value) && self::isIntBacked()) {
-            if(is_numeric($value)){
+            if (is_numeric($value)) {
                 $enum = self::tryFrom(intval($value));
             }
         } else {
@@ -30,6 +37,10 @@ trait EnumFrom
 
         if ($enum === null && is_string($value)) {
             $enum = self::tryFromName($value);
+        }
+
+        if (is_null($enum) and $strict) {
+            throw new ValueError('"'.$value.'" is not a valid backing value for enum "'.self::class.'"');
         }
 
         return $enum;

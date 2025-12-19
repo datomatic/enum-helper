@@ -46,6 +46,16 @@ it('throw ValueError exception with from method', function ($enumClass, $value) 
     'String Backed Enum' => [StringBackedEnum::class, 'M'],
 ]);
 
+it('throws ValueError for invalid backing value in strict mode', function () {
+    expect(fn () => StringBackedEnum::wrap('non-existent-value', true))
+        ->toThrow(ValueError::class);
+});
+
+it('returns null for invalid backing value when not in strict mode', function() {   
+    expect(StringBackedEnum::wrap('non-existent-value'))
+        ->toBeNull();
+});
+
 it('does work with tryFrom method', function ($enumCass, $value, $result) {
     expect($enumCass::tryFrom($value))->toBe($result)->not->toThrow(ValueError::class);
 })->with([

@@ -20,31 +20,31 @@ trait EnumFrom
  * @return ?self The matched enum instance, or null if no match is found and `$strict` is false.
  * @throws \ValueError If `$strict` is true and the value is not a valid enum name or backing value.
  */
-public static function wrap(self|string|int|null $value, bool $strict = false): ?self
-{
-    if ($value instanceof self || is_null($value)) {
-        return $value;
-    }
-
-    $enum = null;
-    if (is_string($value) && self::isIntBacked()) {
-        if(is_numeric($value)){
-            $enum = self::tryFrom(intval($value));
+    public static function wrap(self|string|int|null $value, bool $strict = false): ?self
+    {
+        if ($value instanceof self || is_null($value)) {
+            return $value;
         }
-    } else {
-        $enum = self::tryFrom($value);
-    }
 
-    if ($enum === null && is_string($value)) {
-        $enum = self::tryFromName($value);
-    }
-    
-    if (is_null($enum) and $strict) {
-        throw new ValueError('"'.$value.'" is not a valid backing value for enum "'.self::class.'"');
-    }
+        $enum = null;
+        if (is_string($value) && self::isIntBacked()) {
+            if (is_numeric($value)) {
+                $enum = self::tryFrom(intval($value));
+            }
+        } else {
+            $enum = self::tryFrom($value);
+        }
 
-    return $enum;
-}
+        if ($enum === null && is_string($value)) {
+            $enum = self::tryFromName($value);
+        }
+
+        if (is_null($enum) and $strict) {
+            throw new ValueError('"'.$value.'" is not a valid backing value for enum "'.self::class.'"');
+        }
+
+        return $enum;
+    }
 
     /**
      * Gets the Enum by name, if it exists, for "Pure" enums.

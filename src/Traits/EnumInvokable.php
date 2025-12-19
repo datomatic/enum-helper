@@ -26,7 +26,7 @@ trait EnumInvokable
     {
         foreach (self::cases() as $case) {
             $check1 = strtolower($case->name);
-            $check2 = str_replace('_', '',strtolower($case->name));
+            $check2 = str_replace('_', '', strtolower($case->name));
             if (
                 $check1 === strtolower($enumName)
                 || $check1 === strtolower(self::snake($enumName))

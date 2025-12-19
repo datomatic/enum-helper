@@ -51,7 +51,7 @@ it('throws ValueError for invalid backing value in strict mode', function () {
         ->toThrow(ValueError::class);
 });
 
-it('returns null for invalid backing value when not in strict mode', function() {   
+it('returns null for invalid backing value when not in strict mode', function () {
     expect(StringBackedEnum::wrap('non-existent-value'))
         ->toBeNull();
 });

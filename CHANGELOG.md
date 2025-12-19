@@ -2,6 +2,10 @@
 
 All notable changes to `enum-helper` will be documented in this file.
 
+## v2.1.0 - 2025-12-19
+
+- add strict option to `wrap()` method by @Carnicero90
+
 ## v2.0.2 - 2025-09-24
 
 - fix '0' intBackedENum error on `wrap` method

@@ -204,6 +204,56 @@ StringBackedEnum::tryFromName('PENDING'); // StringBackedEnum::PENDING
 StringBackedEnum::tryFromName('MISSING'); // null
 ```
 
+#### `wrap()`
+This method is a convenience helper to "wrap" a value (or an enum instance) into the corresponding enum instance. It is especially useful when you accept mixed input (an enum instance, a case name, a backing value, or null) and want to normalize it into the enum instance.
+
+Signature:
+```php
+public static function wrap(self|string|int|null $value, bool $strict = false): ?self
+```
+
+Behavior notes:
+- If an actual enum instance (same enum) is passed, it is returned unchanged.
+- If null is passed, the method throws an error if `$strict = true`, otherwise it returns null.
+- If a backing value is passed (int or string), the method attempts to resolve it using `tryFrom()` (for BackedEnum) or `tryFromName()` (for pure enums).
+- For int-backed enums, numeric strings (e.g. `'1'`) are accepted: they are converted to integer and processed as numeric backing values.
+- When a string is passed and no backing match is found, `wrap()` will try to resolve it as a case name via `tryFromName()`.
+- By default (`$strict = false`) the method returns null if no enum case matches. When `$strict = true`, the method throws a `ValueError` if the value cannot be converted to a valid enum instance.
+
+Examples:
+```php
+// Passing an enum instance returns it unchanged
+$enum = IntBackedEnum::PENDING;
+IntBackedEnum::wrap($enum); // IntBackedEnum::PENDING
+
+// Null remains null
+IntBackedEnum::wrap(null); // null
+IntBackedEnum::wrap(null, true); // throws ValueError
+
+// Backed enum by native backing value
+IntBackedEnum::wrap(1); // IntBackedEnum::ACCEPTED
+StringBackedEnum::wrap('P'); // StringBackedEnum::PENDING
+
+// Numeric string for int-backed enum
+IntBackedEnum::wrap('1'); // IntBackedEnum::ACCEPTED
+
+// Case name (pure enum)
+PureEnum::wrap('PENDING'); // PureEnum::PENDING
+
+// Case name (backed enum)
+StringBackedEnum::wrap('PENDING'); // StringBackedEnum::PENDING
+
+// Non matching values
+PureEnum::wrap('MISSING'); // null
+PureEnum::wrap('MISSING', true); // throws ValueError: '"MISSING" is not a valid backing value for enum "Namespace\PureEnum"'
+```
+
+Notes on error message:
+- When `$strict` is true and no match is found, `wrap()` throws a `ValueError` with a message similar to:
+  '"<value>" is not a valid backing value for enum "<FullyQualifiedClassName>"'
+
+This helper is useful in input normalization flows (e.g. DTOs, HTTP handlers, form processors) where you want to accept several forms of enum input and consistently obtain an enum instance or a null.
+
 ### Inspection
 This helper permits check the type of enum (`isPure()`,`isBacked()`) and if enum contains a case name or value (`has()`, `doesntHave()`, `hasName()`, `doesntHaveName()`, `hasValue()`, `doesntHaveValue()`).
 
@@ -248,7 +298,7 @@ StringBackedEnum::hasName('A') // false
 
 #### `hasValue()` and `doesntHaveValue()`
 `hasValue()` method permit checking if an enum has a case by passing int, string or enum instance.
-For convenience, there is also an `doesntHaveValue()` method which is the exact reverse of the `hasValue()` method.
+For convenience, there is also a `doesntHaveValue()` method which is the exact reverse of the `hasValue()` method.
 
 ```php
 PureEnum::hasValue('PENDING') // true
@@ -257,7 +307,7 @@ IntBackedEnum::hasValue('ACCEPTED') // false
 IntBackedEnum::hasValue(1) // true
 StringBackedEnum::doesntHaveValue('Z') // true
 StringBackedEnum::hasValue('A') // true
-````
+```
 
 ### Equality
 This helper permits to compare an enum instance (`is()`,`isNot()`) and search if it is present inside an array (`in()`,`notIn()`).
@@ -349,7 +399,7 @@ StringBackedEnum::values([StringBackedEnum::NO_RESPONSE, StringBackedEnum::DISCA
 IntBackedEnum::values([IntBackedEnum::NO_RESPONSE, IntBackedEnum::DISCARDED]); // [3, 2]
 ```
 #### `valuesByName()`
-This method returns a associative array of [name => value] on `BackedEnum`,  [name => name] on pure enum.
+This method returns an associative array of [name => value] on `BackedEnum`,  [name => name] on pure enum.
 ```php
 PureEnum::valuesByName(); // ['PENDING' => 'PENDING','ACCEPTED' => 'ACCEPTED','DISCARDED' => 'DISCARDED',...]
 StringBackedEnum::valuesByName(); // ['PENDING' => 'P','ACCEPTED' => 'A','DISCARDED' => 'D','NO_RESPONSE' => 'N']

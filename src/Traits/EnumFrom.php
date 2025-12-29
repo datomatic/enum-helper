@@ -22,8 +22,15 @@ trait EnumFrom
  */
     public static function wrap(self|string|int|null $value, bool $strict = false): ?self
     {
-        if ($value instanceof self || is_null($value)) {
+        if ($value instanceof self) {
             return $value;
+        }
+
+        if (is_null($value)) {
+            if ($strict) {
+                throw new ValueError('"'.$value.'" is not a valid backing value for enum "'.self::class.'"');
+            }
+            return null;
         }
 
         $enum = null;

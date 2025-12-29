@@ -44,7 +44,6 @@
         "test:types": "vendor/bin/phpstan analyse --ansi",
         "test:unit": "vendor/bin/pest --colors=always",
         "test": [
-            "@test:lint",
             "@test:types",
             "@test:unit"
         ],

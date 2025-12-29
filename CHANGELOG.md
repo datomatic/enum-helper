@@ -2,6 +2,10 @@
 
 All notable changes to `enum-helper` will be documented in this file.
 
+## v2.1.1 - 2025-12-29
+
+fix: error on null value in EnumFrom@wrap in strict mode by @Carnicero90
+
 ## v2.1.0 - 2025-12-19
 
 - add strict option to `wrap()` method by @Carnicero90

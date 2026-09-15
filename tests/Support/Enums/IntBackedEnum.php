@@ -4,7 +4,9 @@ declare(strict_types=1);
 
 namespace Datomatic\EnumHelper\Tests\Support\Enums;
 
+use Datomatic\EnumHelper\Contracts\Comparable;
 use Datomatic\EnumHelper\EnumHelper;
+use Datomatic\EnumHelper\Traits\ComparesByValue;
 use Datomatic\EnumHelper\Traits\EnumDescription;
 use Datomatic\EnumHelper\Traits\EnumLabel;
 use Datomatic\EnumHelper\Traits\EnumSerialization;
@@ -17,8 +19,9 @@ use Datomatic\EnumHelper\Traits\EnumSerialization;
  * @method static string NO_RESPONSE()
  * @method static string NoResponse()
  */
-enum IntBackedEnum: int
+enum IntBackedEnum: int implements Comparable
 {
+    use ComparesByValue;
     use EnumDescription;
     use EnumHelper;
     use EnumLabel;

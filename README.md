@@ -579,7 +579,7 @@ PureEnum::descriptionsByValue([[PureEnum::PENDING, PureEnum::DISCARDED],'it'); /
 #### nullableDescriptionsByValue()
 This method prepend to `descriptionsByValue()` returns a default value usefull when do you need nullable select on a form.
 ```php
-StringBackedEnum::nullableDescriptionsByValue('Select value'); // [null => 'Select value', 'P' => 'Await decision', 'A' => 'Recognized valid',...
+StringBackedEnum::nullableDescriptionsByValue('Select value'); // ['' => 'Select value', 'P' => 'Await decision', 'A' => 'Recognized valid',...
 ```
 
 #### descriptionsByName()

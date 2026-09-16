@@ -48,6 +48,6 @@ trait EnumDescription
      */
     public static function nullableDescriptionsByValue(string $nullString, ?array $cases = null, ?string $lang = null): array
     {
-        return [null => $nullString] + self::descriptionsByValue($cases, $lang);
+        return ['' => $nullString] + self::descriptionsByValue($cases, $lang);
     }
 }

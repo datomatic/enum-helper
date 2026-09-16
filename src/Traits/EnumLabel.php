@@ -48,6 +48,6 @@ trait EnumLabel
      */
     public static function nullableLabelsByValue(string $nullString, ?array $cases = null, ?string $lang = null): array
     {
-        return [null => $nullString] + self::labelsByValue($cases, $lang);
+        return ['' => $nullString] + self::labelsByValue($cases, $lang);
     }
 }

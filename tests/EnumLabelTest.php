@@ -69,7 +69,7 @@ it('throw an EmptyCases exception calling labelsByName method with empty cases',
 
 it('can return an associative array [value => label]', function ($className, $cases, $values) {
     expect($className::labelsByValue($cases))->toBe($values)
-        ->and($className::nullableLabelsByValue('Nullable', $cases))->toBe([null => 'Nullable'] + $values);
+        ->and($className::nullableLabelsByValue('Nullable', $cases))->toBe(['' => 'Nullable'] + $values);
 })->with([
     'Pure Enum' => [PureEnum::class, null, [
         'PENDING' => 'Await decision',

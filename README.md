@@ -17,6 +17,7 @@ Please see the [upgrade.md](upgrade.md) file.
 - **Construct enum by name or value**: `wrap()`, `from()`, `tryFrom()`, `fromName()`, `tryFromName()`, `fromValue()`, `tryFromValue()` methods
 - **Enums Inspection**:  `isPure()`, `isBacked()`, `has()`, `hasName()`, `hasValue()` methods
 - **Enums Equality**:  `is()`, `isNot()`, `in()`, `notIn()` methods
+- **Comparison**: `Comparable` contract with default `compare()` implementations by value (backed enums) or by name (pure enums)
 - **Names**: methods to have a list of case names (`names()`, `namesByValue()`)
 - **Values**: methods to have a list of case values (`values()`, `valuesByName()`)
 - **Serialization**: get an unique identifier from instance or instance from identifier (`serialize()`, `unserialize()`)
@@ -91,6 +92,7 @@ The package works with cases written in UPPER_CASE, snake_case and PascalCase.
 - [From](#from-fromName)
 - [Enums Inspection](#inspection)
 - [Enums Equality](#equality)
+- [Comparison](#comparison)
 - [Names](#names)
 - [Values](#values)
 - [Serialization](#serialization)
@@ -354,6 +356,60 @@ IntBackedEnum::PENDING->in(['PENDING', 'ACCEPTED']); // true
 IntBackedEnum::PENDING->in(['DISCARDED', 'ACCEPTED']); // false
 StringBackedEnum::PENDING->in(['P', 'D']); // true
 StringBackedEnum::PENDING->notIn(['A','D']); // true
+```
+
+### Comparison
+The `Comparable` contract and the `ComparesByValue` / `ComparesByName` traits are a minimal default implementation to compare and sort enum cases by value (`BackedEnum`) or by name (pure enums).  
+They are not included in `EnumHelper`: if you need a different ordering (e.g. a custom priority) implement `compare()` by yourself or define your own contract.  
+If you implement `Comparable` without the trait, `compare()` parameters must be typed as `Comparable` (PHP doesn't allow narrowing them to your enum): check the actual type inside the method.
+
+`compare()` returns `-1`, `0` or `1`: int values are compared numerically, string values with `strcmp()` (so `'10'` comes before `'9'`).  
+Comparing cases of different enums throws an `InvalidArgumentException`.
+```php
+use Datomatic\EnumHelper\Contracts\Comparable;
+use Datomatic\EnumHelper\Traits\ComparesByValue;
+
+enum StringBackedEnum: string implements Comparable
+{
+    use EnumHelper;
+    use ComparesByValue;
+
+    case PENDING = 'P';
+    case ACCEPTED = 'A';
+    case DISCARDED = 'D';
+    case NO_RESPONSE = 'N';
+}
+
+IntBackedEnum::compare(IntBackedEnum::PENDING, IntBackedEnum::ACCEPTED); // -1
+StringBackedEnum::compare(StringBackedEnum::PENDING, StringBackedEnum::ACCEPTED); // 1
+StringBackedEnum::compare(StringBackedEnum::PENDING, StringBackedEnum::PENDING); // 0
+
+$cases = StringBackedEnum::cases();
+usort($cases, StringBackedEnum::compare(...)); // [ACCEPTED, DISCARDED, NO_RESPONSE, PENDING]
+```
+
+For pure enums use `ComparesByName`: case names are compared with `strcmp()` (case-sensitive, so `'Z'` comes before `'a'`).
+```php
+use Datomatic\EnumHelper\Contracts\Comparable;
+use Datomatic\EnumHelper\Traits\ComparesByName;
+
+enum PureEnum implements Comparable
+{
+    use EnumHelper;
+    use ComparesByName;
+
+    case PENDING;
+    case ACCEPTED;
+    case DISCARDED;
+    case NO_RESPONSE;
+}
+
+PureEnum::compare(PureEnum::ACCEPTED, PureEnum::PENDING); // -1
+PureEnum::compare(PureEnum::PENDING, PureEnum::DISCARDED); // 1
+PureEnum::compare(PureEnum::PENDING, PureEnum::PENDING); // 0
+
+$cases = PureEnum::cases();
+usort($cases, PureEnum::compare(...)); // [ACCEPTED, DISCARDED, NO_RESPONSE, PENDING]
 ```
 
 

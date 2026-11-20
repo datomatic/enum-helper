@@ -2,6 +2,12 @@
 
 All notable changes to `enum-helper` will be documented in this file.
 
+## v2.3.0 - 2026-11-20
+
+Adds PHP 8.6 support (CI now runs on PHP 8.6).
+
+**Full Changelog**: https://github.com/datomatic/enum-helper/compare/v2.2.0...v2.3.0
+
 ## v2.2.0 - 2026-09-29
 
 feat: comparable enums by @Carnicero90
